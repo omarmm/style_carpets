@@ -8,7 +8,7 @@ return [
 	'upc_ean_isbn'	=> 'UPC/EAN/ISBN',
 	'item_name' 	=> 'إسم الصنف',
 	'item_type'     => 'نوع الصنف',
-	'size' 			=> 'Size',
+	'size' 			=> 'لحجم',
 	'cost_price' 	=> 'سعر التكلفة',
 	'selling_price' => 'سعر البيع',
 	'quantity'		=> 'الكمية',
