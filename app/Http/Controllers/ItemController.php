@@ -45,12 +45,15 @@ class ItemController extends Controller {
 	public function store(ItemRequest $request)
 	{
 		    $items = new Item;
-            $items->upc_ean_isbn = Input::get('upc_ean_isbn');
+            $items->item_code = Input::get('item_code');
             $items->item_name = Input::get('item_name');
-            $items->size = Input::get('size');
+            $items->item_type = Input::get('item_type');
+            $items->item_category = Input::get('item_category');
+            //$items->size = Input::get('size');
             $items->description = Input::get('description');
             $items->cost_price = Input::get('cost_price');
             $items->selling_price = Input::get('selling_price');
+            $items->opening_balance = Input::get('opening_balance');
             $items->quantity = Input::get('quantity');
             $items->save();
             // process inventory
@@ -129,10 +132,14 @@ class ItemController extends Controller {
 			// save update
             $items->upc_ean_isbn = Input::get('upc_ean_isbn');
             $items->item_name = Input::get('item_name');
-            $items->size = Input::get('size');
+             $items->item_type = Input::get('item_type');
+             $items->item_category = Input::get('item_category');
+
+            //$items->size = Input::get('size');
             $items->description = Input::get('description');
             $items->cost_price = Input::get('cost_price');
             $items->selling_price = Input::get('selling_price');
+            $items->opening_balance = Input::get('opening_balance');
             $items->quantity = Input::get('quantity');
             $items->save();
             // process avatar

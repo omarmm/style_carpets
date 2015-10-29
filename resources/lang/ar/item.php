@@ -5,7 +5,7 @@ return [
 	'list_items'	=> 'List Items',
 	'new_item'		=> 'صنف جديد',
 	'item_id' 		=> 'كود الصنف',
-	'upc_ean_isbn'	=> 'UPC/EAN/ISBN',
+	'item_code'	=> 'كود الصنف',
 	'item_name' 	=> 'إسم الصنف',
 	'item_type'     => 'نوع الصنف',
 	'size' 			=> 'لحجم',

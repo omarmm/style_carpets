@@ -16,8 +16,8 @@
 					{!! Form::open(array('url' => 'items', 'files' => true)) !!}
 
 					<div class="form-group">
-					{!! Form::label('upc_ean_isbn', trans('item.upc_ean_isbn')) !!}
-					{!! Form::text('upc_ean_isbn', Input::old('upc_ean_isbn'), array('class' => 'form-control')) !!}
+					{!! Form::label('item_code', trans('item.item_code')) !!}
+					{!! Form::text('item_code', Input::old('item_code'), array('class' => 'form-control')) !!}
 					</div>
 
 					<div class="form-group">
@@ -25,9 +25,37 @@
 					{!! Form::text('item_name', Input::old('item_name'), array('class' => 'form-control')) !!}
 					</div>
 
+
+					<!--<div class="container">
+  <h3>نوع الصنف</h3>
+  
+  <form role="form">
+    <div class="radio">
+      <label><input type="radio" name="item_type" value="بالقطعة">بالقطعة</label>
+    </div>
+    <div class="radio">
+      <label><input type="radio" name="item_type" value="سجادة (طول*عرض)">سجادة (طول*عرض)</label>
+    </div>
+    <div class="radio">
+      <label><input type="radio" name="item_type" value="رول (الحجم)" >رول (الحجم)</label>
+    </div>
+  </form>
+</div> -->
+<div class="form-group">
+
+              {!! Form::label('item_type', trans('item.item_type')) !!}
+                <br><br>
+                {!! Form::radio('item_type', 'بالقطعة') !!}
+                 {!! Form::label('item_type', 'بالقطعة') !!}<br>
+                {!! Form::radio('item_type', 'سجادة (طول*عرض') !!}
+                 {!! Form::label('item_type', 'سجادة (طول*عرض)') !!}<br>
+                {!! Form::radio('item_type', 'رول (الحجم)') !!}
+                {!! Form::label('item_type', 'رول (الحجم)') !!}
+
+</div>
 					<div class="form-group">
-					{!! Form::label('size', trans('item.size')) !!}
-					{!! Form::text('size', Input::old('size'), array('class' => 'form-control')) !!}
+					{!! Form::label('item_category', 'تصنيف الصنف') !!}
+					{!! Form::text('item_category', Input::old('item_category'), array('class' => 'form-control')) !!}
 					</div>
 
 					<div class="form-group">
@@ -54,6 +82,13 @@
 					{!! Form::label('quantity', trans('item.quantity')) !!}
 					{!! Form::text('quantity', Input::old('quantity'), array('class' => 'form-control')) !!}
 					</div>
+
+
+                   <div class="form-group">
+					{!! Form::label('opening_balance', 'الرصيد الإفتتاحي' )!!}
+					{!! Form::text('opening_balance', Input::old('opening_balance'), array('class' => 'form-control')) !!}
+					</div>
+
 
 					{!! Form::submit(trans('item.submit'), array('class' => 'btn btn-primary')) !!}
 
