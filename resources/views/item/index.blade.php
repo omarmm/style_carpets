@@ -1,6 +1,12 @@
 @extends('app')
 
 @section('content')
+
+
+{!! Html::script('js/angular.min.js', array('type' => 'text/javascript')) !!}
+{!! Html::script('js/items.js', array('type' => 'text/javascript')) !!}
+
+
 <div class="container">
 	<div class="row">
 		<div class="col-md-10 col-md-offset-1">
@@ -14,8 +20,9 @@
 	<div class="alert alert-info">{{ Session::get('message') }}</div>
 @endif
 
-<table class="table table-striped table-bordered">
-    <thead>
+<div  ng-controller="SearchItemCtrl" >
+             <table class="table table-striped table-bordered">             
+                        <thead>
         <tr>
            
             <td>{{trans('item.item_code')}}</td>
@@ -27,34 +34,48 @@
             <td>&nbsp;</td>
             <td>{{trans('item.avatar')}}</td>
         </tr>
-    </thead>
-    <tbody>
-    @foreach($item as $value)
-        <tr>
-           
-            <td>{{ $value->item_code }}</td>
-            <td>{{ $value->item_name }}</td>
-            <td>{{ $value->item_category }}</td>
-            <td>{{ $value->cost_price }}</td>
-            <td>{{ $value->selling_price }}</td>
-            <td>{{ $value->quantity }}</td>
-            <td>
+    </thead>         
+                    
+                        <label>{{'البحث بكود الصنف'}} <input ng-model="search.item_code" class="form-control" ></label>&nbsp;
+                        <label>{{'البحث باسم المنتج'}} <input ng-model="search.item_name" class="form-control"></label>&nbsp;
+                        
+                        <label>{{'البحث بالتصنيف'}} <input ng-model="search.item_category" class="form-control"></label>
+                   <tbody>
+                        <tr ng-repeat="item in items  | filter: search" ng-init="filter_len = (items | filter: search).length">
+                        <td >@{{item.item_code}}</td>
+                        <td>@{{item.item_name}}</td>
+                        <td>@{{item.item_category}}</td>
+                        <td>@{{item.cost_price}}</td>
+                        <td>@{{item.selling_price}}</td>
+                        <td>@{{item.quantity}}</td>
+                      
+                      <!-- <td>@{{filter_len}}</td> -->
+                      
 
-                <a class="btn btn-small btn-success" href="{{ URL::to('inventory/' . $value->id . '/edit') }}">{{trans('item.inventory')}}</a>
-                <a class="btn btn-small btn-info" href="{{ URL::to('items/' . $value->id . '/edit') }}">{{trans('item.edit')}}</a>
-                {!! Form::open(array('url' => 'items/' . $value->id, 'class' => 'pull-right')) !!}
+            <td>
+                
+             <a class="btn btn-small btn-success" href="../index.php/inventory/@{{item.id}}/edit">{{trans('item.inventory')}}</a>
+                <a class="btn btn-small btn-info" href="../index.php/items/@{{item.id}}/edit">{{trans('item.edit')}}</a>
+                <!-- {!! Form::open(array('url' => 'items/' . '1', 'class' => 'pull-right')) !!}
                     {!! Form::hidden('_method', 'DELETE') !!}
                     {!! Form::submit(trans('item.delete'), array('class' => 'btn btn-warning')) !!}
-                {!! Form::close() !!}
+                {!! Form::close() !!} -->
+               <form ng-init="myPath = '{{ URL::to("items/") }}/'+ item.id " action="@{{myPath}}" method="POST"  accept-charset="UTF-8" class="pull-right"><input name="_token" type="hidden" value="d5DnqFfsqNpHtto9tJFGxXwWaVqOOlhXAnm1gmqu">
+                    <input name="_method" type="hidden" value="DELETE">
+                    <input class="btn btn-warning" type="submit" value="مسح">
+                </form>
+
             </td>
-            <td>{!! Html::image(url() . '/images/items/' . $value->avatar, 'a picture', array('class' => 'thumb')) !!}</td>
+           <!-- <td>{!! Html::image(url() . '/images/items/' . '@{{item.avatar}}', 'a picture', array('class' => 'thumb')) !!}</td> -->
+            <td><img src="../images/items/@{{item.avatar}}" class="thumb" alt="a picture"></td>
         </tr>
-    @endforeach
+     
     </tbody>
 </table>
 				</div>
 			</div>
 		</div>
 	</div>
+</div>
 </div>
 @endsection
