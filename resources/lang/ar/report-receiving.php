@@ -2,20 +2,20 @@
 
 return [
 
-	'reports' => 'Reports',
-	'receivings_report' => 'Receivings Report',
-	'grand_total' => 'TOTAL',
+	'reports' => 'التقارير',
+	'receivings_report' => 'تقارير الواردات',
+	'grand_total' => 'إجمالي المدفوع',
 	'receiving_id' => 'Receiving ID',
-	'date' => 'Date',
-	'items_received' => 'Items Received',
-	'received_by' => 'Received By',
-	'supplied_by' => 'Supplied By',
-	'total' => 'Total',
-	'payment_type' => 'Payment Type',
-	'comments' => 'Comments',
-	'detail' => 'Detail',
+	'date' => 'التاريخ',
+	'items_received' => 'عدد الاصناف',
+	'received_by' => 'الموظف',
+	'supplied_by' => 'المورد',
+	'total' => 'الإجمالي',
+	'payment_type' => 'طريقة الدفع',
+	'comments' => 'ملاحظات',
+	'detail' => 'التفاصيل',
 	'item_id' => 'Item ID',
-	'item_name' => 'Item Name:',
-	'item_received' => 'Item Received',
+	'item_name' => 'اسم الصنف:',
+	'item_received' => 'العدد',
 
 ];

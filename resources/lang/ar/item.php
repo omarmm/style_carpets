@@ -2,7 +2,7 @@
 
 return [
 
-	'list_items'	=> 'List Items',
+	'list_items'	=> 'بيانات الاصناف',
 	'new_item'		=> 'صنف جديد',
 	'item_id' 		=> 'كود الصنف',
 	'item_code'	=> 'كود الصنف',
@@ -18,15 +18,15 @@ return [
 	'submit' => 'تسجيل',
 	'description' => 'الوصف',
 	'choose_avatar' => 'إختر صورة',
-	'inventory' => 'Inventory',
-	'update_item' => 'Update Item',
+	'inventory' => 'الجرد',
+	'update_item' => 'تحديث البيانات',
 	//inventory
-	'inventory_data_tracking' => 'Inventory Data Tracking',
-	'current_quantity' => 'Current Quantity',
-	'inventory_to_add_subtract' => 'Inventory to add/subtract',
-	'comments' => 'Comments',
-	'employee' => 'Employee',
-	'in_out_qty' => 'In/Out Qty',
-	'remarks' => 'Remarks',
+	'inventory_data_tracking' => 'تتبع بيانات الجرد',
+	'current_quantity' => 'الكمية الحالية',
+	'inventory_to_add_subtract' => 'كمية مضافة / مطروحة',
+	'comments' => 'ملاحظات',
+	'employee' => 'الموظف',
+	'in_out_qty' => 'الكمية',
+	'remarks' => 'ملاحظات',
 
 ];

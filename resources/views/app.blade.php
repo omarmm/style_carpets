@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>TutaPOS</title>
+	<title>ستايل للسجاد</title>
 
 	<link href="{{ asset('/css/app.css') }}" rel="stylesheet">
 	<link href="{{ asset('/css/footer.css') }}" rel="stylesheet">
@@ -41,7 +41,7 @@
 					@if (Auth::check())
 						<li><a href="{{ url('/customers') }}">{{trans('menu.customers')}}</a></li>
 						<li><a href="{{ url('/items') }}">{{trans('menu.items')}}</a></li>
-						<li><a href="{{ url('/item-kits') }}">{{trans('menu.item_kits')}}</a></li>
+						<!-- <li><a href="{{ url('/item-kits') }}">{{trans('menu.item_kits')}}</a></li> -->
 						<li><a href="{{ url('/suppliers') }}">{{trans('menu.suppliers')}}</a></li>
 						<li><a href="{{ url('/receivings') }}">{{trans('menu.receivings')}}</a></li>
 						<li><a href="{{ url('/sales') }}">{{trans('menu.sales')}}</a></li>

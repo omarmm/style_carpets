@@ -2,16 +2,16 @@
 
 return [
 
-	'list_employees' => 'List Employees',
-	'new_employee' => 'New Employee',
+	'list_employees' => 'بيانات الموظفين',
+	'new_employee' => 'موظف جديد',
 	'person_id' => 'Person ID',
-	'name' => 'Name',
-	'email' => 'Email',
-	'password' => 'Password',
-	'confirm_password' => 'Confirm Password',
-	'submit' => 'Submit',
-	'edit' => 'Edit',
-	'delete' => 'Delete',
-	'update_employee' => 'Update Employee'
+	'name' => 'الإسم',
+	'email' => 'البريد الإلكتروني',
+	'password' => 'كلمة المرور',
+	'confirm_password' => 'تأكيد كلمة المرور',
+	'submit' => 'تسجيل',
+	'edit' => 'تعديل',
+	'delete' => 'حذف',
+	'update_employee' => 'تحديث البيانات'
 
 ];
