@@ -70,9 +70,14 @@
                         </div>
                            
                         <table class="table table-bordered">
-                            <tr><th>{{trans('sale.item_id')}}</th><th>{{trans('sale.item_name')}}</th><th>{{trans('sale.price')}}</th><th>{{trans('sale.quantity')}}</th><th>{{trans('sale.total')}}</th><th>&nbsp;</th></tr>
+                            <tr><th>{{trans('sale.item_id')}}</th><th>{{trans('sale.item_name')}}</th><th>{{trans('sale.price')}}</th><th>{{trans('sale.quantity')}}</th><th>{{'عدد الأمتار'}}</th><th>{{'عدد القطع'}}</th><th>{{trans('sale.total')}}</th><th>&nbsp;</th></tr>
                             <tr ng-repeat="newsaletemp in saletemp">
-                            <td>@{{newsaletemp.item_id}}</td><td>@{{newsaletemp.item.item_name}}</td><td>@{{newsaletemp.item.selling_price | currency}}</td><td><input type="text" style="text-align:center" autocomplete="off" name="quantity" ng-change="updateSaleTemp(newsaletemp)" ng-model="newsaletemp.quantity" size="2"></td><td>@{{newsaletemp.item.selling_price * newsaletemp.quantity | currency}}</td><td><button class="btn btn-danger btn-xs" type="button" ng-click="removeSaleTemp(newsaletemp.id)"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button></td>
+                            <td>@{{newsaletemp.item_id}}</td><td>@{{newsaletemp.item.item_name}}</td><td>@{{newsaletemp.item.selling_price | currency:"L.E"}}</td>
+                            <td><input type="text" style="text-align:center" autocomplete="off" name="quantity" ng-change="updateSaleTemp(newsaletemp)" ng-model="newsaletemp.quantity" size="2"></td>
+                            <td><input type="text" style="text-align:center" autocomplete="off" name="metres" ng-change="updateSaleTemp(newsaletemp)" ng-model="newsaletemp.metres" size="3"></td>
+                            <td><input type="text" style="text-align:center" autocomplete="off" name="pieces" ng-change="updateSaleTemp(newsaletemp)" ng-model="newsaletemp.pieces" size="2"></td>
+                            <td>@{{newsaletemp.item.selling_price * newsaletemp.quantity * newsaletemp.metres * newsaletemp.pieces | currency:"L.E"}}</td>
+                            <td><button class="btn btn-danger btn-xs" type="button" ng-click="removeSaleTemp(newsaletemp.id)"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button></td>
                             </tr>
                         </table>
 
@@ -82,7 +87,7 @@
                                         <label for="total" class="col-sm-4 control-label">{{trans('sale.add_payment')}}</label>
                                         <div class="col-sm-8">
                                             <div class="input-group">
-                                                <div class="input-group-addon">$</div>
+                                                <div class="input-group-addon">L.E</div>
                                                 <input type="text" class="form-control" id="add_payment" ng-model="add_payment"/>
                                             </div>
                                         </div>
@@ -99,14 +104,14 @@
                                     <div class="form-group">
                                         <label for="supplier_id" class="col-sm-4 control-label">{{trans('sale.grand_total')}}</label>
                                         <div class="col-sm-8">
-                                            <p class="form-control-static"><b>@{{sum(saletemp) | currency}}</b></p>
+                                            <p class="form-control-static"><b>@{{sum(saletemp) | currency:"L.E"}}</b></p>
                                         </div>
                                     </div>
 
                                     <div class="form-group">
                                             <label for="amount_due" class="col-sm-4 control-label">{{trans('sale.amount_due')}}</label>
                                             <div class="col-sm-8">
-                                            <p class="form-control-static">@{{add_payment - sum(saletemp) | currency}}</p>
+                                            <p class="form-control-static">@{{add_payment - sum(saletemp) | currency:"L.E"}}</p>
                                             </div>
                                     </div>
 

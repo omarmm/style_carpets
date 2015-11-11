@@ -10,7 +10,7 @@ table td {
 <div class="container-fluid">
    <div class="row">
         <div class="col-md-12" style="text-align:center">
-            TutaPOS - Tuta Point of Sale           
+            ستايل للسجاد        
         </div>
     </div>
     <div class="row">
@@ -28,6 +28,8 @@ table td {
                     <td>{{trans('sale.item')}}</td>
                     <td>{{trans('sale.price')}}</td>
                     <td>{{trans('sale.qty')}}</td>
+                    <td>{{'عدد الأمتار'}}</td>
+                     <td>{{'عدد القطع'}}</td>
                     <td>{{trans('sale.total')}}</td>
                 </tr>
                 @foreach($saleItems as $value)
@@ -35,6 +37,8 @@ table td {
                     <td>{{$value->item->item_name}}</td>
                     <td>{{$value->selling_price}}</td>
                     <td>{{$value->quantity}}</td>
+                    <td>{{$value->metres}}</td>
+                    <td>{{$value->pieces}}</td>
                     <td>{{$value->total_selling}}</td>
                 </tr>
                 @endforeach

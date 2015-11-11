@@ -39,7 +39,7 @@
             <td>{{DB::table('sale_items')->where('sale_id', $value->id)->sum('quantity')}}</td>
             <td>{{ $value->user->name }}</td>
             <td>{{ $value->customer->name }}</td>
-            <td>${{DB::table('sale_items')->where('sale_id', $value->id)->sum('total_selling')}}</td>
+            <td>L.E{{DB::table('sale_items')->where('sale_id', $value->id)->sum('total_selling')}}</td>
             <td>{{DB::table('sale_items')->where('sale_id', $value->id)->sum('total_selling') - DB::table('sale_items')->where('sale_id', $value->id)->sum('total_cost')}}</td>
             <td>{{ $value->payment_type }}</td>
             <td>{{ $value->comments }}</td>
@@ -56,6 +56,8 @@
                             <td>{{trans('report-sale.item_id')}}</td>
                             <td>{{trans('report-sale.item_name')}}</td>
                             <td>{{trans('report-sale.quantity_purchase')}}</td>
+                            <td>{{trans('عدد الأمتار')}}</td>
+                            <td>{{trans('عدد القطع')}}</td>
                             <td>{{trans('report-sale.total')}}</td>
                             <td>{{trans('report-sale.profit')}}</td>
                         </tr>
@@ -64,8 +66,10 @@
                             <td>{{ $SaleDetailed->item_id }}</td>
                             <td>{{ $SaleDetailed->item->item_name }}</td>
                             <td>{{ $SaleDetailed->quantity }}</td>
-                            <td>{{ $SaleDetailed->selling_price * $SaleDetailed->quantity}}</td>
-                            <td>{{ ($SaleDetailed->quantity * $SaleDetailed->selling_price) - ($SaleDetailed->quantity * $SaleDetailed->cost_price)}}</td>
+                            <td>{{ $SaleDetailed->metres }}</td>
+                            <td>{{ $SaleDetailed->pieces }}</td>
+                            <td>{{ $SaleDetailed->selling_price * $SaleDetailed->quantity * $SaleDetailed->metres * $SaleDetailed->pieces}}</td>
+                            <td>{{ ($SaleDetailed->quantity  * $SaleDetailed->metres * $SaleDetailed->pieces * $SaleDetailed->selling_price) - ($SaleDetailed->quantity  * $SaleDetailed->metres * $SaleDetailed->pieces * $SaleDetailed->cost_price)}}</td>
                         </tr>
                         @endforeach
                     </table>

@@ -22,8 +22,8 @@
         }
         $scope.updateSaleTemp = function(newsaletemp) {
             
-            $http.put('api/saletemp/' + newsaletemp.id, { quantity: newsaletemp.quantity, total_cost: newsaletemp.item.cost_price * newsaletemp.quantity,
-                total_selling: newsaletemp.item.selling_price * newsaletemp.quantity }).
+            $http.put('api/saletemp/' + newsaletemp.id, { quantity: newsaletemp.quantity,  metres: newsaletemp.metres, pieces: newsaletemp.pieces, total_cost: newsaletemp.item.cost_price * newsaletemp.quantity * newsaletemp.metres * newsaletemp.pieces,
+                total_selling: newsaletemp.item.selling_price * newsaletemp.quantity * newsaletemp.metres * newsaletemp.pieces  }).
             success(function(data, status, headers, config) {
                 
                 });
@@ -39,7 +39,7 @@
         $scope.sum = function(list) {
             var total=0;
             angular.forEach(list , function(newsaletemp){
-                total+= parseFloat(newsaletemp.item.selling_price * newsaletemp.quantity);
+                total+= parseFloat(newsaletemp.item.selling_price * newsaletemp.quantity * newsaletemp.metres * newsaletemp.pieces);
             });
             return total;
         }

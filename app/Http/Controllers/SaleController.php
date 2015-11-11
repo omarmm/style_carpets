@@ -65,6 +65,8 @@ class SaleController extends Controller {
 			$saleItemsData->cost_price = $value->cost_price;
 			$saleItemsData->selling_price = $value->selling_price;
 			$saleItemsData->quantity = $value->quantity;
+			$saleItemsData->metres = $value->metres;
+			$saleItemsData->pieces = $value->pieces;
 			$saleItemsData->total_cost = $value->total_cost;
 			$saleItemsData->total_selling = $value->total_selling;
 			$saleItemsData->save();
