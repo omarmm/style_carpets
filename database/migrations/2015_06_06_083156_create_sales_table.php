@@ -22,6 +22,8 @@ class CreateSalesTable extends Migration {
 			$table->string('payment_type', 15)->nullable();
 			$table->string('comments', 255)->nullable();
 			$table->boolean('reserved')->default(0);
+			$table->decimal('deposit',9, 2);
+			$table->decimal('amount_due',9, 2);
 			$table->timestamps();
 		});
 	}

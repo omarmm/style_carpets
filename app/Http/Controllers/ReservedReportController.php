@@ -24,6 +24,16 @@ class ReservedReportController extends Controller {
 			return view('report.reserved')->with('saleReport', $salesReport);
 	}
 
+
+
+
+// public function unreserved()
+//     {
+//         //check which submit was clicked on
+//          $sales->reserved =0;
+
+//     } 
+
 	/**
 	 * Show the form for creating a new resource.
 	 *

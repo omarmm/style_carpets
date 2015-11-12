@@ -119,12 +119,37 @@
                             <div class="form-group">
 
               
-                
+               <!--  
                 {!! Form::checkbox('reserved', '1') !!}
-                 {!! Form::label('reserved', 'حجز') !!}<br>
-                
+                 {!! Form::label('reserved', 'حجز') !!}<br> -->
 
-                  </div>
+                      <input name="reserved" type="checkbox" value="1"ng-model="val" ng-true-value="true" ng-false-value="false"/>
+    
+                 <label for="reserved">حجز</label><br>
+
+                  <label ng-show="val">المبلغ المدفوع مقدما</label>
+                   <div class="input-group">
+                   <div class="input-group-addon" ng-show="val">L.E</div>
+                  <input type="text" class="form-control" name="deposit" id="deposit" size="5" ng-show="val" ng-model="add_payment" />
+                
+                   </div><!--  <div class="form-group" ng-show="val">
+                                            <label for="amount_due" class="col-sm-4 control-label" ng-show="val">{{trans('sale.amount_due')}}</label>
+                                            <div class="col-sm-8" ng-show="val">
+                                            <input type="text" name="amount_due" class="form-control-static" ng-show="val" value="@{{sum(saletemp) -add_payment}}">
+                                            </div>
+                  </div> -->
+
+
+                   <label ng-show="val">المبلغ المتبقي</label>
+                   <div class="input-group">
+                   <div class="input-group-addon" ng-show="val">L.E</div>
+                  <input type="text" class="form-control" name="amount_due" id="smount_due" size="5" ng-show="val" value="@{{sum(saletemp) -add_payment}}" />
+                
+                   </div>
+
+                   <br><br>
+
+
                                     <div class="form-group">
                                         <div class="col-sm-12">
                                             <button type="submit" class="btn btn-success btn-block">{{trans('sale.submit')}}</button>

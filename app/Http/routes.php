@@ -55,6 +55,8 @@ Route::group(['middleware' => 'languange'], function()
 	Route::post('store-item-kits', 'ItemKitController@storeItemKits');
 
 	Route::resource('tutapos-settings', 'TutaposSettingController');
+
+	// Route::post('report/reserved', array('uses' => 'ReservedReportController@unreserved'));
 });
 /*
 Route::group(['middleware' => 'role'], function()

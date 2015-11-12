@@ -5,7 +5,7 @@
 	<div class="row">
 		<div class="col-md-10 col-md-offset-1">
 			<div class="panel panel-default">
-				<div class="panel-heading">{{trans('report-sale.reports')}} - {{trans('report-sale.sales_report')}}</div>
+				<div class="panel-heading">{{trans('report-sale.reports')}} - {{'تقارير الحجوزات'}}</div>
 
 				<div class="panel-body">
                     <div class="row">
@@ -25,7 +25,8 @@
             <td>{{trans('report-sale.sold_by')}}</td>
             <td>{{trans('report-sale.sold_to')}}</td>
             <td>{{trans('report-sale.total')}}</td>
-            <td>{{trans('report-sale.profit')}}</td>
+            <td>{{'المبلغ المدفوع'}}</td>
+            <td>{{'المبلغ المتبقي'}}</td>
             <td>{{trans('report-sale.payment_type')}}</td>
             <td>{{trans('report-sale.comments')}}</td>
             <td>&nbsp;</td>
@@ -40,10 +41,16 @@
             <td>{{ $value->user->name }}</td>
             <td>{{ $value->customer->name }}</td>
             <td>L.E{{DB::table('sale_items')->where('sale_id', $value->id)->sum('total_selling')}}</td>
-            <td>{{DB::table('sale_items')->where('sale_id', $value->id)->sum('total_selling') - DB::table('sale_items')->where('sale_id', $value->id)->sum('total_cost')}}</td>
+            <!-- <td>{{DB::table('sale_items')->where('sale_id', $value->id)->sum('total_selling') - DB::table('sale_items')->where('sale_id', $value->id)->sum('total_cost')}}</td> -->
+            <td>{{ $value->deposit}}</td>
+            <td>{{ $value->amount_due}}</td>
             <td>{{ $value->payment_type }}</td>
             <td>{{ $value->comments }}</td>
             <td>
+
+  
+
+
                 <a class="btn btn-small btn-info" data-toggle="collapse" href="#detailedSales{{ $value->id }}" aria-expanded="false" aria-controls="detailedReceivings">
                     {{trans('report-sale.detail')}}</a>
             </td>
