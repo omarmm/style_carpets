@@ -40,6 +40,7 @@ Route::group(['middleware' => 'languange'], function()
 
 	Route::resource('reports/receivings', 'ReceivingReportController');
 	Route::resource('reports/sales', 'SaleReportController');
+	Route::resource('reports/reserved', 'ReservedReportController');
 
 	Route::resource('employees', 'EmployeeController');
 

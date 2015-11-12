@@ -21,6 +21,7 @@ class CreateSalesTable extends Migration {
 			$table->foreign('user_id')->references('id')->on('users')->onDelete('restrict');
 			$table->string('payment_type', 15)->nullable();
 			$table->string('comments', 255)->nullable();
+			$table->boolean('reserved')->default(0);
 			$table->timestamps();
 		});
 	}

@@ -6,7 +6,7 @@ use App\Sale;
 use \Auth, \Redirect;
 use Illuminate\Http\Request;
 
-class SaleReportController extends Controller {
+class ReservedReportController extends Controller {
 
 	public function __construct()
 	{
@@ -20,8 +20,8 @@ class SaleReportController extends Controller {
 	 */
 	public function index()
 	{
-			$salesReport = Sale::where('reserved',0)->get();
-			return view('report.sale')->with('saleReport', $salesReport);
+			$salesReport = Sale::where('reserved',1)->get();
+			return view('report.reserved')->with('saleReport', $salesReport);
 	}
 
 	/**

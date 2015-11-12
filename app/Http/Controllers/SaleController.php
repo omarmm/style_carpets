@@ -55,6 +55,7 @@ class SaleController extends Controller {
         $sales->user_id = Auth::user()->id;
         $sales->payment_type = Input::get('payment_type');
         $sales->comments = Input::get('comments');
+        $sales->reserved = (Input::has('reserved')) ? true : false;
         $sales->save();
         // process sale items
         $saleItems = SaleTemp::all();
@@ -105,7 +106,7 @@ class SaleController extends Controller {
 		//delete all data on SaleTemp model
 		SaleTemp::truncate();
         $itemssale = SaleItem::where('sale_id', $saleItemsData->sale_id)->get();
-            Session::flash('message', 'You have successfully added sales');
+            Session::flash('message', 'تمت عملية البيع بنجاح');
             //return Redirect::to('receivings');
             return view('sale.complete')
             	->with('sales', $sales)

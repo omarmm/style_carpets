@@ -50,6 +50,7 @@
 							<ul class="dropdown-menu" role="menu">
 								<li><a href="{{ url('/reports/receivings') }}">{{trans('menu.receivings_report')}}</a></li>
 								<li><a href="{{ url('/reports/sales') }}">{{trans('menu.sales_report')}}</a></li>
+								<li><a href="{{ url('/reports/reserved') }}">{{'تقرير المحجوزات'}}</a></li>
 							</ul>
 						</li>
 						<li><a href="{{ url('/employees') }}">{{trans('menu.employees')}}</a></li>

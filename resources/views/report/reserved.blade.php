@@ -1,24 +1,6 @@
 @extends('app')
 
 @section('content')
-
-<?php 
-
-
-$total_selling = DB::table('sale_items')
-->join('sales', 'sale_items.id', '=', 'sales.id')
-->where('sales.reserved', '=', 0)
-->sum('total_selling');
-
-
-$total_cost = DB::table('sale_items')
-->join('sales', 'sale_items.id', '=', 'sales.id')
-->where('sales.reserved', '=', 0)
-->sum('total_cost');
-
-
-
- ?>
 <div class="container">
 	<div class="row">
 		<div class="col-md-10 col-md-offset-1">
@@ -28,10 +10,10 @@ $total_cost = DB::table('sale_items')
 				<div class="panel-body">
                     <div class="row">
                         <div class="col-md-4">
-                            <div class="well well-sm">{{trans('report-sale.grand_total')}}: {{$total_selling}}</div>
+                            <div class="well well-sm">{{trans('report-sale.grand_total')}}: {{DB::table('sale_items')->sum('total_selling')}}</div>
                         </div>
                         <div class="col-md-4">
-                            <div class="well well-sm">{{trans('report-sale.grand_profit')}}: {{$total_selling - $total_cost}}</div>
+                            <div class="well well-sm">{{trans('report-sale.grand_profit')}}: {{DB::table('sale_items')->sum('total_selling') - DB::table('sale_items')->sum('total_cost')}}</div>
                         </div>
                     </div>
 <table class="table table-striped table-bordered">

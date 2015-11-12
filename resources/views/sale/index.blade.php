@@ -115,9 +115,20 @@
                                             </div>
                                     </div>
 
+
+                            <div class="form-group">
+
+              
+                
+                {!! Form::checkbox('reserved', '1') !!}
+                 {!! Form::label('reserved', 'حجز') !!}<br>
+                
+
+                  </div>
                                     <div class="form-group">
                                         <div class="col-sm-12">
                                             <button type="submit" class="btn btn-success btn-block">{{trans('sale.submit')}}</button>
+                                            
                                         </div>
                                     </div>
 
