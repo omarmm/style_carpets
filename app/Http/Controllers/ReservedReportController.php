@@ -5,6 +5,8 @@ use App\Http\Controllers\Controller;
 use App\Sale;
 use \Auth, \Redirect;
 use Illuminate\Http\Request;
+use App\Http\Requests\SaleRequest;
+use  \Validator, \Input, \Session;
 
 class ReservedReportController extends Controller {
 
@@ -21,18 +23,15 @@ class ReservedReportController extends Controller {
 	public function index()
 	{
 			$salesReport = Sale::where('reserved',1)->get();
+			
+		
 			return view('report.reserved')->with('saleReport', $salesReport);
 	}
 
 
 
 
-// public function unreserved()
-//     {
-//         //check which submit was clicked on
-//          $sales->reserved =0;
-
-//     } 
+  
 
 	/**
 	 * Show the form for creating a new resource.
@@ -82,9 +81,18 @@ class ReservedReportController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update( $id)
 	{
-		//
+		// finish the sale and make the invoice unreserved*********
+
+		$salesReport = Sale::find($id);
+		// $salesReport->reserved = Input::get('reserved');
+       $salesReport->reserved = 0;
+        
+        $salesReport->save();
+         // return $salesReport;
+           
+             return Redirect::to('reserved');
 	}
 
 	/**

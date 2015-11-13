@@ -47,13 +47,18 @@
             <td>{{ $value->payment_type }}</td>
             <td>{{ $value->comments }}</td>
             <td>
-
-  
-
+ 
 
                 <a class="btn btn-small btn-info" data-toggle="collapse" href="#detailedSales{{ $value->id }}" aria-expanded="false" aria-controls="detailedReceivings">
                     {{trans('report-sale.detail')}}</a>
             </td>
+     <td>
+            {!! Form::model($value, array('route' => array('reserved.update', $value->id), 'method' => 'PUT')) !!}         
+  <!-- <input name="reserved" type="checkbox" value="0" ng-model="val" ng-true-value="true" ng-false-value="false"/> -->
+    
+     <button type="submit" class="btn btn-success btn-block">{{trans('sale.submit')}}</button>
+    </td>
+        {!!Form::close() !!}
         </tr>
         
             <tr class="collapse" id="detailedSales{{ $value->id }}">

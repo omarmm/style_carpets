@@ -41,7 +41,7 @@ Route::group(['middleware' => 'languange'], function()
 	Route::resource('reports/receivings', 'ReceivingReportController');
 	Route::resource('reports/sales', 'SaleReportController');
 	Route::resource('reports/reserved', 'ReservedReportController');
-
+Route::resource('reserved', 'ReservedReportController');
 	Route::resource('employees', 'EmployeeController');
 
 	Route::resource('api/item', 'ReceivingApiController');
@@ -56,7 +56,8 @@ Route::group(['middleware' => 'languange'], function()
 
 	Route::resource('tutapos-settings', 'TutaposSettingController');
 
-	// Route::post('report/reserved', array('uses' => 'ReservedReportController@unreserved'));
+    // Route::post('report/reserved', array('uses' => 'ReservedReportController@unreserved'));
+
 });
 /*
 Route::group(['middleware' => 'role'], function()

@@ -85,7 +85,7 @@ class ItemController extends Controller {
 				$itemAvatar->avatar = $avatarName;
 	            $itemAvatar->save();
         	}
-            Session::flash('message', 'You have successfully added item');
+            Session::flash('message', 'تم إضافة صنف جديد بنجاح');
             return Redirect::to('items/create');
 	}
 
@@ -160,7 +160,7 @@ class ItemController extends Controller {
 				$itemAvatar->avatar = $avatarName;
 	            $itemAvatar->save();
         	}
-            Session::flash('message', 'You have successfully updated item');
+            Session::flash('message', 'تم تعديل بيانات الصنف بنجاح');
             return Redirect::to('items');
 	}
 
@@ -175,7 +175,7 @@ class ItemController extends Controller {
 			$items = Item::find($id);
 	        $items->delete();
 
-	        Session::flash('message', 'You have successfully deleted item');
+	        Session::flash('message', 'تم حذف الصنف بنجاح');
 	        return Redirect::to('items');
 	}
 
