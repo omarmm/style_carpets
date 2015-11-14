@@ -106,6 +106,11 @@
                                         <div class="col-sm-8">
                                             <p class="form-control-static"><b>@{{sum(saletemp) | currency:"L.E"}}</b></p>
                                         </div>
+                                      <!-- Hidden total selling input just to use it in invoice printing
+                                      and to avoid employee editting (if we keep input text visible) -->
+                                         <div class="input-group">
+                                      <div class="input-group-addon" ng-show="hide">L.E</div>
+                                      <input type="text" class="form-control" name="total_selling" id="total_selling" size="5" ng-show="hide" value="@{{sum(saletemp)}}" />
                                     </div>
 
                                     <div class="form-group">
@@ -143,7 +148,7 @@
                    <label ng-show="val">المبلغ المتبقي</label>
                    <div class="input-group">
                    <div class="input-group-addon" ng-show="val">L.E</div>
-                  <input type="text" class="form-control" name="amount_due" id="smount_due" size="5" ng-show="val" value="@{{sum(saletemp) -add_payment}}" />
+                  <input type="text" class="form-control" name="amount_due" id="amount_due" size="5" ng-show="val" value="@{{sum(saletemp) -add_payment}}" />
                 
                    </div>
 

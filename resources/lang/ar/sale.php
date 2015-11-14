@@ -19,7 +19,7 @@ return [
 	'amount_due' => 'المتبقي',
 	'submit' => 'إتمام البيع',
 	//struk
-	'sale_id' => 'Sale ID',
+	'sale_id' => 'كود الفاتورة',
 	'item' => 'الصنف',
 	'price' => 'السعر',
 	'qty' => 'الكمية',

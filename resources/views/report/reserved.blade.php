@@ -30,6 +30,7 @@
             <td>{{trans('report-sale.payment_type')}}</td>
             <td>{{trans('report-sale.comments')}}</td>
             <td>&nbsp;</td>
+            <td>&nbsp;</td>
         </tr>
     </thead>
     <tbody>
