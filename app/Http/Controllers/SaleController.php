@@ -58,7 +58,9 @@ class SaleController extends Controller {
         $sales->reserved = (Input::has('reserved')) ? true : false;
         $sales->deposit = Input::get('deposit');
         $sales->amount_due = Input::get('amount_due');
-        $sales->total_selling = Input::get('total_selling');
+        $sales->total = Input::get('total');
+        $sales->creditor = Input::get('creditor');
+        $sales->deptor = Input::get('deptor');
         $sales->save();
         // process sale items
         $saleItems = SaleTemp::all();

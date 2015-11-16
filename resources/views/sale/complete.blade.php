@@ -87,8 +87,39 @@ table td {
            
             </table>
             <table border="1" class="table" align="left" style="width:30%">
-            <tr><td bgcolor="#E1E4E6" style="width:30%">{{'إجمالي قيمة الفاتورة'}}:</td><td>{{$sales->total_selling}}</td></tr>
+            <tr><td bgcolor="#E1E4E6" style="width:30%">{{'إجمالي قيمة الفاتورة'}}:</td><td>{{$sales->total}}</td></tr>
+            </table> 
+
+             </table>
+            <table border="1" class="table"  >
+            <tr>
+<?php 
+
+
+$total_credit= DB::table('sales')
+
+->where('sales.customer_id', '=', $sales->customer->id)
+->sum('creditor');
+
+
+$total_debit= DB::table('sales')
+
+->where('sales.customer_id', '=', $sales->customer->id)
+->sum('deptor');
+
+
+
+ ?>
+ <td bgcolor="#E1E4E6" style="width:40%">صافي حساب العميل عند طباعة الفاتورة</td>
+            <td bgcolor="#E1E4E6" style="width:10%">{{'دائن'}}:</td><td>{{$total_credit}}</td>
+ <td bgcolor="#E1E4E6" style="width:10%">{{'مدين'}}:</td><td>{{$total_debit}}</td>
+            </tr>
             </table>
+
+
+
+
+
         </div>
         </div>
     </div>

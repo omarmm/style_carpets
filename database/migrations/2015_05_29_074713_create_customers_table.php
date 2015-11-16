@@ -26,6 +26,7 @@ class CreateCustomersTable extends Migration {
 			$table->string('comment', 255);
 			$table->string('company_name', 100);
 			$table->string('account', 20);
+			$table->decimal('c/d',9, 2);
 			$table->timestamps();
 		});
 	}

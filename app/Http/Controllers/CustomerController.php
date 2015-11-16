@@ -156,7 +156,7 @@ class CustomerController extends Controller {
 			$customers = Customer::find($id);
 	        $customers->delete();
 	        // redirect
-	        Session::flash('message', 'You have successfully deleted customer');
+	        Session::flash('message', 'تم تسجيل عميل جديد بنجاح');
 	        return Redirect::to('customers');
         }
     	catch(\Illuminate\Database\QueryException $e)
