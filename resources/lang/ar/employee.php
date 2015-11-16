@@ -4,7 +4,7 @@ return [
 
 	'list_employees' => 'بيانات الموظفين',
 	'new_employee' => 'موظف جديد',
-	'person_id' => 'Person ID',
+	'person_id' => 'الرقم المسلسل للموظف',
 	'name' => 'الإسم',
 	'email' => 'البريد الإلكتروني',
 	'password' => 'كلمة المرور',

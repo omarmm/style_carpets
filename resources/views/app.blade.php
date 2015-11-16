@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>ستايل للسجاد</title>
+	<title>بيت السجاد ستايل</title>
 
 	<link href="{{ asset('/css/app.css') }}" rel="stylesheet">
 	<link href="{{ asset('/css/footer.css') }}" rel="stylesheet">
@@ -79,8 +79,7 @@
 
 	<footer class="footer hidden-print">
       <div class="container">
-       <!-- <p class="text-muted">You are using <a href="http://tutacare.github.io/tutapos">TutaPOS</a> v0.8-alpha by <a href="https://twitter.com/tutacare">Irfan Mahfudz Guntur</a>.
-        </p>-->
+       
       </div>
     </footer>
 	<!-- Scripts -->

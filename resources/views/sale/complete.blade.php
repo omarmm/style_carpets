@@ -63,8 +63,8 @@ table td {
                     <td>{{trans('sale.item')}}</td>
                     <td>{{trans('sale.price')}}</td>
                     <td>{{trans('sale.qty')}}</td>
-                    <td>{{'عدد الأمتار'}}</td>
-                     <td>{{'عدد القطع'}}</td>
+                    <td>{{'إجمالي الأمتار المربعة'}}</td>
+                     <td>{{'إجمالي المتر الطولي'}}</td>
                     <td>{{trans('sale.total')}}</td>
                 </tr>
                 @foreach($saleItems as $value)
@@ -73,26 +73,44 @@ table td {
                     <td>{{$value->selling_price}}</td>
                     <td>{{$value->quantity}}</td>
 
-                    @if ($value->metres > 1)
-                    <td>{{$value->metres}}</td> 
+                    @if ($value->metres_w > 1 || $value->metres_h >1)
+                    <td>{{$value->metres_w}}</td> 
+                    <td>{{$value->metres_h}}</td> 
                     @else 
+                    <td>{{'-'}}</td>
                     <td>{{'-'}}</td>
                     @endif
                    
-                    <td>{{$value->pieces}}</td>
+                    <!-- <td>{{$value->pieces}}</td> -->
                     <td>{{$value->total_selling}}</td>
                 </tr>
 
                 @endforeach
            
             </table>
-            <table border="1" class="table" align="left" style="width:30%">
-            <tr><td bgcolor="#E1E4E6" style="width:30%">{{'إجمالي قيمة الفاتورة'}}:</td><td>{{$sales->total}}</td></tr>
+            <table border="1" class="table">
+            <tr>
+
+            <td bgcolor="#E1E4E6" >{{'قيمة الفاتورة قبل الخصم'}}:</td>
+            <td bgcolor="#E1E4E6" >{{'مجموع قيمة الخصومات'}}:</td>
+            <td bgcolor="#E1E4E6" >{{'إجمالي قيمة الفاتورة'}}:</td>
+            <td bgcolor="#E1E4E6" >{{'القيمة المدفوعة'}}:</td>
+            <td bgcolor="#E1E4E6" >{{'المتبقي'}}:</td>
+
+            </tr>
+           <tr>
+            <td>{{$saleItemsData->total_prediscount}}</td>
+            <td>{{DB::table('sale_items')->where('sale_id', '=', $sales->id)->sum('discount')}}</td>
+            <td>{{$sales->total}}</td>
+            <td>{{$sales->deposit}}</td>
+            <td>{{$sales->amount_due}}</td>
+             </tr>
             </table> 
 
-             </table>
-            <table border="1" class="table"  >
-            <tr>
+             
+
+
+            <!-- debtor / creditor -->
 <?php 
 
 
@@ -110,13 +128,20 @@ $total_debit= DB::table('sales')
 
 
  ?>
+
+ @if($sales->customer_id != 4)
+
+ </table>
+            <table border="1" class="table"  >
+            <tr>
+
  <td bgcolor="#E1E4E6" style="width:40%">صافي حساب العميل عند طباعة الفاتورة</td>
             <td bgcolor="#E1E4E6" style="width:10%">{{'دائن'}}:</td><td>{{$total_credit}}</td>
  <td bgcolor="#E1E4E6" style="width:10%">{{'مدين'}}:</td><td>{{$total_debit}}</td>
             </tr>
-            </table>
-
-
+            
+</table>
+@endif
 
 
 

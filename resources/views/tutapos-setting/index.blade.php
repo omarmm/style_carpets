@@ -17,7 +17,7 @@
 
 					<div class="form-group">
 					{!! Form::label('languange', 'Languange') !!}
-					{!! Form::select('languange', array('en' => 'English', 'id' => 'Indonesia','ar' => 'arabic'), Input::old('languange'), array('class' => 'form-control')) !!}
+					{!! Form::select('languange', array('en' => 'English', 'ar' => 'arabic'), Input::old('languange'), array('class' => 'form-control')) !!}
 					</div>
 
 					{!! Form::submit('Submit', array('class' => 'btn btn-primary')) !!}

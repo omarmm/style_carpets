@@ -28,10 +28,10 @@ $total_cost = DB::table('sale_items')
 				<div class="panel-body">
                     <div class="row">
                         <div class="col-md-4">
-                            <div class="well well-sm">{{trans('report-sale.grand_total')}}: {{$total_selling}}</div>
+                            <div class="well well-sm">{{trans('report-sale.grand_total')}}: {{DB::table('sales')->sum('total')}}</div>
                         </div>
                         <div class="col-md-4">
-                            <div class="well well-sm">{{trans('report-sale.grand_profit')}}: {{$total_selling - $total_cost}}</div>
+                            <div class="well well-sm">{{trans('report-sale.grand_profit')}}: {{DB::table('sales')->sum('total') - $total_cost}}</div>
                         </div>
                     </div>
 <table class="table table-striped table-bordered">

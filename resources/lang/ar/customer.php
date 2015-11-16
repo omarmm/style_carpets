@@ -4,7 +4,7 @@ return [
 
 	'list_customers'	=> 'بيانات العملاء',
 	'new_customer' 		=> 'عميل جديد',
-	'customer_id'		=> 'Customer ID',
+	'customer_id'		=> 'الرقم المسلسل للعميل',
 	'name' 				=> 'الإسم',
 	'email' 			=> 'البريد الإلكتروني',
 	'phone_number' 		=> 'تليفون',
