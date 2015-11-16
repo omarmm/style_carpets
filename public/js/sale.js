@@ -22,8 +22,9 @@
         }
         $scope.updateSaleTemp = function(newsaletemp) {
             
-            $http.put('api/saletemp/' + newsaletemp.id, { quantity: newsaletemp.quantity,  metres: newsaletemp.metres, pieces: newsaletemp.pieces, total_cost: newsaletemp.item.cost_price * newsaletemp.quantity * newsaletemp.metres * newsaletemp.pieces,
-                total_selling: newsaletemp.item.selling_price * newsaletemp.quantity * newsaletemp.metres * newsaletemp.pieces  }).
+            $http.put('api/saletemp/' + newsaletemp.id, { quantity: newsaletemp.quantity,  metres_w: newsaletemp.metres_w, metres_h: newsaletemp.metres_h, discount:newsaletemp.discount,  total_cost: (newsaletemp.item.cost_price * newsaletemp.quantity * newsaletemp.metres_w * newsaletemp.metres_h) - newsaletemp.discount,
+                total_prediscount: (newsaletemp.item.selling_price * newsaletemp.quantity * newsaletemp.metres_w * newsaletemp.metres_h) ,
+                total_selling: (newsaletemp.item.selling_price * newsaletemp.quantity * newsaletemp.metres_w * newsaletemp.metres_h) - newsaletemp.discount  }).
             success(function(data, status, headers, config) {
                 
                 });
@@ -36,10 +37,19 @@
                         });
                 });
         }
+
+         $scope.prediscount = function(list) {
+            var total=0;
+            angular.forEach(list , function(newsaletemp){
+                total+= parseFloat(newsaletemp.item.selling_price * newsaletemp.quantity * newsaletemp.metres_w * newsaletemp.metres_h );
+            });
+            return total;
+        }
+
         $scope.sum = function(list) {
             var total=0;
             angular.forEach(list , function(newsaletemp){
-                total+= parseFloat(newsaletemp.item.selling_price * newsaletemp.quantity * newsaletemp.metres * newsaletemp.pieces);
+                total+= parseFloat((newsaletemp.item.selling_price * newsaletemp.quantity * newsaletemp.metres_w * newsaletemp.metres_h) - newsaletemp.discount);
             });
             return total;
         }

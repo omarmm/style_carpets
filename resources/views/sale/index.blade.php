@@ -70,13 +70,16 @@
                         </div>
                            
                         <table class="table table-bordered">
-                            <tr><th>{{trans('sale.item_id')}}</th><th>{{trans('sale.item_name')}}</th><th>{{trans('sale.price')}}</th><th>{{trans('sale.quantity')}}</th><th>{{'عدد الأمتار'}}</th><th>{{'عدد القطع'}}</th><th>{{trans('sale.total')}}</th><th>&nbsp;</th></tr>
+                            <tr><th>{{trans('sale.item_id')}}</th><th>{{trans('sale.item_name')}}</th><th>{{trans('sale.price')}}</th><th>{{trans('sale.quantity')}}</th><th>{{'إجمالي الأمتار المربعة'}}</th><th>{{'إجمالي المتر الطولي'}}</th><th>{{'الخصم نقدي'}}</th><th>{{'إجمالي السعر قبل الخصم'}}</th><th>{{trans('sale.total')}}</th><th>&nbsp;</th></tr>
                             <tr ng-repeat="newsaletemp in saletemp">
                             <td>@{{newsaletemp.item_id}}</td><td>@{{newsaletemp.item.item_name}}</td><td>@{{newsaletemp.item.selling_price | currency:"L.E"}}</td>
                             <td><input type="text" style="text-align:center" autocomplete="off" name="quantity" ng-change="updateSaleTemp(newsaletemp)" ng-model="newsaletemp.quantity" size="2"></td>
-                            <td><input type="text" style="text-align:center" autocomplete="off" name="metres" ng-change="updateSaleTemp(newsaletemp)" ng-model="newsaletemp.metres" size="3"></td>
-                            <td><input type="text" style="text-align:center" autocomplete="off" name="pieces" ng-change="updateSaleTemp(newsaletemp)" ng-model="newsaletemp.pieces" size="2"></td>
-                            <td>@{{newsaletemp.item.selling_price * newsaletemp.quantity * newsaletemp.metres * newsaletemp.pieces | currency:"L.E"}}</td>
+                            <td><input type="text" style="text-align:center" autocomplete="off" name="metres_w" ng-change="updateSaleTemp(newsaletemp)" ng-model="newsaletemp.metres_w" size="3"></td>
+                            <td><input type="text" style="text-align:center" autocomplete="off" name="metres_h" ng-change="updateSaleTemp(newsaletemp)" ng-model="newsaletemp.metres_h" size="3"></td>
+                            <td><input type="text" style="text-align:center" autocomplete="off" name="discount" ng-change="updateSaleTemp(newsaletemp)" ng-model="newsaletemp.discount" size="3"></td>
+                            <td>@{{newsaletemp.item.selling_price * newsaletemp.quantity *  newsaletemp.metres_w * newsaletemp.metres_h | currency:"L.E"}}</td>
+                            <td>@{{(newsaletemp.item.selling_price * newsaletemp.quantity *  newsaletemp.metres_w * newsaletemp.metres_h) - newsaletemp.discount | currency:"L.E"}}</td>
+
                             <td><button class="btn btn-danger btn-xs" type="button" ng-click="removeSaleTemp(newsaletemp.id)"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button></td>
                             </tr>
                         </table>
@@ -102,6 +105,13 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
+
+                                     <label for="supplier_id" class="col-sm-4 control-label">{{' قبل الخصم :'}}</label>
+                                        <div class="col-sm-8">
+                                            <p class="form-control-static"><b>@{{prediscount(saletemp) | currency:"L.E"}}</b></p>
+                                        </div>
+
+
                                         <label for="supplier_id" class="col-sm-4 control-label">{{trans('sale.grand_total')}}</label>
                                         <div class="col-sm-8">
                                             <p class="form-control-static"><b>@{{sum(saletemp) | currency:"L.E"}}</b></p>
@@ -119,16 +129,15 @@
                                             <p class="form-control-static">@{{add_payment - sum(saletemp) | currency:"L.E"}}</p>
                                             </div>
                                     </div>
-
+                          </div>
 
                             <div class="form-group">
 
-              
                <!--  
                 {!! Form::checkbox('reserved', '1') !!}
                  {!! Form::label('reserved', 'حجز') !!}<br> -->
 
-
+              
                  <!-- deptor/creditor -->
 
              <label >دائن</label>
@@ -146,7 +155,7 @@
                 
                    </div>
 
-
+              
 
 
             <!-- reservation -->

@@ -46,9 +46,13 @@ class SaleTempApiController extends Controller {
 		$SaleTemps->item_id = Input::get('item_id');
 		$SaleTemps->cost_price = Input::get('cost_price');
         $SaleTemps->selling_price = Input::get('selling_price');
-		$SaleTemps->quantity = 1;
-		$SaleTemps->metres = 1;
-		$SaleTemps->pieces = 1;
+		 $SaleTemps->quantity = 1;
+		// $SaleTemps->metres = 1;
+		// $SaleTemps->pieces = 1;
+        // $SaleTemps->metres_w= Input::get('metres_w');
+        // $SaleTemps->metres_h= Input::get('metres_h');
+        // $SaleTemps->discount= Input::get('discount');
+        // $SaleTemps->total_prediscount = Input::get('total_prediscount');
 		$SaleTemps->total_cost = Input::get('cost_price');
         $SaleTemps->total_selling = Input::get('selling_price');
 		$SaleTemps->save();
@@ -87,8 +91,10 @@ class SaleTempApiController extends Controller {
 	{
 		$SaleTemps = SaleTemp::find($id);
         $SaleTemps->quantity = Input::get('quantity');
-        $SaleTemps->metres = Input::get('metres');
-        $SaleTemps->pieces = Input::get('pieces');
+        $SaleTemps->metres_w= Input::get('metres_w');
+        $SaleTemps->metres_h= Input::get('metres_h');
+        $SaleTemps->discount= Input::get('discount');
+        $SaleTemps->total_prediscount = Input::get('total_prediscount');
         $SaleTemps->total_cost = Input::get('total_cost');
         $SaleTemps->total_selling = Input::get('total_selling');
         $SaleTemps->save();
