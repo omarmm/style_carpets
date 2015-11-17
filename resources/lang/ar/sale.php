@@ -8,7 +8,7 @@ return [
 	'employee' => 'الموظف',
 	'payment_type' => 'طريقة الدفع',
 	'customer' => 'العميل',
-	'item_id' => 'Item ID',
+	'item_id' => 'الرقم المسلسل',
 	'item_name' => 'اسم الصنف',
 	'price' => 'السعر',
 	'quantity' => 'الكمية',

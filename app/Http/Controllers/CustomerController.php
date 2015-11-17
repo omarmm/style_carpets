@@ -73,7 +73,7 @@ class CustomerController extends Controller {
 					$customerAvatar->avatar = $avatarName;
 		            $customerAvatar->save();
 	        	}
-	            Session::flash('message', 'You have successfully added customer');
+	            Session::flash('message', 'تم إضافة عميل جديد بنجاح');
 	            return Redirect::to('customers');
 	}
 
@@ -139,7 +139,7 @@ class CustomerController extends Controller {
 		            $customerAvatar->save();
 	        	}
 	            // redirect
-	            Session::flash('message', 'You have successfully updated customer');
+	            Session::flash('message', 'تم تحديث بيانات العميل بنجاح');
 	            return Redirect::to('customers');
 	}
 
@@ -156,7 +156,7 @@ class CustomerController extends Controller {
 			$customers = Customer::find($id);
 	        $customers->delete();
 	        // redirect
-	        Session::flash('message', 'تم تسجيل عميل جديد بنجاح');
+	        Session::flash('message', 'تم مسح بيانات العميل بنجاح');
 	        return Redirect::to('customers');
         }
     	catch(\Illuminate\Database\QueryException $e)

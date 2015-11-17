@@ -22,7 +22,8 @@ class ReservedReportController extends Controller {
 	 */
 	public function index()
 	{
-			$salesReport = Sale::where('reserved',1)->get();
+			$salesReport = Sale::where('reserved',1)
+			->orwhere('deptor', '>', 0)->get();
 			
 		
 			return view('report.reserved')->with('saleReport', $salesReport);

@@ -5,15 +5,17 @@
 <?php 
 
 
-$total_selling = DB::table('sale_items')
-->join('sales', 'sale_items.id', '=', 'sales.id')
+$total_selling = DB::table('sales')
+
 ->where('sales.reserved', '=', 0)
-->sum('total_selling');
+->where('deptor', '<=', 0)
+->sum('total');
 
 
 $total_cost = DB::table('sale_items')
-->join('sales', 'sale_items.id', '=', 'sales.id')
+->join('sales', 'sale_items.sale_id', '=', 'sales.id')
 ->where('sales.reserved', '=', 0)
+->where('deptor', '<=', 0)
 ->sum('total_cost');
 
 
@@ -28,10 +30,10 @@ $total_cost = DB::table('sale_items')
 				<div class="panel-body">
                     <div class="row">
                         <div class="col-md-4">
-                            <div class="well well-sm">{{trans('report-sale.grand_total')}}: {{DB::table('sales')->sum('total')}}</div>
+                            <div class="well well-sm">{{trans('report-sale.grand_total')}}: {{$total_selling}}</div>
                         </div>
                         <div class="col-md-4">
-                            <div class="well well-sm">{{trans('report-sale.grand_profit')}}: {{DB::table('sales')->sum('total') - $total_cost}}</div>
+                            <div class="well well-sm">{{trans('report-sale.grand_profit')}}: {{$total_selling - $total_cost}}</div>
                         </div>
                     </div>
 <table class="table table-striped table-bordered">

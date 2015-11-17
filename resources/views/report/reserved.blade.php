@@ -1,6 +1,27 @@
 @extends('app')
 
 @section('content')
+
+
+<?php 
+
+
+$total_deposit = DB::table('sales')
+
+->where('sales.reserved', '=', 1)
+->orwhere('deptor', '>', 0)
+->sum('deposit');
+
+
+$total_deptor = DB::table('sales')
+
+->where('sales.reserved', '=', 1)
+->orwhere('deptor', '>', 0)
+->sum('deptor');
+
+
+
+ ?>
 <div class="container">
 	<div class="row">
 		<div class="col-md-10 col-md-offset-1">
@@ -10,10 +31,10 @@
 				<div class="panel-body">
                     <div class="row">
                         <div class="col-md-4">
-                            <div class="well well-sm">{{trans('report-sale.grand_total')}}: {{DB::table('sale_items')->sum('total_selling')}}</div>
+                            <div class="well well-sm">{{'إجمالي المبالغ المدفوعة مقدما'}}: {{$total_deposit}}</div>
                         </div>
                         <div class="col-md-4">
-                            <div class="well well-sm">{{trans('report-sale.grand_profit')}}: {{DB::table('sale_items')->sum('total_selling') - DB::table('sale_items')->sum('total_cost')}}</div>
+                            <div class="well well-sm">{{'اجمالي المبالغ المتبقية'}}: {{$total_deptor}}</div>
                         </div>
                     </div>
 <table class="table table-striped table-bordered">

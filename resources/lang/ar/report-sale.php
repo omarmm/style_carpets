@@ -6,7 +6,7 @@ return [
 	'sales_report' => 'تقارير المبيعات',
 	'grand_total' => 'الإجمالي',
 	'grand_profit' => 'صافي الربح',
-	'sale_id' => 'Sale ID',
+	'sale_id' => 'رقم الفاتورة',
 	'date' => 'التاريخ',
 	'items_purchased' => 'عدد الاصناف',
 	'sold_by' => 'الموظف',
@@ -16,7 +16,7 @@ return [
 	'payment_type' => 'طريقة الدفع',
 	'comments' => 'ملاحظات',
 	'detail' => 'التفاصيل',
-	'item_id' => 'Item ID',
+	'item_id' => 'رقم الصنف المسلسل',
 	'item_name' => 'اسم الصنف:',
 	'quantity_purchase' => 'الكمية',
 

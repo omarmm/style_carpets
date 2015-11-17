@@ -129,7 +129,7 @@ $total_debit= DB::table('sales')
 
  ?>
 
- @if($sales->customer_id != 4)
+ @if($sales->customer_id != 1)
 
  </table>
             <table border="1" class="table"  >
