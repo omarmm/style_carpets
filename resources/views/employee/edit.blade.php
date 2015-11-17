@@ -31,6 +31,23 @@
 					<input type="password" class="form-control" name="password_confirmation" placeholder="Confirm Password">
 					</div>
 
+
+                   @if(Auth::user()->permission_reports==1 &&  Auth::user()->permission_suppliers==1 && Auth::user()->permission_customers==1) 
+					<div class="form-group">
+
+              <label>الصلاحيات</label>
+                <br><br>
+                {!! Form::checkbox('permission_reports', '1') !!}
+                 {!! Form::label('permission_reports', 'التقارير') !!}<br>
+                {!! Form::checkbox('permission_customers', '1') !!}
+                 {!! Form::label('permission_customers', 'العملاء') !!}<br>
+                {!! Form::checkbox('permission_suppliers', '1') !!}
+                {!! Form::label('permission_suppliers', 'الموردون') !!}
+
+</div>
+@endif
+
+
 					{!! Form::submit(trans('employee.submit'), array('class' => 'btn btn-primary')) !!}
 
 					{!! Form::close() !!}

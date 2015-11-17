@@ -15,7 +15,8 @@
 					{!! Html::ul($errors->all()) !!}
 
 					<table class="table table-bordered">
-					<tr><td>UPC/EAN/ISBN</td><td>{{ $item->upc_ean_isbn }}</td></tr>
+					<!-- <tr><td>UPC/EAN/ISBN</td><td>{{ $item->upc_ean_isbn }}</td></tr> -->
+					<tr><td>{{trans('item.item_code')}}</td><td>{{ $item->item_code }}</td></tr>
 					<tr><td>{{trans('item.item_name')}}</td><td>{{ $item->item_name }}</td></tr>
 					<tr><td>{{trans('item.current_quantity')}}</td><td>{{ $item->quantity }}</td></tr>
 					

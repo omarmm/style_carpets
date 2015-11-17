@@ -91,7 +91,7 @@ class InventoryController extends Controller {
 	            $inventories->save();
 	            
 
-	            Session::flash('message', 'You have successfully updated item');
+	            Session::flash('message', 'تم التحديث بنجاح');
 	            return Redirect::to('inventory/' . $id . '/edit');
 	}
 

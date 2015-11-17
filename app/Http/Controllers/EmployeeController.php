@@ -120,7 +120,7 @@ class EmployeeController extends Controller {
 	            $users->permission_suppliers = Input::get('permission_suppliers');
 	            $users->save();
 	            // redirect
-	            Session::flash('message', 'تم تحديث بيانات المظف بنجاح');
+	            Session::flash('message', 'تم تحديث بيانات الموظف بنجاح');
 	            return Redirect::to('employees');
 	        }
 	    }

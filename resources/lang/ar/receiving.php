@@ -8,7 +8,7 @@ return [
 	'employee' => 'الموظف',
 	'payment_type' => 'طريقة الشراء',
 	'supplier' => 'المورد',
-	'item_id' => 'Item ID',
+	'item_id' => 'الرقم المسلسل',
 	'item_name' => 'اسم الصنف',
 	'cost' => 'التكلفة',
 	'quantity' => 'الكمية',
@@ -18,7 +18,7 @@ return [
 	'grand_total' => 'الإجمالي:',
 	'submit' => 'إتمام الشراء',
 	//struk
-	'receiving_id' => 'Receiving ID',
+	'receiving_id' => 'رقم الفاتورة',
 	'item' => 'الصنف',
 	'price' => 'السعر',
 	'qty' => 'الكمية',

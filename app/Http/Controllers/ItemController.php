@@ -63,7 +63,7 @@ class ItemController extends Controller {
 				$inventories->item_id = $items->id;
 				$inventories->user_id = Auth::user()->id;
 				$inventories->in_out_qty = Input::get('quantity');
-				$inventories->remarks = 'Manual Edit of Quantity';
+				$inventories->remarks = 'إعن طريق الإدخال يدويا';
 				$inventories->save();
 			}
             // process avatar
@@ -127,10 +127,10 @@ class ItemController extends Controller {
 			$inventories->item_id = $id;
 			$inventories->user_id = Auth::user()->id;
 			$inventories->in_out_qty = Input::get('quantity')- $items->quantity;
-			$inventories->remarks = 'Manual Edit of Quantity';
+			$inventories->remarks = 'عن طريق الإدخال يدويا';
 			$inventories->save();
 			// save update
-            $items->upc_ean_isbn = Input::get('upc_ean_isbn');
+            // $items->upc_ean_isbn = Input::get('upc_ean_isbn');
             $items->item_name = Input::get('item_name');
              $items->item_type = Input::get('item_type');
              $items->item_category = Input::get('item_category');

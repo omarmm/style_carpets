@@ -8,7 +8,7 @@ return [
 	'item_code'	=> 'كود الصنف',
 	'item_name' 	=> 'إسم الصنف',
 	'item_type'     => 'نوع الصنف',
-	'size' 			=> 'لحجم',
+	'size' 			=> 'الحجم',
 	'cost_price' 	=> 'سعر التكلفة',
 	'selling_price' => 'سعر البيع',
 	'quantity'		=> 'الكمية',

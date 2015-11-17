@@ -12,9 +12,12 @@
 
 					{!! Form::model($item, array('route' => array('items.update', $item->id), 'method' => 'PUT', 'files' => true)) !!}
 
-					<div class="form-group">
+					<!-- <div class="form-group">
 					{!! Form::label('upc_ean_isbn', trans('item.upc_ean_isbn')) !!}
 					{!! Form::text('upc_ean_isbn', null, array('class' => 'form-control')) !!}
+					</div> --><div class="form-group">
+					{!! Form::label('item_code', trans('item.item_code')) !!}
+					{!! Form::text('item_code', null, array('class' => 'form-control')) !!}
 					</div>
 
 					<div class="form-group">
@@ -31,6 +34,20 @@
 					{!! Form::label('description', trans('item.description')) !!}
 					{!! Form::text('description', null, array('class' => 'form-control')) !!}
 					</div>
+
+                  <div class="form-group">
+
+              {!! Form::label('item_type', trans('item.item_type')) !!}
+                <br><br>
+                {!! Form::radio('item_type', 'بالقطعة') !!}
+                 {!! Form::label('item_type', 'بالقطعة') !!}<br>
+                {!! Form::radio('item_type', 'سجادة (طول*عرض') !!}
+                 {!! Form::label('item_type', 'سجادة (طول*عرض)') !!}<br>
+                {!! Form::radio('item_type', 'رول (الحجم)') !!}
+                {!! Form::label('item_type', 'رول (الحجم)') !!}
+
+</div>
+
 
 					<div class="form-group">
 					{!! Form::label('avatar', trans('item.choose_avatar')) !!}
