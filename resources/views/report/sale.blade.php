@@ -33,7 +33,7 @@ $total_cost = DB::table('sale_items')
                             <div class="well well-sm">{{trans('report-sale.grand_total')}}: {{$total_selling}}</div>
                         </div>
                         <div class="col-md-4">
-                            <div class="well well-sm">{{trans('report-sale.grand_profit')}}: {{$total_selling - $total_cost}}</div>
+                            <div class="well well-sm">{{trans('report-sale.grand_profit')}}: {{$total_selling - DB::table('sale_items')->sum('discount') - $total_cost}}</div>
                         </div>
                     </div>
 <table class="table table-striped table-bordered">
@@ -60,7 +60,7 @@ $total_cost = DB::table('sale_items')
             <td>{{ $value->user->name }}</td>
             <td>{{ $value->customer->name }}</td>
             <td>L.E{{DB::table('sale_items')->where('sale_id', $value->id)->sum('total_selling')}}</td>
-            <td>{{DB::table('sale_items')->where('sale_id', $value->id)->sum('total_selling') - DB::table('sale_items')->where('sale_id', $value->id)->sum('total_cost')}}</td>
+            <td>{{DB::table('sale_items')->where('sale_id', $value->id)->sum('total_selling') - DB::table('sale_items')->where('sale_id', $value->id)->sum('discount') -  DB::table('sale_items')->where('sale_id', $value->id)->sum('total_cost')}}</td>
             <td>{{ $value->payment_type }}</td>
             <td>{{ $value->comments }}</td>
             <td>
@@ -75,21 +75,30 @@ $total_cost = DB::table('sale_items')
                         <tr>
                             <td>{{trans('report-sale.item_id')}}</td>
                             <td>{{trans('report-sale.item_name')}}</td>
+                            <td>{{'سعر البيع'}}</td>
+                            <td>{{'سعر التكلفة'}}</td>
                             <td>{{trans('report-sale.quantity_purchase')}}</td>
-                            <td>{{trans('عدد الأمتار')}}</td>
-                            <td>{{trans('عدد القطع')}}</td>
+                            <td>{{trans('اجمالي المتر المربع')}}</td>
+                            <td>{{trans('اجمالي الامتار الطولية')}}</td>
+                            <td>{{trans('االإجمالي قبل الخصم')}}</td>
+                            <td>{{trans('خصم نقدي')}}</td>
                             <td>{{trans('report-sale.total')}}</td>
                             <td>{{trans('report-sale.profit')}}</td>
                         </tr>
                         @foreach(ReportSalesDetailed::sale_detailed($value->id) as $SaleDetailed)
                         <tr>
                             <td>{{ $SaleDetailed->item_id }}</td>
+                            
                             <td>{{ $SaleDetailed->item->item_name }}</td>
+                            <td>{{ $SaleDetailed->selling_price }}</td>
+                            <td>{{ $SaleDetailed->cost_price }}</td>
                             <td>{{ $SaleDetailed->quantity }}</td>
-                            <td>{{ $SaleDetailed->metres }}</td>
-                            <td>{{ $SaleDetailed->pieces }}</td>
-                            <td>{{ $SaleDetailed->selling_price * $SaleDetailed->quantity * $SaleDetailed->metres * $SaleDetailed->pieces}}</td>
-                            <td>{{ ($SaleDetailed->quantity  * $SaleDetailed->metres * $SaleDetailed->pieces * $SaleDetailed->selling_price) - ($SaleDetailed->quantity  * $SaleDetailed->metres * $SaleDetailed->pieces * $SaleDetailed->cost_price)}}</td>
+                            <td>{{ $SaleDetailed->metres_w }}</td>
+                            <td>{{ $SaleDetailed->metres_h }}</td>
+                            <td>{{$SaleDetailed->selling_price * $SaleDetailed->quantity * $SaleDetailed->metres_w * $SaleDetailed->metres_h }}</td>
+                            <td>{{ $SaleDetailed->discount }}</td>
+                            <td>{{ ($SaleDetailed->selling_price * $SaleDetailed->quantity * $SaleDetailed->metres_w * $SaleDetailed->metres_h) - $SaleDetailed->discount }}</td>
+                            <td>{{ (($SaleDetailed->quantity  * $SaleDetailed->metres_w * $SaleDetailed->metres_h * $SaleDetailed->selling_price)- $SaleDetailed->discount) - ($SaleDetailed->quantity  * $SaleDetailed->metres_w * $SaleDetailed->metres_h* $SaleDetailed->cost_price)}}</td>
                         </tr>
                         @endforeach
                     </table>

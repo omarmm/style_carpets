@@ -50,7 +50,7 @@ class EmployeeController extends Controller {
 	            $users->password = Hash::make(Input::get('password'));
 	            $users->save();
 	            
-	            Session::flash('message', 'You have successfully added employee');
+	            Session::flash('message', 'تم إضافة موظف جديد بنجاح');
 	            return Redirect::to('employees');
 	}
 
@@ -88,7 +88,7 @@ class EmployeeController extends Controller {
 	{
 		if($id == 1)
 		{
-			Session::flash('message', 'You cannot edit admin on TutaPOS demo');
+			Session::flash('message', 'لا يمكنك تعديل بيانات حساب المدير');
 			Session::flash('alert-class', 'alert-danger');
 	            return Redirect::to('employees');
 		}
@@ -114,7 +114,7 @@ class EmployeeController extends Controller {
 	            }
 	            $users->save();
 	            // redirect
-	            Session::flash('message', 'You have successfully updated employee');
+	            Session::flash('message', 'تم تحديث بيانات المظف بنجاح');
 	            return Redirect::to('employees');
 	        }
 	    }
@@ -141,7 +141,7 @@ class EmployeeController extends Controller {
 				$users = User::find($id);
 		        $users->delete();
 		        // redirect
-		        Session::flash('message', 'You have successfully deleted employee');
+		        Session::flash('message', 'تم حذف بيانات الموظف بنجاح');
 		        return Redirect::to('employees');
 	    	}
 	    	catch(\Illuminate\Database\QueryException $e)

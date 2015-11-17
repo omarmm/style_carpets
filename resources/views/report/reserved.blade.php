@@ -83,31 +83,39 @@ $total_deptor = DB::table('sales')
         {!!Form::close() !!}
         </tr>
         
-            <tr class="collapse" id="detailedSales{{ $value->id }}">
+           <tr class="collapse" id="detailedSales{{ $value->id }}">
                 <td colspan="10">
                     <table class="table">
                         <tr>
                             <td>{{trans('report-sale.item_id')}}</td>
                             <td>{{trans('report-sale.item_name')}}</td>
+                            <td>{{'سعر البيع'}}</td>
+                            <td>{{'سعر التكلفة'}}</td>
                             <td>{{trans('report-sale.quantity_purchase')}}</td>
-                            <td>{{trans('عدد الأمتار')}}</td>
-                            <td>{{trans('عدد القطع')}}</td>
+                            <td>{{trans('اجمالي المتر المربع')}}</td>
+                            <td>{{trans('اجمالي الامتار الطولية')}}</td>
+                            <td>{{trans('االإجمالي قبل الخصم')}}</td>
+                            <td>{{trans('خصم نقدي')}}</td>
                             <td>{{trans('report-sale.total')}}</td>
                             <td>{{trans('report-sale.profit')}}</td>
                         </tr>
                         @foreach(ReportSalesDetailed::sale_detailed($value->id) as $SaleDetailed)
                         <tr>
                             <td>{{ $SaleDetailed->item_id }}</td>
+                            
                             <td>{{ $SaleDetailed->item->item_name }}</td>
+                            <td>{{ $SaleDetailed->selling_price }}</td>
+                            <td>{{ $SaleDetailed->cost_price }}</td>
                             <td>{{ $SaleDetailed->quantity }}</td>
-                            <td>{{ $SaleDetailed->metres }}</td>
-                            <td>{{ $SaleDetailed->pieces }}</td>
-                            <td>{{ $SaleDetailed->selling_price * $SaleDetailed->quantity * $SaleDetailed->metres * $SaleDetailed->pieces}}</td>
-                            <td>{{ ($SaleDetailed->quantity  * $SaleDetailed->metres * $SaleDetailed->pieces * $SaleDetailed->selling_price) - ($SaleDetailed->quantity  * $SaleDetailed->metres * $SaleDetailed->pieces * $SaleDetailed->cost_price)}}</td>
+                            <td>{{ $SaleDetailed->metres_w }}</td>
+                            <td>{{ $SaleDetailed->metres_h }}</td>
+                            <td>{{$SaleDetailed->selling_price * $SaleDetailed->quantity * $SaleDetailed->metres_w * $SaleDetailed->metres_h }}</td>
+                            <td>{{ $SaleDetailed->discount }}</td>
+                            <td>{{ ($SaleDetailed->selling_price * $SaleDetailed->quantity * $SaleDetailed->metres_w * $SaleDetailed->metres_h) - $SaleDetailed->discount }}</td>
+                            <td>{{ (($SaleDetailed->quantity  * $SaleDetailed->metres_w * $SaleDetailed->metres_h * $SaleDetailed->selling_price)- $SaleDetailed->discount) - ($SaleDetailed->quantity  * $SaleDetailed->metres_w * $SaleDetailed->metres_h* $SaleDetailed->cost_price)}}</td>
                         </tr>
                         @endforeach
-                    </table>
-                </td>
+                    </table>    </td>
             </tr>
 
     @endforeach
