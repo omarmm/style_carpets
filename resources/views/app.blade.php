@@ -22,7 +22,7 @@
 
 </head>
 <body>
-
+ 
 	<nav class="navbar navbar-default">
 		<div class="container-fluid">
 			<div class="navbar-header">
@@ -39,20 +39,33 @@
 				<ul class="nav navbar-nav" style="font-size:20px; ">
 					<li><a href="{{ url('/') }}">{{trans('menu.dashboard')}}</a></li>
 					@if (Auth::check())
+					<?php
+ $permission_customers = Auth::user()->permission_customers ;
+ $permission_suppliers = Auth::user()->permission_suppliers ;
+ $permission_reports = Auth::user()->permission_reports ;
+?>           
+
+@if($permission_customers==1)
 						<li><a href="{{ url('/customers') }}">{{trans('menu.customers')}}</a></li>
+						@endif
 						<li><a href="{{ url('/items') }}">{{trans('menu.items')}}</a></li>
 						<!-- <li><a href="{{ url('/item-kits') }}">{{trans('menu.item_kits')}}</a></li> -->
+						@if($permission_suppliers)
 						<li><a href="{{ url('/suppliers') }}">{{trans('menu.suppliers')}}</a></li>
+						@endif
 						<li><a href="{{ url('/receivings') }}">{{trans('menu.receivings')}}</a></li>
 						<li><a href="{{ url('/sales') }}">{{trans('menu.sales')}}</a></li>
+
+                      @if($permission_reports==1) 
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{trans('menu.reports')}} <span class="caret"></span></a>
 							<ul class="dropdown-menu" role="menu">
 								<li><a href="{{ url('/reports/receivings') }}">{{trans('menu.receivings_report')}}</a></li>
 								<li><a href="{{ url('/reports/sales') }}">{{trans('menu.sales_report')}}</a></li>
-								<li><a href="{{ url('/reports/reserved') }}">{{'تقرير المحجوزات'}}</a></li>
+								<li><a href="{{ url('/reports/reserved') }}">{{'تقرير الحجوزات'}}</a></li>
 							</ul>
 						</li>
+						@endif
 						<li><a href="{{ url('/employees') }}">{{trans('menu.employees')}}</a></li>
 					@endif
 				</ul>

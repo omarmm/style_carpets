@@ -48,6 +48,9 @@ class EmployeeController extends Controller {
 	            $users->name = Input::get('name');
 	            $users->email = Input::get('email');
 	            $users->password = Hash::make(Input::get('password'));
+	            $users->permission_reports = Input::get('permission_reports');
+	            $users->permission_customers = Input::get('permission_customers');
+	            $users->permission_suppliers = Input::get('permission_suppliers');
 	            $users->save();
 	            
 	            Session::flash('message', 'تم إضافة موظف جديد بنجاح');
@@ -112,6 +115,9 @@ class EmployeeController extends Controller {
 	            {
 	            	$users->password = Hash::make(Input::get('password'));
 	            }
+	            $users->permission_reports = Input::get('permission_reports');
+	            $users->permission_customers = Input::get('permission_customers');
+	            $users->permission_suppliers = Input::get('permission_suppliers');
 	            $users->save();
 	            // redirect
 	            Session::flash('message', 'تم تحديث بيانات المظف بنجاح');
