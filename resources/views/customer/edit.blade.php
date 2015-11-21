@@ -16,46 +16,52 @@
 					{!! Form::label('name', trans('customer.name').' *') !!}
 					{!! Form::text('name', null, array('class' => 'form-control')) !!}
 					</div>
+					<div class="form-group">
+					{!! Form::label('company_name', trans('customer.company_name')) !!}
+					{!! Form::text('company_name', null, array('class' => 'form-control')) !!}
+					</div>
 
 					<div class="form-group">
 					{!! Form::label('email', trans('customer.email')) !!}
 					{!! Form::text('email', null, array('class' => 'form-control')) !!}
 					</div>
 
+					
+<div class="box box-success">
+
+ <div class="col-md-5 col-md-offset-1 success">
+					<div class="form-group">
+					{!! Form::label('city', trans('customer.city')) !!}
+					{!! Form::text('city', null, array('class' => 'form-control')) !!}
+					</div>
+</div>
+<div class="col-md-6">
+					<div class="form-group">
+					{!! Form::label('state', trans('customer.state')) !!}
+					{!! Form::text('state', null, array('class' => 'form-control')) !!}
+					</div>
+</div>
 					<div class="form-group">
 					{!! Form::label('phone_number', trans('customer.phone_number')) !!}
 					{!! Form::text('phone_number', null, array('class' => 'form-control')) !!}
 					</div>
 
-					<div class="form-group">
+					<!-- <div class="form-group">
 					{!! Form::label('avatar', trans('customer.choose_avatar')) !!}
 					{!! Form::file('avatar', null, array('class' => 'form-control')) !!}
 					</div>
-
+ -->
 					<div class="form-group">
 					{!! Form::label('addrees', trans('customer.address')) !!}
 					{!! Form::text('address', null, array('class' => 'form-control')) !!}
 					</div>
 
-					<div class="form-group">
-					{!! Form::label('city', trans('customer.city')) !!}
-					{!! Form::text('city', null, array('class' => 'form-control')) !!}
-					</div>
-
-					<div class="form-group">
-					{!! Form::label('state', trans('customer.state')) !!}
-					{!! Form::text('state', null, array('class' => 'form-control')) !!}
-					</div>
-
-					<div class="form-group">
+					<!-- <div class="form-group">
 					{!! Form::label('zip', trans('customer.zip')) !!}
 					{!! Form::text('zip', null, array('class' => 'form-control')) !!}
-					</div>
+					</div> -->
 
-					<div class="form-group">
-					{!! Form::label('company_name', trans('customer.company_name')) !!}
-					{!! Form::text('company_name', null, array('class' => 'form-control')) !!}
-					</div>
+					
 
 					<div class="form-group">
 					{!! Form::label('account', trans('customer.account')) !!}

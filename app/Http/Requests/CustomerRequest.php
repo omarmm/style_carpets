@@ -22,9 +22,9 @@ class CustomerRequest extends Request {
 	public function rules()
 	{
 		return [
-			'name' => 'required',
-			'email' => 'email',
-			'avatar' => 'mimes:jpeg,bmp,png'
+			
+			'name' => 'required|unique:customers',
+			'company_name' => 'required|unique:customers',
 		];
 	}
 

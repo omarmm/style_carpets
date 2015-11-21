@@ -70,7 +70,7 @@ return [
 		"string"  => "The :attribute must be :size characters.",
 		"array"   => "The :attribute must contain :size items.",
 	],
-	"unique"               => "The :attribute has already been taken.",
+	"unique"               => " :attribute موجود بالفعل.",
 	"url"                  => "The :attribute format is invalid.",
 	"timezone"             => "The :attribute must be a valid zone.",
 
@@ -86,8 +86,8 @@ return [
 	*/
 
 	'custom' => [
-		'attribute-name' => [
-			'rule-name' => 'custom-message',
+		'name' => [
+			'unique' => 'الاسم موجود بالفعل',
 		],
 	],
 
@@ -102,6 +102,9 @@ return [
 	|
 	*/
 
-	'attributes' => [],
+	'attributes' => [
+
+'company_name' => 'اسم الشركة'
+	],
 
 ];

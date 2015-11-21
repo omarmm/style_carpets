@@ -44,6 +44,7 @@ class CustomerController extends Controller {
 	public function store(CustomerRequest $request)
 	{
 	            // store
+
 	            $customers = new Customer;
 	            $customers->name = Input::get('name');
 	            $customers->email = Input::get('email');
@@ -75,6 +76,7 @@ class CustomerController extends Controller {
 	   //      	}
 	            Session::flash('message', 'تم إضافة عميل جديد بنجاح');
 	            return Redirect::to('customers');
+	        
 	}
 
 	/**
@@ -107,8 +109,19 @@ class CustomerController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update(CustomerRequest $request, $id)
+	public function update($id)
 	{
+		$rules = array(
+			'name' => 'required|unique:customers,name,' . $id .'',
+			'company_name' => 'required|unique:customers,company_name,' . $id .'',
+			
+			);
+			$validator = Validator::make(Input::all(), $rules);
+			if ($validator->fails()) 
+			{
+				 return Redirect::to('customers/' . $id . '/edit')
+				->withErrors($validator);
+			} else {
 	            $customers = Customer::find($id);
 	            $customers->name = Input::get('name');
 	            $customers->email = Input::get('email');
@@ -141,6 +154,7 @@ class CustomerController extends Controller {
 	            // redirect
 	            Session::flash('message', 'تم تحديث بيانات العميل بنجاح');
 	            return Redirect::to('customers');
+	        }
 	}
 
 	/**
