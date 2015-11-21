@@ -1,0 +1,17 @@
+//= require admin_lte/rtl/bootstrap_manifest
+//= require font-awesome
+//= require ionicons
+
+/*
+morris
+jquery-jvectormap-1.2.2
+datepicker3.css
+daterangepicker-bs3
+bootstrap3-wysihtml5
+*/
+//= require select2
+//= require select2-bootstrap
+//= require admin_lte/rtl/AdminLTE
+//= require admin_lte/rtl/skins/_all-skins
+//= require jquery-icheck/skins/flat/_all
+//= require admin_lte/rtl/sidebar_rtl_fix

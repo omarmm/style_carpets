@@ -21,9 +21,11 @@
 @endif
 
 <div  ng-controller="SearchItemCtrl" >
-             <table class="table table-striped table-bordered">             
+             <!-- <table class="table table-striped table-bordered">  -->  
+             
+             <table class="table table-hover table-bordered table-striped">          
                         <thead>
-        <tr>
+        <tr class="info">
            
             <td>{{trans('item.item_code')}}</td>
             <td>{{trans('item.item_name')}}</td>
@@ -41,7 +43,7 @@
                         
                         <label>{{'البحث بالتصنيف'}} <input ng-model="search.item_category" class="form-control"></label>
                    <tbody>
-                        <tr ng-repeat="item in items  | filter: search" ng-init="filter_len = (items | filter: search).length">
+                        <tr class="success" ng-repeat="item in items  | filter: search" ng-init="filter_len = (items | filter: search).length">
                         <td >@{{item.item_code}}</td>
                         <td>@{{item.item_name}}</td>
                         <td>@{{item.item_category}}</td>

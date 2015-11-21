@@ -22,7 +22,7 @@
                         <label>{{trans('sale.search_item')}} <input ng-model="searchKeyword" class="form-control"></label>
 
                         <table class="table table-hover">
-                        <tr ng-repeat="item in items  | filter: searchKeyword | limitTo:10">
+                        <tr ng-repeat="item in items  | filter: searchKeyword | limitTo:10" class="active">
 
                         <td>@{{item.item_name}}</td>
                         <td><button class="btn btn-success btn-xs" type="button" ng-click="addSaleTemp(item, newsaletemp)"><span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span></button></td>
@@ -69,9 +69,9 @@
                             
                         </div>
                            
-                        <table class="table table-bordered">
-                            <tr><th>{{trans('sale.item_id')}}</th><th>{{trans('sale.item_name')}}</th><th>{{trans('sale.price')}}</th><th>{{trans('sale.quantity')}}</th><th>{{'إجمالي الأمتار المربعة'}}</th><th>{{'إجمالي المتر الطولي'}}</th><th>{{'الخصم نقدي'}}</th><th>{{'إجمالي السعر قبل الخصم'}}</th><th>{{trans('sale.total')}}</th><th>&nbsp;</th></tr>
-                            <tr ng-repeat="newsaletemp in saletemp">
+                        <table class="table table-hover table-bordered table-striped">
+                            <tr class="info"><th>{{trans('sale.item_id')}}</th><th>{{trans('sale.item_name')}}</th><th>{{trans('sale.price')}}</th><th>{{trans('sale.quantity')}}</th><th>{{'إجمالي الأمتار المربعة'}}</th><th>{{'إجمالي المتر الطولي'}}</th><th>{{'الخصم نقدي'}}</th><th>{{'إجمالي السعر قبل الخصم'}}</th><th>{{trans('sale.total')}}</th><th>&nbsp;</th></tr>
+                            <tr class="success" ng-repeat="newsaletemp in saletemp">
                             <td>@{{newsaletemp.item_id}}</td><td>@{{newsaletemp.item.item_name}}</td><td>@{{newsaletemp.item.selling_price | currency:"L.E"}}</td>
                             <td><input type="text" style="text-align:center" autocomplete="off" name="quantity" ng-change="updateSaleTemp(newsaletemp)" ng-model="newsaletemp.quantity" size="2"></td>
                             <td><input type="text" style="text-align:center" autocomplete="off" name="metres_w" ng-change="updateSaleTemp(newsaletemp)" ng-model="newsaletemp.metres_w" size="3"></td>
@@ -131,7 +131,12 @@
                                     </div>
                           </div>
 
-                            <div class="form-group">
+</div></div></div>
+
+
+
+
+                            <div class="col-md-4" >
 
                <!--  
                 {!! Form::checkbox('reserved', '1') !!}
@@ -140,25 +145,34 @@
               
                  <!-- deptor/creditor -->
 
-             <label >دائن</label>
+
+         
                    <div class="input-group">
-                   <div class="input-group-addon" >L.E</div>
+                   <label for="amount_due" class="col-sm-4 control-label" >دائن</label>
+                   <div class="col-sm-8">
+                   <div class="input-group">
+                   <div class="input-group-addon">L.E</div>
+
                   <input type="text" class="form-control" name="creditor"  size="5"  ng-model="add_payment" />
-                
+                </div>
                    </div>
 
 
-                   <label>مدين</label>
+                   <div class="input-group">
+                   <label for="amount_due" class="col-sm-4 control-label" >مدين</label>
+                   <div class="col-sm-8">
                    <div class="input-group">
                    <div class="input-group-addon">L.E</div>
+
                   <input type="text" class="form-control" name="deptor" size="5"  value="@{{sum(saletemp) -add_payment}}" />
                 
                    </div>
-
-              
-
-
+</div>
+              </div>
+</div>
+ </div>
             <!-- reservation -->
+            <div class="col-md-4">
                       <input name="reserved" type="checkbox" value="1"ng-model="val" ng-true-value="true" ng-false-value="false"/>
     
                  <label for="reserved">حجز</label><br>
@@ -177,30 +191,31 @@
                   <input type="text" class="form-control" name="amount_due" id="amount_due" size="5" ng-show="val" value="@{{sum(saletemp) -add_payment}}" />
                 
                    </div>
+</div>
+                   
 
-                   <br><br>
-
-
+<br><div class="col-md-4 col-md-offset-8">
                                     <div class="form-group">
-                                        <div class="col-sm-12">
+                                        <div class="col-sm-8">
                                             <button type="submit" class="btn btn-success btn-block">{{trans('sale.submit')}}</button>
                                             
                                         </div>
                                     </div>
 
                                 </div>
-                            </div>
+                            
                             {!! Form::close() !!}
                             
                         
 
-                    </div>
+                    
 
-                </div>
+                
 
-            </div>
-            </div>
+           
+            
         </div>
     </div>
+</div>
 </div>
 @endsection

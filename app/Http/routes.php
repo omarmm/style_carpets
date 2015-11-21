@@ -35,7 +35,7 @@ Route::group(['middleware' => 'languange'], function()
 	Route::resource('inventory', 'InventoryController');
 	Route::resource('suppliers', 'SupplierController');
 	Route::resource('receivings', 'ReceivingController');
-	Route::resource('receiving-item', 'ReceivingItemController');
+	//Route::resource('receiving-item', 'ReceivingItemController');
 	Route::resource('sales', 'SaleController');
 
 	Route::resource('reports/receivings', 'ReceivingReportController');
