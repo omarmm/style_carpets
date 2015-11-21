@@ -185,6 +185,7 @@ a:focus {
   position: relative;
   max-height: 100px;
   z-index: 1030;
+  background-color: #4B788C;
 }
 .main-header > .navbar {
   margin-bottom: 0;
@@ -1151,6 +1152,9 @@ a:focus {
  * --------------
  */
 .box {
+
+
+  
   position: relative;
   border-radius: 3px;
   background: #ffffff;
@@ -1173,6 +1177,7 @@ a:focus {
 }
 .box.box-success {
   border-top-color: #00a65a;
+  padding-top: 20px;
 }
 .box.box-default {
   border-top-color: #d2d6de;

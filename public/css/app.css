@@ -5,7 +5,7 @@ html {
   -webkit-text-size-adjust: 100%;
 }
 body {
-  margin: 0; background-color: red;
+  margin: 0;     background-color: #A5B2D2;
 }
 article,
 aside,
@@ -39,10 +39,12 @@ template {
 }
 a {
   background-color: transparent;
+
 }
 a:active,
 a:hover {
   outline: 0;
+  color: #267294;
 }
 abbr[title] {
   border-bottom: 1px dotted;
@@ -1398,6 +1400,7 @@ pre code {
   min-height: 1px;
   padding-left: 15px;
   padding-right: 15px;
+
 }
 .col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12 {
   float: left;
@@ -2391,6 +2394,7 @@ input[type="search"] {
 }
 .form-group {
   margin-bottom: 15px;
+
 }
 .radio,
 .checkbox {
@@ -3603,6 +3607,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .nav > li > a:focus {
   text-decoration: none;
   background-color: #eeeeee;
+  color: #000000;
 }
 .nav > li.disabled > a {
   color: #777777;
@@ -3619,6 +3624,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .nav .open > a:focus {
   background-color: #eeeeee;
   border-color: #337ab7;
+  color: #000000;
 }
 .nav .nav-divider {
   height: 1px;
@@ -3942,6 +3948,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   padding-top: 10px;
   padding-bottom: 10px;
   line-height: 20px;
+  color: #ffffff;
 }
 @media (max-width: 767px) {
   .navbar-nav .open .dropdown-menu {
@@ -4992,6 +4999,7 @@ a.list-group-item-danger.active:focus {
   border-bottom: 1px solid transparent;
   border-top-right-radius: 3px;
   border-top-left-radius: 3px;
+   background-image: linear-gradient(180deg, #00A65A, rgba(1, 183, 100, 0.38));
 }
 .panel-heading > .dropdown .dropdown-toggle {
   color: inherit;
@@ -5208,7 +5216,7 @@ a.list-group-item-danger.active:focus {
   border-color: #dddddd;
 }
 .panel-default > .panel-heading {
-  color: #333333;
+  color: #ffffff;
   background-color: #f5f5f5;
   border-color: #dddddd;
 }

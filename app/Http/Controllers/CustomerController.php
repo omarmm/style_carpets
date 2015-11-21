@@ -51,28 +51,28 @@ class CustomerController extends Controller {
 	            $customers->address = Input::get('address');
 	            $customers->city = Input::get('city');
 	            $customers->state = Input::get('state');
-	            $customers->zip = Input::get('zip');
+	            // $customers->zip = Input::get('zip');
 	            $customers->company_name = Input::get('company_name');
 	            $customers->account = Input::get('account');
 	            $customers->save();
 	            // process avatar
-	            $image = $request->file('avatar');
-				if(!empty($image)) {
-					$avatarName = 'cus' . $customers->id . '.' . 
-					$request->file('avatar')->getClientOriginalExtension();
+	   //          $image = $request->file('avatar');
+				// if(!empty($image)) {
+				// 	$avatarName = 'cus' . $customers->id . '.' . 
+				// 	$request->file('avatar')->getClientOriginalExtension();
 
-					$request->file('avatar')->move(
-					base_path() . '/public/images/customers/', $avatarName
-					);
-					$img = Image::make(base_path() . '/public/images/customers/' . $avatarName);
-					$img->resize(100, null, function ($constraint) {
-    					$constraint->aspectRatio();
-					});
-					$img->save();
-					$customerAvatar = Customer::find($customers->id);
-					$customerAvatar->avatar = $avatarName;
-		            $customerAvatar->save();
-	        	}
+				// 	$request->file('avatar')->move(
+				// 	base_path() . '/public/images/customers/', $avatarName
+				// 	);
+				// 	$img = Image::make(base_path() . '/public/images/customers/' . $avatarName);
+				// 	$img->resize(100, null, function ($constraint) {
+    // 					$constraint->aspectRatio();
+				// 	});
+				// 	$img->save();
+				// 	$customerAvatar = Customer::find($customers->id);
+				// 	$customerAvatar->avatar = $avatarName;
+		  //           $customerAvatar->save();
+	   //      	}
 	            Session::flash('message', 'تم إضافة عميل جديد بنجاح');
 	            return Redirect::to('customers');
 	}
@@ -116,28 +116,28 @@ class CustomerController extends Controller {
 	            $customers->address = Input::get('address');
 	            $customers->city = Input::get('city');
 	            $customers->state = Input::get('state');
-	            $customers->zip = Input::get('zip');
+	            // $customers->zip = Input::get('zip');
 	            $customers->company_name = Input::get('company_name');
 	            $customers->account = Input::get('account');
 	            $customers->save();
 	            // process avatar
-	            $image = $request->file('avatar');
-				if(!empty($image)) {
-					$avatarName = 'cus' . $id . '.' . 
-					$request->file('avatar')->getClientOriginalExtension();
+	   //          $image = $request->file('avatar');
+				// if(!empty($image)) {
+				// 	$avatarName = 'cus' . $id . '.' . 
+				// 	$request->file('avatar')->getClientOriginalExtension();
 
-					$request->file('avatar')->move(
-					base_path() . '/public/images/customers/', $avatarName
-					);
-					$img = Image::make(base_path() . '/public/images/customers/' . $avatarName);
-					$img->resize(100, null, function ($constraint) {
-    					$constraint->aspectRatio();
-					});
-					$img->save();
-					$customerAvatar = Customer::find($id);
-					$customerAvatar->avatar = $avatarName;
-		            $customerAvatar->save();
-	        	}
+				// 	$request->file('avatar')->move(
+				// 	base_path() . '/public/images/customers/', $avatarName
+				// 	);
+				// 	$img = Image::make(base_path() . '/public/images/customers/' . $avatarName);
+				// 	$img->resize(100, null, function ($constraint) {
+    // 					$constraint->aspectRatio();
+				// 	});
+				// 	$img->save();
+				// 	$customerAvatar = Customer::find($id);
+				// 	$customerAvatar->avatar = $avatarName;
+		  //           $customerAvatar->save();
+	   //      	}
 	            // redirect
 	            Session::flash('message', 'تم تحديث بيانات العميل بنجاح');
 	            return Redirect::to('customers');

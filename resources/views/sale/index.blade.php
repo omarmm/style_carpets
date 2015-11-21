@@ -3,7 +3,7 @@
 {!! Html::script('js/angular.min.js', array('type' => 'text/javascript')) !!}
 {!! Html::script('js/sale.js', array('type' => 'text/javascript')) !!}
 
-<div class="container-fluid">
+<div class="container-fluid" >
    <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">
@@ -84,7 +84,8 @@
                             </tr>
                         </table>
 
-                        <div class="row">
+                        <div class="row well well-small">
+                        <div class="box box-success">
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="total" class="col-sm-4 control-label">{{trans('sale.add_payment')}}</label>
@@ -130,7 +131,7 @@
                                             </div>
                                     </div>
                           </div>
-
+</div>
 </div></div></div>
 
 

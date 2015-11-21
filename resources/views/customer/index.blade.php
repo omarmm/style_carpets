@@ -22,7 +22,7 @@
             <td>{{trans('customer.email')}}</td>
             <td>{{trans('customer.phone_number')}}</td>
             <td>&nbsp;</td>
-            <td>{{trans('customer.avatar')}}</td>
+            <!-- <td>{{trans('customer.avatar')}}</td> -->
         </tr>
     </thead>
     <tbody>
@@ -40,7 +40,7 @@
                     {!! Form::submit(trans('customer.delete'), array('class' => 'btn btn-warning')) !!}
                 {!! Form::close() !!}
             </td>
-            <td>{!! Html::image(url() . '/images/customers/' . $value->avatar, 'a picture', array('class' => 'thumb')) !!}</td>
+            <!-- <td>{!! Html::image(url() . '/images/customers/' . $value->avatar, 'a picture', array('class' => 'thumb')) !!}</td> -->
         </tr>
     @endforeach
     </tbody>

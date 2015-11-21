@@ -26,30 +26,34 @@
 					{!! Form::text('phone_number', Input::old('phone_number'), array('class' => 'form-control')) !!}
 					</div>
 
-					<div class="form-group">
+					<!-- <div class="form-group">
 					{!! Form::label('avatar', trans('customer.choose_avatar')) !!}
 					{!! Form::file('avatar', Input::old('avatar'), array('class' => 'form-control')) !!}
-					</div>
+					</div> -->
 
 					<div class="form-group">
 					{!! Form::label('address', trans('customer.address')) !!}
 					{!! Form::text('address', Input::old('address'), array('class' => 'form-control')) !!}
 					</div>
+<div class="box box-success">
 
+ <div class="col-md-5 col-md-offset-1 success">
 					<div class="form-group">
 					{!! Form::label('city', trans('customer.city')) !!}
 					{!! Form::text('city', Input::old('city'), array('class' => 'form-control')) !!}
 					</div>
-
+</div>
+<div class="col-md-6">
 					<div class="form-group">
 					{!! Form::label('state', trans('customer.state')) !!}
 					{!! Form::text('state', Input::old('state'), array('class' => 'form-control')) !!}
 					</div>
-
-					<div class="form-group">
+					</div>
+</div>
+					<!-- <div class="form-group">
 					{!! Form::label('zip', trans('customer.zip')) !!}
 					{!! Form::text('zip', Input::old('zip'), array('class' => 'form-control')) !!}
-					</div>
+					</div> -->
 
 					<div class="form-group">
 					{!! Form::label('company_name', trans('customer.company_name')) !!}
