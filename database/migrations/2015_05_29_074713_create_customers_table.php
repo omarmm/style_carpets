@@ -15,6 +15,7 @@ class CreateCustomersTable extends Migration {
 		Schema::create('customers', function(Blueprint $table)
 		{
 			$table->increments('id');
+			$table->integer('customer_type');
 			$table->string('name', 100);
 			$table->string('email', 30);
 			$table->string('phone_number', 20);
@@ -26,7 +27,9 @@ class CreateCustomersTable extends Migration {
 			$table->string('comment', 255);
 			$table->string('company_name', 100);
 			$table->string('account', 20);
-			$table->decimal('c/d',9, 2);
+			$table->decimal('debtor',15, 2);
+			$table->decimal('creditor',15, 2);
+			$table->decimal('c/d',15, 2);
 			$table->timestamps();
 		});
 	}

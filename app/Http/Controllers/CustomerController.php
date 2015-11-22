@@ -47,6 +47,7 @@ class CustomerController extends Controller {
 
 	            $customers = new Customer;
 	            $customers->name = Input::get('name');
+	            $customers->customer_type = Input::get('customer_type');
 	            $customers->email = Input::get('email');
 	            $customers->phone_number = Input::get('phone_number');
 	            $customers->address = Input::get('address');
@@ -55,6 +56,8 @@ class CustomerController extends Controller {
 	            // $customers->zip = Input::get('zip');
 	            $customers->company_name = Input::get('company_name');
 	            $customers->account = Input::get('account');
+	            $customers->debtor = Input::get('debtor');
+	            $customers->creditor = Input::get('creditor');
 	            $customers->save();
 	            // process avatar
 	   //          $image = $request->file('avatar');
@@ -124,6 +127,7 @@ class CustomerController extends Controller {
 			} else {
 	            $customers = Customer::find($id);
 	            $customers->name = Input::get('name');
+	            $customers->customer_type = Input::get('customer_type');
 	            $customers->email = Input::get('email');
 	            $customers->phone_number = Input::get('phone_number');
 	            $customers->address = Input::get('address');
@@ -132,6 +136,8 @@ class CustomerController extends Controller {
 	            // $customers->zip = Input::get('zip');
 	            $customers->company_name = Input::get('company_name');
 	            $customers->account = Input::get('account');
+	            $customers->debtor = Input::get('debtor');
+	            $customers->creditor = Input::get('creditor');
 	            $customers->save();
 	            // process avatar
 	   //          $image = $request->file('avatar');

@@ -55,7 +55,7 @@
                                     <div class="form-group">
                                         <label for="customer_id" class="col-sm-4 control-label">{{trans('sale.customer')}}</label>
                                         <div class="col-sm-8">
-                                        {!! Form::select('customer_id', $customer, Input::old('customer_id'), array('class' => 'form-control')) !!}
+                                        {!! Form::select('customer_id', $customer, Input::old('customer_id'), ['ng-model' => 'cselect'], array('class' => 'form-control')) !!}
                                         </div>
                                     </div>
 
@@ -149,23 +149,23 @@
 
          
                    <div class="input-group">
-                   <label for="amount_due" class="col-sm-4 control-label" >دائن</label>
+                   <label for="amount_due" class="col-sm-4 control-label" ng-show="cselect=='1'" >دائن</label>
                    <div class="col-sm-8">
                    <div class="input-group">
-                   <div class="input-group-addon">L.E</div>
+                   <div class="input-group-addon" ng-show="cselect=='1'">L.E</div>
 
-                  <input type="text" class="form-control" name="creditor"  size="5"  ng-model="add_payment" />
+                  <input type="text" class="form-control" name="creditor"  size="5"  ng-model="add_payment" ng-show="cselect==1" />
                 </div>
                    </div>
 
 
                    <div class="input-group">
-                   <label for="amount_due" class="col-sm-4 control-label" >مدين</label>
+                   <label for="amount_due" class="col-sm-4 control-label" ng-show="cselect=='1'" >مدين</label>
                    <div class="col-sm-8">
                    <div class="input-group">
-                   <div class="input-group-addon">L.E</div>
+                   <div class="input-group-addon" ng-show="cselect=='1'">L.E</div>
 
-                  <input type="text" class="form-control" name="deptor" size="5"  value="@{{sum(saletemp) -add_payment}}" />
+                  <input type="text" class="form-control" name="deptor" size="5"  value="@{{sum(saletemp) -add_payment}}" ng-show="cselect==1" />
                 
                    </div>
 </div>

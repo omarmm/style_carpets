@@ -21,6 +21,27 @@
 					{!! Form::text('company_name', null, array('class' => 'form-control')) !!}
 					</div>
 
+
+					<!-- customer type -->
+					<div class="form-group well well-small">
+
+              {!! Form::label('customer_type', trans('customer.customer_type')) !!}
+                <br><br>
+                <div class="col-md-12">
+                <div class="col-sm-4">
+                {!! Form::radio('customer_type', '0') !!}
+                 {!! Form::label('customer_type', 'عميل') !!}</div>
+
+                 <div class="col-sm-4">
+                {!! Form::radio('customer_type', '1') !!}
+                 {!! Form::label('customer_type', 'مورد') !!}</div>
+                 <div class="col-sm-4">
+                {!! Form::radio('customer_type', '2') !!}
+                {!! Form::label('customer_type', 'عميل و مورد') !!}</div>
+</div>
+<br><br>
+</div>
+
 					<div class="form-group">
 					{!! Form::label('email', trans('customer.email')) !!}
 					{!! Form::text('email', null, array('class' => 'form-control')) !!}
@@ -67,6 +88,30 @@
 					{!! Form::label('account', trans('customer.account')) !!}
 					{!! Form::text('account', null, array('class' => 'form-control')) !!}
 					</div>
+
+
+
+
+
+   <!-- creditor or debtor -->
+
+					<div class="box box-success">
+{!! Form::label('opening', 'البيانات الإفتتاحية') !!}</div>
+ <div class="col-md-5 col-md-offset-1 success">
+					<div class="form-group">
+					{!! Form::label('creditor', trans('customer.creditor')) !!}
+					{!! Form::text('creditor', Input::old('creditor'), array('class' => 'form-control')) !!}
+					</div>
+</div>
+<div class="col-md-6">
+					<div class="form-group">
+					{!! Form::label('debtor', trans('customer.debtor')) !!}
+					{!! Form::text('debtor', Input::old('debtor'), array('class' => 'form-control')) !!}
+					</div>
+					</div>
+
+
+
 
 					{!! Form::submit(trans('customer.submit'), array('class' => 'btn btn-primary')) !!}
 

@@ -9,6 +9,8 @@ return [
 	'item_name' 	=> 'إسم الصنف',
 	'item_type'     => 'نوع الصنف',
 	'size' 			=> 'الحجم',
+	'metres_w'      => 'العرض بالمتر',
+	'metres_h'      => 'الطول بالمتر',
 	'cost_price' 	=> 'سعر التكلفة',
 	'selling_price' => 'سعر البيع',
 	'quantity'		=> 'الكمية',
