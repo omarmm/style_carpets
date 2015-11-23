@@ -75,14 +75,16 @@
                             <td>@{{newsaletemp.item_id}}</td><td>@{{newsaletemp.item.item_name}}</td><td>@{{newsaletemp.item.selling_price | currency:"L.E"}}</td>
 
                             <td><input type="text" style="text-align:center" autocomplete="off" name="quantity" ng-change="updateSaleTemp(newsaletemp)" ng-model="newsaletemp.quantity" size="2"></td>
-                            @if("@{{newsaletemp.item.item_type}}"!=3)
-                            <td><input type="text" style="text-align:center" autocomplete="off" name="metres_w" ng-change="updateSaleTemp(newsaletemp)" ng-model="newsaletemp.item.metres_w" size="3"></td>
-                            @else
-                            <td>@{{newsaletemp.item.metres_w}}</td>
-                            @endif
-                            <td><input type="text" style="text-align:center" autocomplete="off" name="metres_h" ng-change="updateSaleTemp(newsaletemp)" ng-model="newsaletemp.item.metres_h" size="3"></td>
+                            <!-- Hidden field just to retrieve item type  or newsaletemp.item.item_type=='3'  -->
+                           <td ng-show="hohoho"> <input type="text" style="text-align:center" autocomplete="off" name="item_type" ng-change="updateSaleTemp(newsaletemp)" ng-model="newsaletemp.item.item_type" size="3"></td>
                              
-                            <!-- <td>@{{newsaletemp.item.metres_w}}</td><td>@{{newsaletemp.item.metres_h}}</td> -->
+                            <td>@{{newsaletemp.item.metres_w}}</td>
+                       <!-- 
+                       if roll (type=3) make it (show) input text, else show fixed text -->
+                            <td ng-show="newsaletemp.item.item_type=='3'"><input ng-show="newsaletemp.item.item_type=='3'"  type="text" style="text-align:center" autocomplete="off" name="metres_h" ng-change="updateSaleTemp(newsaletemp)" ng-model="newsaletemp.item.metres_h" size="3"></td>
+                         
+                            <td ng-show="newsaletemp.item.item_type!='3'">@{{newsaletemp.item.metres_h}}</td>
+                         
                              <td><input type="text" style="text-align:center" autocomplete="off" name="discount" ng-change="updateSaleTemp(newsaletemp)" ng-model="newsaletemp.discount" size="3"></td>
                             <td>@{{newsaletemp.item.selling_price * newsaletemp.quantity *  newsaletemp.metres_w * newsaletemp.metres_h | currency:"L.E"}}</td>
                             <td>@{{(newsaletemp.item.selling_price * newsaletemp.quantity *  newsaletemp.metres_w * newsaletemp.metres_h) - newsaletemp.discount | currency:"L.E"}}</td>
