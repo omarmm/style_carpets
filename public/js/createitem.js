@@ -2,7 +2,7 @@
     var app = angular.module('tutapos', [ ]);
 
 	app.controller('myCtrl', function($scope) {
-     $scope.type = '';
+     $scope.type = '1';
    
 });
 	

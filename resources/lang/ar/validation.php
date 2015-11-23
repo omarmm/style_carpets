@@ -34,7 +34,7 @@ return [
 	"different"            => "The :attribute and :other must be different.",
 	"digits"               => "The :attribute must be :digits digits.",
 	"digits_between"       => "The :attribute must be between :min and :max digits.",
-	"email"                => "The :attribute must be a valid email address.",
+	"email"                => "The :attribute الرجاء إدخال بريد إلكتروني صحيح.",
 	"filled"               => "The :attribute field is required.",
 	"exists"               => "The selected :attribute is invalid.",
 	"image"                => "The :attribute must be an image.",
@@ -57,7 +57,7 @@ return [
 	"not_in"               => "The selected :attribute is invalid.",
 	"numeric"              => "The :attribute must be a number.",
 	"regex"                => "The :attribute format is invalid.",
-	"required"             => "The :attribute field is required.",
+	"required"             => " :attribute لا يجوز تركه فارغا.",
 	"required_if"          => "The :attribute field is required when :other is :value.",
 	"required_with"        => "The :attribute field is required when :values is present.",
 	"required_with_all"    => "The :attribute field is required when :values is present.",
@@ -104,7 +104,24 @@ return [
 
 	'attributes' => [
 
-'company_name' => 'اسم الشركة'
+
+	'name' 				=> 'الإسم',
+	'email' 			=> 'البريد الإلكتروني',
+	'phone_number' 		=> 'تليفون',
+	'customer_type'     => 'نوع العميل',
+	'avatar' 			=> 'الصورة',
+	'choose_avatar'		=> 'اختر صورة',
+	'address'			=> 'العنوان',
+	'city'				=> 'المحافظة',
+	'state'				=> 'المدينة',
+	'company_name'		=> 'اسم الشركة',
+	'account'			=> 'رقم حساب',
+	'creditor'			=> 'دائن',
+	'debtor'			=> 'مدين',
+	'submit'			=> 'تسجيل',
+	'edit'	=> 'تعديل',
+	'delete'	=> 'حذف',
+	'update_customer' => 'تحديث البيانات',
 	],
 
 ];

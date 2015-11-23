@@ -22,8 +22,8 @@ class CreateSaleTempsTable extends Migration {
 			$table->integer('quantity');
 			// $table->integer('pieces')->default(1);
             // $table->decimal('metres',9, 2)->default(1);
-            $table->decimal('metres_w',9, 2)->default(1);
-            $table->decimal('metres_h',9, 2)->default(1);
+            $table->decimal('metres_w',9, 2);
+            $table->decimal('metres_h',9, 2);
             $table->decimal('discount',9, 2)->default(0);
 			$table->decimal('total_cost',9, 2);
 			$table->decimal('total_prediscount',15, 2);

@@ -48,7 +48,9 @@ class ItemController extends Controller {
             $items->item_code = Input::get('item_code');
             $items->item_name = Input::get('item_name');
             $items->item_type = Input::get('item_type');
-            $items->item_category = Input::get('item_category');
+            $items->metres_w = Input::get('metres_w');
+            $items->metres_h = Input::get('metres_h');
+            // $items->item_category = Input::get('item_category');
             //$items->size = Input::get('size');
             $items->description = Input::get('description');
             $items->cost_price = Input::get('cost_price');
@@ -133,7 +135,9 @@ class ItemController extends Controller {
             // $items->upc_ean_isbn = Input::get('upc_ean_isbn');
             $items->item_name = Input::get('item_name');
              $items->item_type = Input::get('item_type');
-             $items->item_category = Input::get('item_category');
+             $items->metres_w = Input::get('metres_w');
+            $items->metres_h = Input::get('metres_h');
+             // $items->item_category = Input::get('item_category');
 
             //$items->size = Input::get('size');
             $items->description = Input::get('description');

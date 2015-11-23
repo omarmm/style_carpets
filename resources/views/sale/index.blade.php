@@ -70,13 +70,20 @@
                         </div>
                            
                         <table class="table table-hover table-bordered table-striped">
-                            <tr class="info"><th>{{trans('sale.item_id')}}</th><th>{{trans('sale.item_name')}}</th><th>{{trans('sale.price')}}</th><th>{{trans('sale.quantity')}}</th><th>{{'إجمالي الأمتار المربعة'}}</th><th>{{'إجمالي المتر الطولي'}}</th><th>{{'الخصم نقدي'}}</th><th>{{'إجمالي السعر قبل الخصم'}}</th><th>{{trans('sale.total')}}</th><th>&nbsp;</th></tr>
+                            <tr class="info"><th>{{trans('sale.item_id')}}</th><th>{{trans('sale.item_name')}}</th><th>{{trans('sale.price')}}</th><th>{{trans('sale.quantity')}}</th><th>{{trans('item.metres_w')}}</th><th>{{trans('item.metres_h')}}</th><th>{{'الخصم نقدي'}}</th><th>{{'إجمالي السعر قبل الخصم'}}</th><th>{{trans('sale.total')}}</th><th>&nbsp;</th></tr>
                             <tr class="success" ng-repeat="newsaletemp in saletemp">
                             <td>@{{newsaletemp.item_id}}</td><td>@{{newsaletemp.item.item_name}}</td><td>@{{newsaletemp.item.selling_price | currency:"L.E"}}</td>
+
                             <td><input type="text" style="text-align:center" autocomplete="off" name="quantity" ng-change="updateSaleTemp(newsaletemp)" ng-model="newsaletemp.quantity" size="2"></td>
-                            <td><input type="text" style="text-align:center" autocomplete="off" name="metres_w" ng-change="updateSaleTemp(newsaletemp)" ng-model="newsaletemp.metres_w" size="3"></td>
-                            <td><input type="text" style="text-align:center" autocomplete="off" name="metres_h" ng-change="updateSaleTemp(newsaletemp)" ng-model="newsaletemp.metres_h" size="3"></td>
-                            <td><input type="text" style="text-align:center" autocomplete="off" name="discount" ng-change="updateSaleTemp(newsaletemp)" ng-model="newsaletemp.discount" size="3"></td>
+                            @if("@{{newsaletemp.item.item_type}}"!=3)
+                            <td><input type="text" style="text-align:center" autocomplete="off" name="metres_w" ng-change="updateSaleTemp(newsaletemp)" ng-model="newsaletemp.item.metres_w" size="3"></td>
+                            @else
+                            <td>@{{newsaletemp.item.metres_w}}</td>
+                            @endif
+                            <td><input type="text" style="text-align:center" autocomplete="off" name="metres_h" ng-change="updateSaleTemp(newsaletemp)" ng-model="newsaletemp.item.metres_h" size="3"></td>
+                             
+                            <!-- <td>@{{newsaletemp.item.metres_w}}</td><td>@{{newsaletemp.item.metres_h}}</td> -->
+                             <td><input type="text" style="text-align:center" autocomplete="off" name="discount" ng-change="updateSaleTemp(newsaletemp)" ng-model="newsaletemp.discount" size="3"></td>
                             <td>@{{newsaletemp.item.selling_price * newsaletemp.quantity *  newsaletemp.metres_w * newsaletemp.metres_h | currency:"L.E"}}</td>
                             <td>@{{(newsaletemp.item.selling_price * newsaletemp.quantity *  newsaletemp.metres_w * newsaletemp.metres_h) - newsaletemp.discount | currency:"L.E"}}</td>
 

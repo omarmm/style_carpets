@@ -36,7 +36,7 @@
                   <div class="form-group">
                          <label for="payment_type" class="control-label">{{trans('item.item_type')}}</label>
                           
-            {!! Form::select('item_type', array('بالقطعة' => 'بالقطعة', '2' => 'سجادة (طول*عرض)', '3' => 'رول'), Input::old('item_type'), ['ng-model' => 'type'], array('class' => 'form-control')) !!}
+            {!! Form::select('item_type', array('1' => 'بالقطعة', '2' => 'سجادة (طول*عرض)', '3' => 'رول'), Input::old('item_type'), ['ng-model' => 'type'], array('class' => 'form-control')) !!}
                             
                           </div>
                            
@@ -48,14 +48,14 @@
 
  <div class="col-md-5 col-md-offset-1 success">
 					<div class="form-group" >
-					{!! Form::label('metres_w', trans('item.metres_w'),['ng-show' => 'type==2']) !!}
-					{!! Form::text('metres_w', Input::old('metres_w'), ['ng-show' => 'type==2', 'size'=>'3','style'=>'text-align:center']) !!}
+					{!! Form::label('metres_w', trans('item.metres_w'),['ng-hide' => 'type==1']) !!}
+					{!! Form::text('metres_w', Input::old('metres_w'), ['ng-hide' => 'type==1', 'size'=>'3','style'=>'text-align:center']) !!}
 					</div>
 </div>
 <div class="col-md-6">
 					<div class="form-group">
 					{!! Form::label('metres_h', trans('item.metres_h'),['ng-show' => 'type==2']) !!}
-					{!! Form::text('metres_h', Input::old('metres_h'),['ng-show' => 'type==2', 'size'=>'3']) !!}
+					{!! Form::text('metres_h', Input::old('metres_h'),['ng-show' => 'type==2', 'size'=>'3','style'=>'text-align:center']) !!}
 					</div>
 					</div>
 
@@ -63,14 +63,14 @@
 
 
  <!-- roll  type -->
- <div class="col-md-5 col-md-offset-1 success">
+ <!-- <div class="col-md-5 col-md-offset-1 success">
 					<div class="form-group" >
 					{!! Form::label('metres_w', trans('item.metres_w'),['ng-show' => 'type==3']) !!}
 					{!! Form::text('metres_w', Input::old('metres_w'), ['ng-show' => 'type==3', 'size'=>'3','style'=>'text-align:center']) !!}
 					</div>
 
 </div>
-
+ -->
 
 </div>
 
