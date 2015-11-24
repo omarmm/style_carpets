@@ -56,6 +56,7 @@ class SaleController extends Controller {
         $sales->payment_type = Input::get('payment_type');
         $sales->comments = Input::get('comments');
         $sales->reserved = (Input::has('reserved')) ? true : false;
+        $sales->visacard = (Input::has('visa')) ? true : false;
         $sales->deposit = Input::get('deposit');
         $sales->amount_due = Input::get('amount_due');
         $sales->total = Input::get('total');
@@ -73,6 +74,8 @@ class SaleController extends Controller {
 			$saleItemsData->quantity = $value->quantity;
 			$saleItemsData->metres_w = $value->metres_w;
 			$saleItemsData->metres_h = $value->metres_h;
+			$saleItemsData->metres_square = $value->metres_square;
+			$saleItemsData->totalmetres_square = $value->totalmetres_square;
 			$saleItemsData->discount = $value->discount;
 			$saleItemsData->total_prediscount = $value->total_prediscount;
 			$saleItemsData->total_cost = $value->total_cost;
