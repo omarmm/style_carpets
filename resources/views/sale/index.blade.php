@@ -19,11 +19,12 @@
                 <div class="row" ng-controller="SearchItemCtrl">
 
                     <div class="col-md-3">
-                        <label>{{trans('sale.search_item')}} <input ng-model="searchKeyword" class="form-control"></label>
+                                       <label>{{trans('item.item_id')}} <input ng-model="searchKeyword.id" class="form-control" size="3" > </label>
 
+                        <label style="text-align:center" >{{trans('sale.search_item')}} <input ng-model="searchKeyword.item_name" class="form-control" size="12" ></label>
                         <table class="table table-hover">
                         <tr ng-repeat="item in items  | filter: searchKeyword | limitTo:10" class="active">
-
+                    
                         <td>@{{item.item_name}}</td>
                         <td><button class="btn btn-success btn-xs" type="button" ng-click="addSaleTemp(item, newsaletemp)"><span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span></button></td>
 
@@ -65,8 +66,58 @@
                                     <div class="form-group">
                                         <label for="customer_id" class="col-sm-4 control-label">{{trans('sale.customer')}}</label>
                                         <div class="col-sm-8">
-                                        {!! Form::select('customer_id', $customer, Input::old('customer_id'), ['ng-model' => 'cselect' , 'class' => 'form-control']) !!}
-                                        </div>
+<!--        original         {!! Form::select('customer_id', $customer, Input::old('customer_id'), ['ng-model' => 'cselect' , 'class' => 'form-control']) !!}
+ -->                                       <!--  </div>  -->
+
+                             <!-- <form class="form-group">
+                             <input ng-model="SearchCustomer.id" type="text"
+                              placeholder="كود" autofocus size="3" class="col-sm-3">
+                               </form> -->
+<!--        2-                       <select class="form-control col-sm-8 col-md-offset-1" name="customer_id" ng-model="customer" ng-options="customer.id as customer.name for customer in customers"> 
+ -->                           
+
+
+                        <!-- 3-   <option  ng-repeat="customer in customers| filter:SearchCustomer | orderBy: 'name' ">
+        
+                              @{{customer.name}}
+    
+        
+                             </option> -->
+<!--                               </select>
+
+ -->  
+ <input ng-model="cselect" type="text"
+                              placeholder="كود" autofocus size="3" class="col-sm-3">    
+<select name="customer_id" id="cselect" ng-model="cselect" class="form-control form-control col-sm-8 col-md-offset-1">
+      <option ng-repeat="customer in customers" value="@{{customer.id}}">@{{customer.name}}</option>
+    </select>
+
+    <select name="customer_id" id="cselect" ng-model="cselect" class="form-control form-control col-sm-8 col-md-offset-1">
+      <option ng-repeat="customer in customers" value="@{{customer.id}}">@{{customer.opening_debtor}}</option>
+    </select>
+<select name="customer_id" id="cselect" ng-model="cselect" class="form-control form-control col-sm-8 col-md-offset-1">
+      <option ng-repeat="customer in customers" value="@{{customer.id}}">@{{customer.opening_creditor}}</option>
+    </select>
+
+<?php $value='{{cselect}}'; ?>
+
+
+<?php 
+
+
+$deptor= DB::table('customers')
+->where('id', '=', $value)
+->sum('opening_debtor');
+
+
+echo $value;
+ ?>
+ <!-- {{$value}} -->
+ {{$deptor}}
+
+                            </div>
+
+
                                     </div>
 
                                     <div class="form-group">
@@ -192,23 +243,23 @@
 
          
                    <div class="input-group">
-                   <label for="amount_due" class="col-sm-4 control-label" ng-show="cselect" >دائن</label>
+                   <label for="amount_due" class="col-sm-4 control-label" ng-hide="cselect=='1'" >دائن</label>
                    <div class="col-sm-8">
                    <div class="input-group">
-                   <div class="input-group-addon" ng-show="cselect">L.E</div>
+                   <div class="input-group-addon" ng-hide="cselect=='1'">L.E</div>
 
-                  <input type="text" class="form-control" name="creditor"  size="5"  ng-model="add_payment" ng-show="cselect" />
+                  <input type="text" class="form-control" name="creditor"  size="5"  ng-model="add_payment" ng-hide="cselect=='1'" />
                 </div>
                    </div>
 
 
                    <div class="input-group">
-                   <label for="amount_due" class="col-sm-4 control-label" ng-show="cselect" >مدين</label>
+                   <label for="amount_due" class="col-sm-4 control-label" ng-hide="cselect=='1'" >مدين</label>
                    <div class="col-sm-8">
                    <div class="input-group">
-                   <div class="input-group-addon" ng-show="cselect">L.E</div>
+                   <div class="input-group-addon" ng-hide="cselect=='1'">L.E</div>
 
-                  <input type="text" class="form-control" name="deptor" size="5"  value="@{{sum(saletemp) -add_payment}}" ng-show="cselect" />
+                  <input type="text" class="form-control" name="deptor" size="5"  value="{{$deptor}}" ng-hide="cselect=='1'" />
                 
                    </div>
 </div>

@@ -1,11 +1,67 @@
 (function(){
     var app = angular.module('tutapos', [ ]);
 
+
     app.controller("SearchItemCtrl", [ '$scope', '$http', function($scope, $http) {
         $scope.items = [ ];
+
+
         $http.get('api/item').success(function(data) {
             $scope.items = data;
         });
+
+       
+        $scope.customers = [ ];
+        $http.get('api/customer').success(function(data) {
+            $scope.customers = data;
+ 
+});
+
+
+//customer default value نقدي
+$scope.cselect = '1';
+
+// $scope.salecustomer = [ ];
+//  $scope.newcustomer = { };
+//   $http.get('api/customer').success(function(data, status, headers, config) {
+//             $scope.salecustomer = data;
+//         });
+//  $scope.customer = function(customer, newcustomer) {
+            
+//             $http.post('api/customer/' , { customer_id:customer.id,opening_debtor: customer.opening_debtor }).
+//             success(function(data, status, headers, config) {
+
+//                  $scope.salecustomer.push(data);
+//                     $http.get('api/customer').success(function(data) {
+//                     $scope.salecustomer = data;
+//                     });
+                
+//                 });
+//         }
+
+//  $scope.updateSaleCustomer = function(newcustomer) {
+            
+//             $http.put('api/customer/' + newcustomer.id, { opening_debtor: newcustomer.customer.opening_debtor  }).
+//             success(function(data, status, headers, config) {
+                
+//                 });
+//         }
+
+// $http({
+//     url: "api/customer",
+//         method: "POST",
+//         data:{opening_debtor:app.opening_debtor}
+//     }).success(function(data, status, headers, config) {
+//         $scope.data = data;
+//     }).error(function(data, status, headers, config) {
+//         $scope.status = status;
+// });
+
+
+
+
+
+
         $scope.saletemp = [ ];
         $scope.newsaletemp = { };
         $http.get('api/saletemp').success(function(data, status, headers, config) {

@@ -29,7 +29,7 @@
            
             <td>{{trans('item.item_code')}}</td>
             <td>{{trans('item.item_name')}}</td>
-            <td>{{'تصنيف الصنف'}}</td>
+            <!-- <td>{{'تصنيف الصنف'}}</td> -->
             <td>{{trans('item.cost_price')}}</td>
             <td>{{trans('item.selling_price')}}</td>
             <td>{{trans('item.quantity')}}</td>
@@ -38,15 +38,15 @@
         </tr>
     </thead>         
                     
-                        <label>{{'البحث بكود الصنف'}} <input ng-model="search.item_code" class="form-control" ></label>&nbsp;
+                        <label>{{'البحث بكود الصنف'}} <input ng-model="search.id" class="form-control" ></label>&nbsp;
                         <label>{{'البحث باسم المنتج'}} <input ng-model="search.item_name" class="form-control"></label>&nbsp;
                         
-                        <label>{{'البحث بالتصنيف'}} <input ng-model="search.item_category" class="form-control"></label>
-                   <tbody>
+<!--                         <label>{{'البحث بالتصنيف'}} <input ng-model="search.item_category" class="form-control"></label>
+ -->                   <tbody>
                         <tr class="success" ng-repeat="item in items  | filter: search" ng-init="filter_len = (items | filter: search).length">
-                        <td >@{{item.item_code}}</td>
+                        <td >@{{item.id}}</td>
                         <td>@{{item.item_name}}</td>
-                        <td>@{{item.item_category}}</td>
+                        <!-- <td>@{{item.item_category}}</td> -->
                         <td>@{{item.cost_price}}</td>
                         <td>@{{item.selling_price}}</td>
                         <td>@{{item.quantity}}</td>

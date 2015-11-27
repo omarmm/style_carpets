@@ -52,6 +52,7 @@ class SaleController extends Controller {
 	{
 	    $sales = new Sale;
         $sales->customer_id = Input::get('customer_id');
+        $sales->customer_temp = Input::get('customer_temp');
         $sales->user_id = Auth::user()->id;
         $sales->payment_type = Input::get('payment_type');
         $sales->comments = Input::get('comments');

@@ -3,7 +3,7 @@
 return [
 
 	'sales_register' => 'فاتورة البيع',
-	'search_item' => 'بحث عن الاصناف:',
+	'search_item' => 'بحث  بالإسم',
 	'invoice' => 'رقم الفاتورة',
 	'employee' => 'الموظف',
 	'payment_type' => 'طريقة الدفع',
@@ -16,6 +16,7 @@ return [
 	'quantity' => 'الكمية',
 	'metres_square' => 'المتر المربع للوحدة',
 	'totalmetres_square' =>'إجمالي م2 للكمية',
+	'discount' =>'قيمة الخصم',
 	'total' => 'الإجمالي',
 	'add_payment' => 'المدفوع',
 	'comments' => 'ملاحظات',

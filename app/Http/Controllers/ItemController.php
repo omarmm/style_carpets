@@ -45,7 +45,7 @@ class ItemController extends Controller {
 	public function store(ItemRequest $request)
 	{
 		    $items = new Item;
-            $items->item_code = Input::get('item_code');
+            // $items->item_code = Input::get('item_code');
             $items->item_name = Input::get('item_name');
             $items->item_type = Input::get('item_type');
             $items->metres_w = Input::get('metres_w');

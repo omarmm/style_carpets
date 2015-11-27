@@ -1,6 +1,9 @@
 @extends('app')
 
 @section('content')
+{!! Html::script('js/angular.min.js', array('type' => 'text/javascript')) !!}
+
+
 <div class="container">
 	<div class="row">
 		<div class="col-md-10 col-md-offset-1">

@@ -45,6 +45,7 @@ Route::resource('reserved', 'ReservedReportController');
 	Route::resource('employees', 'EmployeeController');
 
 	Route::resource('api/item', 'ReceivingApiController');
+	Route::resource('api/customer', 'CustomersApiController');
 	Route::resource('api/receivingtemp', 'ReceivingTempApiController');
 
 	Route::resource('api/saletemp', 'SaleTempApiController');

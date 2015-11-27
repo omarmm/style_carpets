@@ -20,8 +20,14 @@ table td {
         <td>
           <table class="table" border="1"  style="width:40%">
           <tr>
-              <td bgcolor="#E1E4E6" style="width:30%">{{trans('sale.customer')}}:</td> <td>{{ $sales->customer->name}}</td>
 
+              <td bgcolor="#E1E4E6" style="width:30%">{{trans('sale.customer_temp')}}:</td> 
+      
+            @if($sales->customer_temp == null)
+              <td>{{ $sales->customer->name}}</td>
+            @else
+            <td>{{$sales->customer_temp}}</td>
+            @endif
           </tr>
             </table>
            <table class="table" border="1"  style="width:40%">
@@ -63,8 +69,11 @@ table td {
                     <td>{{trans('sale.item')}}</td>
                     <td>{{trans('sale.price')}}</td>
                     <td>{{trans('sale.qty')}}</td>
-                    <td>{{'إجمالي الأمتار المربعة'}}</td>
-                     <td>{{'إجمالي المتر الطولي'}}</td>
+                    <td>{{trans('item.metres_w')}}</td>
+                    <td>{{trans('item.metres_h')}}</td>
+                    <td>{{trans('sale.metres_square')}}</td>
+                     <td>{{trans('sale.totalmetres_square')}}</td>
+                     <td>{{trans('sale.discount')}}</td>
                     <td>{{trans('sale.total')}}</td>
                 </tr>
                 @foreach($saleItems as $value)
@@ -73,15 +82,20 @@ table td {
                     <td>{{$value->selling_price}}</td>
                     <td>{{$value->quantity}}</td>
 
-                    @if ($value->metres_w > 1 || $value->metres_h >1)
+                    @if ($value->metres_w > 0 || $value->metres_h >0)
                     <td>{{$value->metres_w}}</td> 
                     <td>{{$value->metres_h}}</td> 
+                    <td>{{$value->metres_square}}</td>
+                    <td>{{$value->totalmetres_square}}</td>
                     @else 
+                    <td>{{'-'}}</td>
+                    <td>{{'-'}}</td>
                     <td>{{'-'}}</td>
                     <td>{{'-'}}</td>
                     @endif
                    
                     <!-- <td>{{$value->pieces}}</td> -->
+                    <td>{{$value->discount}}</td>
                     <td>{{$value->total_selling}}</td>
                 </tr>
 
@@ -152,6 +166,9 @@ $total_debit= DB::table('sales')
     
         <div class="col-md-12">
             {{trans('sale.payment_type')}}: {{$sales->payment_type}}
+
+          
+
         </div>
     </div>
     <hr class="hidden-print"/>
