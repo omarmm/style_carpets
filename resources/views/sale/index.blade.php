@@ -44,18 +44,28 @@
                                         <input type="text" class="form-control" id="invoice" value="@if ($sale) {{$sale->id + 1}} @else 1 @endif" readonly/>
                                         </div>
                                     </div>
-
+                    <!-- hide employee info -->
                                     <div class="form-group">
-                                        <label for="employee" class="col-sm-4 control-label" style="text-align:right">{{trans('sale.employee')}}</label>
+                                        <label for="employee" ng-show="blablabla" class="col-sm-4 control-label" style="text-align:right">{{trans('sale.employee')}}</label>
                                         <div class="col-sm-8">
-                                        <input type="text" class="form-control" id="employee" value="{{ Auth::user()->name }}" readonly/>
+                                        <input ng-show="blablabla"   type="text" class="form-control" id="employee" value="{{ Auth::user()->name }}" readonly/>
                                         </div>
                                     </div>
+
+
+                     <!-- sales man info -->
+                    <div class="form-group">
+                                        <label for="sales_man"  class="col-sm-4 control-label" style="text-align:right">{{trans('sale.employee')}}</label>
+                                        <div class="col-sm-8">
+                                        <input   type="text" class="form-control" id="sales_man" name="sales_man"  />
+                                        </div>
+                                    </div>
+
 
                                <div class="form-group">
                                         <label  for="customer_temp" class="col-sm-4 control-label" style="text-align:right">{{trans('sale.customer_temp')}}</label>
                                         <div class="col-sm-8">
-                                        <input  type="text" class="form-control" name="customer_temp" id="customer_temp" />
+                                        <input  type="text" class="form-control" name="customer_temp" id="customer_temp"  />
                                         </div>
                                     </div>
 
@@ -92,28 +102,35 @@
       <option ng-repeat="customer in customers" value="@{{customer.id}}">@{{customer.name}}</option>
     </select>
 
-    <select name="customer_id" id="cselect" ng-model="cselect" class="form-control form-control col-sm-8 col-md-offset-1">
+
+    <label for="amount_due" class="col-sm-3 control-label" ng-hide="cselect=='1'" >دائن</label>
+<select name="customer_id" id="cselect" ng-model="cselect" class="form-control form-control col-sm-8 col-md-offset-1" ng-hide="cselect=='1'">
+      <option ng-repeat="customer in customers"  ng-style="set_color(creditor)" value="@{{customer.id}}">@{{customer.opening_creditor}}</option>
+    </select>
+
+
+    <label for="amount_due" class="col-sm-3 control-label" ng-hide="cselect=='1'" >مدين</label>
+    <select name="customer_id" id="cselect" ng-model="cselect" class="form-control form-control col-sm-8 col-md-offset-1" ng-hide="cselect=='1'">
       <option ng-repeat="customer in customers" value="@{{customer.id}}">@{{customer.opening_debtor}}</option>
     </select>
-<select name="customer_id" id="cselect" ng-model="cselect" class="form-control form-control col-sm-8 col-md-offset-1">
-      <option ng-repeat="customer in customers" value="@{{customer.id}}">@{{customer.opening_creditor}}</option>
-    </select>
 
+<!--   <select ng-model="cselect" value="@{{customer.id}}" ng-options="customer as customer.opening_creditor for customer in customers"> </select>
+ -->
 <?php $value='{{cselect}}'; ?>
-
+<!-- <p>@{{cselect.opening_creditor}}</p> -->
 
 <?php 
 
 
-$deptor= DB::table('customers')
+$debtor= DB::table('customers')
 ->where('id', '=', $value)
 ->sum('opening_debtor');
 
 
-echo $value;
+//echo $value;
  ?>
  <!-- {{$value}} -->
- {{$deptor}}
+ <!-- {{$debtor}} -->
 
                             </div>
 
@@ -152,7 +169,8 @@ echo $value;
                         </div>
                            
                         <table class="table table-hover table-bordered table-striped">
-                            <tr class="info"><th>{{trans('sale.item_id')}}</th><th>{{trans('sale.item_name')}}</th><th>{{trans('sale.price')}}</th><th>{{trans('sale.quantity')}}</th><th>{{trans('item.metres_w')}}</th><th>{{trans('item.metres_h')}}</th><th>{{trans('sale.metres_square')}}</th><th>{{trans('sale.totalmetres_square')}}</th><th>{{'الخصم نقدي'}}</th><th>{{'إجمالي السعر قبل الخصم'}}</th><th>{{trans('sale.total')}}</th><th>&nbsp;</th></tr>
+                            <tr class="info"><th>{{trans('sale.item_id')}}</th><th>{{trans('sale.item_name')}}</th><th>{{trans('sale.price')}}</th><th>{{trans('sale.quantity')}}</th><th>{{trans('item.metres_w')}}</th><th>{{trans('item.metres_h')}}</th><th>{{trans('sale.metres_square')}}</th>
+                            <th>{{trans('sale.totalmetres_square')}}</th><th>{{'الخصم نقدي'}}</th><th>{{'إجمالي السعر قبل الخصم'}}</th><th>{{trans('sale.total')}}</th><th>&nbsp;</th></tr>
                             <tr class="success" ng-repeat="newsaletemp in saletemp">
                             <td>@{{newsaletemp.item_id}}</td><td>@{{newsaletemp.item.item_name}}</td><!-- <td>@{{newsaletemp.item.selling_price | currency:"L.E"}}</td> -->
                             <td ><input   type="text" style="text-align:center" autocomplete="off" name="selling_price" ng-change="updateSaleTemp(newsaletemp)" ng-model="newsaletemp.item.selling_price" size="5"></td>
@@ -238,7 +256,7 @@ echo $value;
                  {!! Form::label('reserved', 'حجز') !!}<br> -->
 
               
-                 <!-- deptor/creditor -->
+                 <!-- debtor/creditor -->
 
 
          
@@ -259,7 +277,7 @@ echo $value;
                    <div class="input-group">
                    <div class="input-group-addon" ng-hide="cselect=='1'">L.E</div>
 
-                  <input type="text" class="form-control" name="deptor" size="5"  value="{{$deptor}}" ng-hide="cselect=='1'" />
+                  <input type="text" class="form-control" name="debtor" size="5"  value="@{{sum(saletemp) -add_payment}}" ng-hide="cselect=='1'" />
                 
                    </div>
 </div>

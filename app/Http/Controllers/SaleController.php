@@ -27,7 +27,7 @@ class SaleController extends Controller {
 	public function index()
 	{
 		$sales = Sale::orderBy('id', 'desc')->first();
-		$customers = Customer::lists('name', 'id');
+		$customers = Customer::where('customer_type', '=', 1)->orwhere('customer_type', '=', 2)->lists('name', 'id','company_name');
 		return view('sale.index')
 			->with('sale', $sales)
 			->with('customer', $customers);
@@ -54,6 +54,7 @@ class SaleController extends Controller {
         $sales->customer_id = Input::get('customer_id');
         $sales->customer_temp = Input::get('customer_temp');
         $sales->user_id = Auth::user()->id;
+        $sales->sales_man = Input::get('sales_man');
         $sales->payment_type = Input::get('payment_type');
         $sales->comments = Input::get('comments');
         $sales->reserved = (Input::has('reserved')) ? true : false;
@@ -62,7 +63,7 @@ class SaleController extends Controller {
         $sales->amount_due = Input::get('amount_due');
         $sales->total = Input::get('total');
         $sales->creditor = Input::get('creditor');
-        $sales->deptor = Input::get('deptor');
+        $sales->debtor = Input::get('debtor');
         $sales->save();
         // process sale items
         $saleItems = SaleTemp::all();

@@ -2,12 +2,14 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Customer;
 use App\Receiving;
 use App\ReceivingTemp;
 use App\ReceivingItem;
 use App\Inventory;
 use App\Supplier;
 use App\Item;
+use App\Http\Requests\CustomerRequest;
 use App\Http\Requests\ReceivingRequest;
 use \Auth, \Redirect, \Validator, \Input, \Session;
 use Illuminate\Http\Request;
@@ -27,10 +29,10 @@ class ReceivingController extends Controller {
 	public function index()
 	{
 			$receivings = Receiving::orderBy('id', 'desc')->first();
-			$suppliers = Supplier::lists('company_name', 'id');
+			$customers = Customer::where('customer_type', '=', 1)->orwhere('customer_type', '=', 2)->lists('name', 'id','company_name');
 			return view('receiving.index')
 				->with('receiving', $receivings)
-				->with('supplier', $suppliers);
+				->with('customer', $customers);
 	}
 
 	/**
@@ -51,10 +53,18 @@ class ReceivingController extends Controller {
 	public function store(ReceivingRequest $request)
 	{
 		    $receivings = new Receiving;
-            $receivings->supplier_id = Input::get('supplier_id');
+            $receivings->customer_id = Input::get('customer_id');
             $receivings->user_id = Auth::user()->id;
             $receivings->payment_type = Input::get('payment_type');
             $receivings->comments = Input::get('comments');
+             $receivings->sales_man = Input::get('sales_man');
+        $receivings->reserved = (Input::has('reserved')) ? true : false;
+        $receivings->visacard = (Input::has('visa')) ? true : false;
+        $receivings->deposit = Input::get('deposit');
+        $receivings->amount_due = Input::get('amount_due');
+        $receivings->total = Input::get('total');
+        $receivings->creditor = Input::get('creditor');
+        $receivings->debtor = Input::get('debtor');
             $receivings->save();
             // process receiving items
             $receivingItems = ReceivingTemp::all();
@@ -64,7 +74,16 @@ class ReceivingController extends Controller {
 				$receivingItemsData->item_id = $value->item_id;
 				$receivingItemsData->cost_price = $value->cost_price;
 				$receivingItemsData->quantity = $value->quantity;
-				$receivingItemsData->total_cost = $value->total_cost;
+				
+			$receivingItemsData->quantity = $value->quantity;
+			$receivingItemsData->metres_w = $value->metres_w;
+			$receivingItemsData->metres_h = $value->metres_h;
+			$receivingItemsData->metres_square = $value->metres_square;
+			$receivingItemsData->totalmetres_square = $value->totalmetres_square;
+			$receivingItemsData->discount = $value->discount;
+			$receivingItemsData->total_prediscount = $value->total_prediscount;
+			$receivingItemsData->total_cost = $value->total_cost;
+			$receivingItemsData->total_selling = $value->total_selling;
 				$receivingItemsData->save();
 				//process inventory
 				$items = Item::find($value->item_id);
@@ -81,7 +100,7 @@ class ReceivingController extends Controller {
 			//delete all data on ReceivingTemp model
 			ReceivingTemp::truncate();
 			$itemsreceiving = ReceivingItem::where('receiving_id', $receivingItemsData->receiving_id)->get();
-            Session::flash('message', 'You have successfully added receivings');
+            Session::flash('message', 'تمت عملية الشراء بنجاح');
             //return Redirect::to('receivings');
             return view('receiving.complete')
             	->with('receivings', $receivings)

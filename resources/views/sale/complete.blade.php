@@ -53,7 +53,7 @@ table td {
 
           <tr>
               <td bgcolor="#E1E4E6" style="width:30%">{{trans('sale.employee')}}:</td> <td>{{$sales->user->name}}</td>
-
+<td bgcolor="#E1E4E6" style="width:30%">{{trans('sale.sales_man')}}:</td> <td>{{$sales->sales_man}}</td>
           </tr>
             </table>
             </td>
@@ -137,7 +137,7 @@ $total_credit= DB::table('sales')
 $total_debit= DB::table('sales')
 
 ->where('sales.customer_id', '=', $sales->customer->id)
-->sum('deptor');
+->sum('debtor');
 
 
 

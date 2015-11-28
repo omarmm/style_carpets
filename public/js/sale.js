@@ -21,6 +21,12 @@
 //customer default value نقدي
 $scope.cselect = '1';
 
+// $scope.set_color = function (creditor) {
+//   if (cselect > 0) {
+//     return { color: "red" }
+//   }
+// }
+
 // $scope.salecustomer = [ ];
 //  $scope.newcustomer = { };
 //   $http.get('api/customer').success(function(data, status, headers, config) {

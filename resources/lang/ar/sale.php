@@ -6,6 +6,7 @@ return [
 	'search_item' => 'بحث  بالإسم',
 	'invoice' => 'رقم الفاتورة',
 	'employee' => 'الموظف',
+	'sales_man' => 'البائع',
 	'payment_type' => 'طريقة الدفع',
 	'customer' => 'عميل دائم',
 	'customer_temp' => 'العميل',

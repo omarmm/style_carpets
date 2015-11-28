@@ -6,7 +6,7 @@ use App\Customer;
 use \Auth, \Redirect, \Validator, \Input, \Session, \Response;
 use Illuminate\Http\Request;
 
-class CustomersApiController extends Controller {
+class SuppliersApiController extends Controller {
 
 	public function __construct()
 	{
@@ -24,7 +24,7 @@ class CustomersApiController extends Controller {
 		//$itemkits = ItemKit::with('itemkititem')->get();
 		//$array = array_merge($items->toArray(), $itemkits->toArray());
 		//return Response::json($array);
-		return Response::json(Customer::where('customer_type', '=', 0)->orwhere('customer_type', '=', 2)->get());
+		return Response::json(Customer::where('customer_type', '=', 1)->orwhere('customer_type', '=', 2)->get());
 	}
 
 	/**

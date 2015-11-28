@@ -17,7 +17,8 @@ class CreateSalesTable extends Migration {
 			$table->increments('id');
 			$table->integer('customer_id')->unsigned()->nullable();
 			$table->foreign('customer_id')->references('id')->on('customers')->onDelete('restrict');
-			$table->string('customer_temp')->nullable();;
+			$table->string('sales_man')->nullable();
+			$table->string('customer_temp')->nullable();
 			$table->string('customertemp_phone')->nullable();
 			$table->integer('user_id')->unsigned();
 			$table->foreign('user_id')->references('id')->on('users')->onDelete('restrict');
@@ -29,7 +30,7 @@ class CreateSalesTable extends Migration {
 			$table->decimal('amount_due',9, 2);
 			$table->decimal('total',9, 2);
 			$table->decimal('creditor',9, 2);
-			$table->decimal('deptor',9, 2);
+			$table->decimal('debtor',9, 2);
 			$table->timestamps();
 		});
 	}

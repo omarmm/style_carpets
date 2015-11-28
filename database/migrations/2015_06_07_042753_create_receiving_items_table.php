@@ -21,7 +21,14 @@ class CreateReceivingItemsTable extends Migration {
 			$table->foreign('item_id')->references('id')->on('items')->onDelete('restrict');
 			$table->decimal('cost_price',9, 2);
 			$table->integer('quantity');
-			$table->decimal('total_cost',9, 2);
+			$table->decimal('metres_w',9, 2);
+            $table->decimal('metres_h',9, 2);
+            $table->decimal('metres_square',9, 2);
+            $table->decimal('totalmetres_square',9, 2);
+            $table->decimal('discount',9, 2)->default(0);
+			$table->decimal('total_cost',15, 2);
+			$table->decimal('total_prediscount',15, 2);
+			$table->decimal('total_selling',15, 2);
 			$table->timestamps();
 		});
 	}
