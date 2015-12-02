@@ -8,9 +8,9 @@ class Receiving extends Model {
     {
         return $this->belongsTo('App\User');
     }
-    public function supplier()
+    public function customer()
     {
-        return $this->belongsTo('App\Supplier');
+        return $this->belongsTo('App\Customer');
     }
 
 }

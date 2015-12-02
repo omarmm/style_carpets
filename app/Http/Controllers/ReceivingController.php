@@ -53,7 +53,8 @@ class ReceivingController extends Controller {
 	public function store(ReceivingRequest $request)
 	{
 		    $receivings = new Receiving;
-            $receivings->customer_id = Input::get('customer_id');
+            $receivings->customer_id = Input::get('supplier_id');
+            
             $receivings->user_id = Auth::user()->id;
             $receivings->payment_type = Input::get('payment_type');
             $receivings->comments = Input::get('comments');
@@ -75,7 +76,7 @@ class ReceivingController extends Controller {
 				$receivingItemsData->cost_price = $value->cost_price;
 				$receivingItemsData->quantity = $value->quantity;
 				
-			$receivingItemsData->quantity = $value->quantity;
+			
 			$receivingItemsData->metres_w = $value->metres_w;
 			$receivingItemsData->metres_h = $value->metres_h;
 			$receivingItemsData->metres_square = $value->metres_square;
@@ -83,6 +84,7 @@ class ReceivingController extends Controller {
 			$receivingItemsData->discount = $value->discount;
 			$receivingItemsData->total_prediscount = $value->total_prediscount;
 			$receivingItemsData->total_cost = $value->total_cost;
+			$receivingItemsData->selling_price = $value->selling_price;
 			$receivingItemsData->total_selling = $value->total_selling;
 				$receivingItemsData->save();
 				//process inventory
@@ -147,7 +149,7 @@ class ReceivingController extends Controller {
 			$inventories->quantity = Input::get('quantity');
 			$inventories->save();
 			
-            Session::flash('message', 'You have successfully add item');
+            Session::flash('message', 'تم إضافة صنف بنجاح');
             return Redirect::to('receivings');
 	}
 

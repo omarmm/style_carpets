@@ -7,6 +7,7 @@ use App\SaleTemp;
 use App\SaleItem;
 use App\Inventory;
 use App\Customer;
+use App\Transaction;
 use App\Item, App\ItemKitItem;
 use App\Http\Requests\SaleRequest;
 use \Auth, \Redirect, \Validator, \Input, \Session;
@@ -65,6 +66,28 @@ class SaleController extends Controller {
         $sales->creditor = Input::get('creditor');
         $sales->debtor = Input::get('debtor');
         $sales->save();
+
+
+     //process transaction
+
+			$transactions = new Transaction;
+		 		
+   	   	    $transactions->customer_id = $sales->customer_id;
+			$transactions->amount = $sales->deposit;
+			$transactions->remarks = 'عملية بيع'.$sales->id;
+			$transactions->debtor = $sales->debtor;
+			$transactions->creditor = $sales->creditor;
+			$transactions->save();
+
+
+//process customers transaction
+			$customers = Customer::find($sales->customer_id);
+	            $customers->sum_debtor= $customers->sum_debtor + $sales->debtor;
+	            $customers->sum_creditor= $customers->sum_creditor + $sales->creditor;
+	            $customers->save();
+
+
+
         // process sale items
         $saleItems = SaleTemp::all();
 		foreach ($saleItems as $value) {
@@ -83,6 +106,12 @@ class SaleController extends Controller {
 			$saleItemsData->total_cost = $value->total_cost;
 			$saleItemsData->total_selling = $value->total_selling;
 			$saleItemsData->save();
+
+
+     
+
+
+
 			//process inventory
 			$items = Item::find($value->item_id);
 			if($items->type == 1)

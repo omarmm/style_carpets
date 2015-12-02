@@ -3,6 +3,7 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Customer;
+use App\Transaction;
 use App\Http\Requests\CustomerRequest;
 use \Auth, \Redirect, \Validator, \Input, \Session;
 use Image;
@@ -77,6 +78,27 @@ class CustomerController extends Controller {
 				// 	$customerAvatar->avatar = $avatarName;
 		  //           $customerAvatar->save();
 	   //      	}
+
+
+
+ //process transaction
+
+          $transactions = new Transaction;
+		 		
+   	   	    $transactions->customer_id = $customers->id;
+			
+			$transactions->remarks = 'رصيد افتتاحي';
+			$transactions->debtor =  $customers->opening_debtor;
+			$transactions->creditor = $customers->opening_creditor;
+			$transactions->save();
+
+
+//process customers transaction
+			$customers = Customer::find($customers->id);
+	            $customers->sum_debtor= $customers->sum_debtor + $customers->opening_debtor;
+	            $customers->sum_creditor= $customers->sum_creditor + $customers->opening_creditor;
+	            $customers->save();
+
 	            Session::flash('message', 'تم إضافة عميل جديد بنجاح');
 	            return Redirect::to('customers');
 	        

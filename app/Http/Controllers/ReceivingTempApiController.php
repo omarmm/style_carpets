@@ -47,8 +47,16 @@ class ReceivingTempApiController extends Controller {
 			$ReceivingTemps = new ReceivingTemp;
 			$ReceivingTemps->item_id = Input::get('item_id');
 			$ReceivingTemps->cost_price = Input::get('cost_price');
-			$ReceivingTemps->total_cost = Input::get('total_cost');
+			$ReceivingTemps->selling_price = Input::get('selling_price');
+			// $ReceivingTemps->total_cost = Input::get('total_cost');
 			$ReceivingTemps->quantity = 1;
+			
+			$ReceivingTemps->metres_w= Input::get('metres_w');
+            $ReceivingTemps->metres_h= Input::get('metres_h');
+            $ReceivingTemps->metres_square= Input::get('metres_square');
+            $ReceivingTemps->totalmetres_square= Input::get('totalmetres_square');
+            $ReceivingTemps->total_prediscount = Input::get('total_prediscount');
+            $ReceivingTemps->total_selling = Input::get('total_selling');
 			$ReceivingTemps->save();
 			return $ReceivingTemps;
 		}
@@ -102,7 +110,16 @@ class ReceivingTempApiController extends Controller {
 	{
 		$ReceivingTemps = ReceivingTemp::find($id);
         $ReceivingTemps->quantity = Input::get('quantity');
+        $ReceivingTemps->metres_w= Input::get('metres_w');
+        $ReceivingTemps->metres_h= Input::get('metres_h');
+        $ReceivingTemps->metres_square= Input::get('metres_square');
+        $ReceivingTemps->totalmetres_square= Input::get('totalmetres_square');
+        $ReceivingTemps->discount= Input::get('discount');
+        $ReceivingTemps->total_prediscount = Input::get('total_prediscount');
         $ReceivingTemps->total_cost = Input::get('total_cost');
+        $ReceivingTemps->selling_price = Input::get('selling_price');
+        $ReceivingTemps->total_selling = Input::get('total_selling');
+        
         $ReceivingTemps->save();
         return $ReceivingTemps;
 	}

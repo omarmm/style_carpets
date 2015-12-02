@@ -20,6 +20,7 @@ class CreateReceivingItemsTable extends Migration {
 			$table->integer('item_id')->unsigned();
 			$table->foreign('item_id')->references('id')->on('items')->onDelete('restrict');
 			$table->decimal('cost_price',9, 2);
+			$table->decimal('selling_price',9, 2);
 			$table->integer('quantity');
 			$table->decimal('metres_w',9, 2);
             $table->decimal('metres_h',9, 2);

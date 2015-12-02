@@ -75,7 +75,11 @@ $scope.cselect = '1';
         });
         $scope.addSaleTemp = function(item, newsaletemp) {
         
-            $http.post('api/saletemp', { item_id: item.id, cost_price: item.cost_price, selling_price: item.selling_price , metres_w:item.metres_w , metres_h:item.metres_h }).
+            $http.post('api/saletemp', { item_id: item.id, cost_price: item.cost_price, selling_price: item.selling_price , metres_w:item.metres_w , metres_h:item.metres_h,
+             metres_square:item.metres_w * item.metres_h,totalmetres_square:   item.metres_w * item.metres_h , 
+
+             total_selling: (item.selling_price * item.metres_w * item.metres_h) ,
+             total_prediscount:(item.selling_price * item.metres_w * item.metres_h)}).
             success(function(data, status, headers, config) {
                 $scope.saletemp.push(data);
                     $http.get('api/saletemp').success(function(data) {
@@ -85,7 +89,9 @@ $scope.cselect = '1';
         }
         $scope.updateSaleTemp = function(newsaletemp) {
             
-            $http.put('api/saletemp/' + newsaletemp.id, { quantity: newsaletemp.quantity,  metres_w: newsaletemp.item.metres_w, metres_h: newsaletemp.item.metres_h,metres_square:newsaletemp.item.metres_w * newsaletemp.item.metres_h,totalmetres_square:  newsaletemp.quantity * newsaletemp.item.metres_w * newsaletemp.item.metres_h,  discount:newsaletemp.discount,  total_cost: (newsaletemp.item.cost_price * newsaletemp.quantity * newsaletemp.item.metres_w * newsaletemp.item.metres_h) - newsaletemp.discount,
+            $http.put('api/saletemp/' + newsaletemp.id, { quantity: newsaletemp.quantity,  metres_w: newsaletemp.item.metres_w, metres_h: newsaletemp.item.metres_h,
+                metres_square:newsaletemp.item.metres_w * newsaletemp.item.metres_h,totalmetres_square:  newsaletemp.quantity * newsaletemp.item.metres_w * newsaletemp.item.metres_h, selling_price: newsaletemp.item.selling_price,
+                  discount:newsaletemp.discount,  total_cost: (newsaletemp.item.cost_price * newsaletemp.quantity * newsaletemp.item.metres_w * newsaletemp.item.metres_h) - newsaletemp.discount,
                 total_prediscount: (newsaletemp.item.selling_price * newsaletemp.quantity * newsaletemp.item.metres_w * newsaletemp.item.metres_h) ,
                 total_selling: (newsaletemp.item.selling_price * newsaletemp.quantity * newsaletemp.item.metres_w * newsaletemp.item.metres_h) - newsaletemp.discount  }).
             success(function(data, status, headers, config) {

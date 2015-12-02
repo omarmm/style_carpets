@@ -242,9 +242,18 @@ $debtor= DB::table('customers')
                                             <p class="form-control-static">@{{add_payment - sum(saletemp) | currency:"L.E"}}</p>
                                             </div>
                                     </div>
-                          </div>
-</div>
-</div></div></div>
+                                          </div>
+                                                </div>
+                                                       </div>
+                                                               </div>
+
+
+
+
+
+
+<!-- close main col-md-9 -->
+</div>  
 
 
 

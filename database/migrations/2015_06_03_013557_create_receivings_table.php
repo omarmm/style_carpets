@@ -15,8 +15,8 @@ class CreateReceivingsTable extends Migration {
 		Schema::create('receivings', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->integer('supplier_id')->unsigned()->nullable();
-			$table->foreign('supplier_id')->references('id')->on('suppliers')->onDelete('restrict');
+			$table->integer('customer_id')->unsigned()->nullable();
+			$table->foreign('customer_id')->references('id')->on('customers')->onDelete('restrict');
 			$table->integer('user_id')->unsigned();
 			$table->foreign('user_id')->references('id')->on('users')->onDelete('restrict');
 			$table->string('sales_man')->nullable();
