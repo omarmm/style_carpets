@@ -78,13 +78,13 @@
 
     <label for="amount_due" class="col-sm-3 control-label" ng-hide="cselect=='1'" >دائن</label>
 <select name="supplier_id" id="cselect" ng-model="cselect" class="form-control form-control col-sm-8 col-md-offset-1" ng-hide="cselect=='1'">
-      <option ng-repeat="supplier in suppliers"  ng-style="set_color(creditor)" value="@{{supplier.id}}">@{{supplier.opening_creditor}}</option>
+      <option ng-repeat="supplier in suppliers"  ng-style="set_color(creditor)" value="@{{supplier.id}}">@{{supplier.sum_creditor}}</option>
     </select>
 
 
     <label for="amount_due" class="col-sm-3 control-label" ng-hide="cselect=='1'" >مدين</label>
     <select name="supplier_id" id="cselect" ng-model="cselect" class="form-control form-control col-sm-8 col-md-offset-1" ng-hide="cselect=='1'">
-      <option ng-repeat="supplier in suppliers" value="@{{supplier.id}}">@{{supplier.opening_debtor}}</option>
+      <option ng-repeat="supplier in suppliers" value="@{{supplier.id}}">@{{supplier.sum_debtor}}</option>
     </select>
 
 
@@ -200,23 +200,23 @@
 
          
                    <div class="input-group">
-                   <label for="amount_due" class="col-sm-4 control-label" ng-hide="cselect=='1'" >دائن</label>
-                   <div class="col-sm-8">
-                   <div class="input-group">
-                   <div class="input-group-addon" ng-hide="cselect=='1'">L.E</div>
-
-                  <input type="text" class="form-control" name="creditor"  size="5"  ng-model="add_payment" ng-hide="cselect=='1'" />
-                </div>
-                   </div>
-
-
-                   <div class="input-group">
                    <label for="amount_due" class="col-sm-4 control-label" ng-hide="cselect=='1'" >مدين</label>
                    <div class="col-sm-8">
                    <div class="input-group">
                    <div class="input-group-addon" ng-hide="cselect=='1'">L.E</div>
 
-                  <input type="text" class="form-control" name="debtor" size="5"  value="@{{sum(receivingtemp) -add_payment}}" ng-hide="cselect=='1'" />
+                  <input type="text" class="form-control" name="debtor"  size="5"  ng-model="add_payment" ng-hide="cselect=='1'" />
+                </div>
+                   </div>
+
+
+                   <div class="input-group">
+                   <label for="amount_due" class="col-sm-4 control-label" ng-hide="cselect=='1'" >دائن</label>
+                   <div class="col-sm-8">
+                   <div class="input-group">
+                   <div class="input-group-addon" ng-hide="cselect=='1'">L.E</div>
+
+                  <input type="text" class="form-control" name="creditor" size="5"  value="@{{sum(receivingtemp) -add_payment}}" ng-hide="cselect=='1'" />
                 
                    </div>
 </div>

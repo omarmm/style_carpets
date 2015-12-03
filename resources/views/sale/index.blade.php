@@ -105,13 +105,13 @@
 
     <label for="amount_due" class="col-sm-3 control-label" ng-hide="cselect=='1'" >دائن</label>
 <select name="customer_id" id="cselect" ng-model="cselect" class="form-control form-control col-sm-8 col-md-offset-1" ng-hide="cselect=='1'">
-      <option ng-repeat="customer in customers"  ng-style="set_color(creditor)" value="@{{customer.id}}">@{{customer.opening_creditor}}</option>
+      <option ng-repeat="customer in customers"  ng-style="set_color(creditor)" value="@{{customer.id}}">@{{customer.sum_creditor}}</option>
     </select>
 
 
     <label for="amount_due" class="col-sm-3 control-label" ng-hide="cselect=='1'" >مدين</label>
     <select name="customer_id" id="cselect" ng-model="cselect" class="form-control form-control col-sm-8 col-md-offset-1" ng-hide="cselect=='1'">
-      <option ng-repeat="customer in customers" value="@{{customer.id}}">@{{customer.opening_debtor}}</option>
+      <option ng-repeat="customer in customers" value="@{{customer.id}}">@{{customer.sum_debtor}}</option>
     </select>
 
 <!--   <select ng-model="cselect" value="@{{customer.id}}" ng-options="customer as customer.opening_creditor for customer in customers"> </select>

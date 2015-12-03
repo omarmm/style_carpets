@@ -3,6 +3,7 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Customer;
+use App\Transaction;
 use App\Receiving;
 use App\ReceivingTemp;
 use App\ReceivingItem;
@@ -67,6 +68,28 @@ class ReceivingController extends Controller {
         $receivings->creditor = Input::get('creditor');
         $receivings->debtor = Input::get('debtor');
             $receivings->save();
+
+
+ //process transaction
+
+			$transactions = new Transaction;
+		 		
+   	   	    $transactions->customer_id = $receivings->customer_id;
+			$transactions->amount = $receivings->deposit;
+			$transactions->remarks = 'عملية شراء'.$receivings->id;
+			$transactions->debtor = $receivings->debtor;
+			$transactions->creditor = $receivings->creditor;
+			$transactions->save();
+
+
+//process customers transaction
+			$customers = Customer::find($receivings->customer_id);
+	            $customers->sum_debtor= $customers->sum_debtor + $receivings->debtor;
+	            $customers->sum_creditor= $customers->sum_creditor + $receivings->creditor;
+	            $customers->save();
+
+
+
             // process receiving items
             $receivingItems = ReceivingTemp::all();
 			foreach ($receivingItems as $value) {
