@@ -13,7 +13,10 @@
 Route::group(['middleware' => 'languange'], function()
 {
 	Route::get('/', 'HomeController@index');
-
+//Date picker example
+Route::get('example', function () {
+   return view('example');
+});
 	Route::get('home', 'HomeController@index');
 
 	// Authentication routes...
@@ -38,6 +41,11 @@ Route::group(['middleware' => 'languange'], function()
 	Route::resource('receiving-item', 'ReceivingItemController');
 	Route::resource('sales', 'SaleController');
 
+//     Route::get('report/daily', function () {
+//    return view('report.daily');
+// });
+
+	Route::resource('reports/daily', 'TransactionController');
 	Route::resource('reports/receivings', 'ReceivingReportController');
 	Route::resource('reports/sales', 'SaleReportController');
 	Route::resource('reports/reserved', 'ReservedReportController');

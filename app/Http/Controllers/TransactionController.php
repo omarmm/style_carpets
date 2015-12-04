@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Customer;
 use App\Http\Requests;
+use App\Transaction;
 use App\Http\Controllers\Controller;
 use \Auth, \Redirect, \Validator, \Input, \Session;
 class TransactionController extends Controller
@@ -17,6 +18,12 @@ class TransactionController extends Controller
     public function index()
     {
         //
+   
+   $transactions = Transaction::all();
+            return view('report.daily')->with('transaction', $transactions);
+
+
+
     }
 
     /**

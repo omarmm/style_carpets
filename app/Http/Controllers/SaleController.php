@@ -74,9 +74,11 @@ class SaleController extends Controller {
 		 		
    	   	    $transactions->customer_id = $sales->customer_id;
 			$transactions->amount = $sales->deposit;
-			$transactions->remarks = 'عملية بيع'.$sales->id;
+			$transactions->remarks = 'مبيعات';
+			$transactions->invoice_id=$sales->id;
 			$transactions->debtor = $sales->debtor;
 			$transactions->creditor = $sales->creditor;
+			$transactions->total = $sales->total;
 			$transactions->save();
 
 

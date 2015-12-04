@@ -21,7 +21,7 @@ class SaleReportController extends Controller {
 	public function index()
 	{
 			$salesReport = Sale::where('reserved',0) 
-			->where('deptor', '<=', 0)->get();
+			->where('debtor', '<=', 0)->get();
 			return view('report.sale')->with('saleReport', $salesReport);
 	}
 

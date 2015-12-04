@@ -76,9 +76,11 @@ class ReceivingController extends Controller {
 		 		
    	   	    $transactions->customer_id = $receivings->customer_id;
 			$transactions->amount = $receivings->deposit;
-			$transactions->remarks = 'عملية شراء'.$receivings->id;
+			$transactions->remarks = 'مشتريات';
+			$transactions->invoice_id=$receivings->id;
 			$transactions->debtor = $receivings->debtor;
 			$transactions->creditor = $receivings->creditor;
+			$transactions->total = $receivings->total;
 			$transactions->save();
 
 

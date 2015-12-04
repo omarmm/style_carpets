@@ -24,7 +24,10 @@ class CreateTransactionsTable extends Migration
             $table->decimal('amount',15, 2);
             $table->decimal('debtor',15, 2);
             $table->decimal('creditor',15, 2);
+            $table->decimal('total',15, 2);
             $table->string('remarks', 255);
+            $table->integer('invoice_id');
+            $table->string('branch', 255);
             $table->timestamps();
         });
 
