@@ -17,6 +17,21 @@ Route::group(['middleware' => 'languange'], function()
 Route::get('example', function () {
    return view('example');
 });
+
+
+
+
+Route::get('example2', function () {
+   return view('example2');
+});
+
+Route::post('example2', function () {
+   return view('example2');
+});
+
+
+
+
 	Route::get('home', 'HomeController@index');
 
 	// Authentication routes...
@@ -45,7 +60,8 @@ Route::get('example', function () {
 //    return view('report.daily');
 // });
 
-	Route::resource('reports/daily', 'TransactionController');
+	Route::get('reports/daily', 'TransactionController@index');
+	Route::post('reports/daily', 'TransactionController@filter');
 	Route::resource('reports/receivings', 'ReceivingReportController');
 	Route::resource('reports/sales', 'SaleReportController');
 	Route::resource('reports/reserved', 'ReservedReportController');

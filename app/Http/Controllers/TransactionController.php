@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Transaction;
 use App\Http\Controllers\Controller;
 use \Auth, \Redirect, \Validator, \Input, \Session;
+use Carbon\Carbon ;
 class TransactionController extends Controller
 {
     /**
@@ -19,10 +20,34 @@ class TransactionController extends Controller
     {
         //
    
-   $transactions = Transaction::all();
+$date1 = Carbon::today();
+$date2 = Carbon::now()->addDay();
+ // $date1 = Carbon::parse($date1);
+ // $date2 = Carbon::parse($date2);
+// dd($date1);
+   $transactions = Transaction::whereBetween('created_at', [$date1, $date2])->get();
             return view('report.daily')->with('transaction', $transactions);
+   // $transactions = Transaction::all();
+   //          return view('report.daily')->with('transaction', $transactions);
 
 
+
+    }
+
+
+    public function filter()
+    {
+        //
+
+
+   $date1 = Input::get('date1');
+$date2 = Input::get('date2');
+
+  $date1 = Carbon::parse($date1);
+  $date2 = Carbon::parse($date2);
+
+ $transactions = Transaction::whereBetween('created_at', [$date1, $date2])->get();
+            return view('report.daily')->with('transaction', $transactions);
 
     }
 

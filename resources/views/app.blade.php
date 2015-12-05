@@ -5,6 +5,16 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>بيت السجاد ستايل</title>
+<!-- bower:css -->
+   <!-- <link rel="stylesheet" href="/daterangepicker/lib/bootstrap/dist/css/bootstrap.css" /> -->
+    <!-- <link rel="stylesheet" href="/daterangepicker/lib/bootstrap-daterangepicker/daterangepicker.css" /> -->
+    <!-- endbower -->
+
+
+<!-- datepicker -->
+    
+    <link href="{{ asset('/datepicker/css/bootstrap-datetimepicker.min.css') }}" rel="stylesheet" media="screen">
+<!-- datepicker -->
 
 	<link href="{{ asset('/css/app.css') }}" rel="stylesheet">
 	<link href="{{ asset('/css/footer.css') }}" rel="stylesheet">
@@ -33,10 +43,10 @@
         <!-- jvectormap -->
         <link href="{{ asset('/plugins/jvectormap/jquery-jvectormap-1.2.2.css') }}" rel="stylesheet" type="text/css" />
         <!-- Date Picker -->
-        <link href="{{ asset('/plugins/datepicker/datepicker3.css') }}" rel="stylesheet" type="text/css" />
-        <!-- Daterange picker -->
-        <link href="{{ asset('/plugins/daterangepicker/daterangepicker-bs3.css') }}" rel="stylesheet" type="text/css" />
-        <!-- bootstrap wysihtml5 - text editor -->
+<!--         <link href="{{ asset('/plugins/datepicker/datepicker3.css') }}" rel="stylesheet" type="text/css" />
+ -->        <!-- Daterange picker -->
+<!--         <link href="{{ asset('/plugins/daterangepicker/daterangepicker-bs3.css') }}" rel="stylesheet" type="text/css" />
+ -->        <!-- bootstrap wysihtml5 - text editor -->
         <link href="{{ asset('/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css') }}" rel="stylesheet" type="text/css" />
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -47,6 +57,27 @@
 
 </head>
 <body>
+<!-- datepicker -->
+{!!Html::script('datepicker/jquery/jquery-1.8.3.min.js')!!}
+{!!Html::script('datepicker/bootstrap/js/bootstrap.min.js')!!}
+{!!Html::script('datepicker/js/bootstrap-datetimepicker.js')!!}
+{!!Html::script('datepicker/js/locales/bootstrap-datetimepicker.ar.js')!!}
+
+<!-- datepicker -->
+
+<!-- bower:js -->
+  <!--  <script src="/daterangepicker/lib/jquery/dist/jquery.js"></script>
+    <script src="/daterangepicker/lib/angular/angular.js"></script>
+    <script src="/daterangepicker/lib/angular-messages/angular-messages.js"></script>
+    <script src="/daterangepicker/lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="/daterangepicker/lib/moment/moment.js"></script>
+    <script src="/daterangepicker/lib/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <script type="text/javascript" src="/daterangepicker/lib/moment/locale/en.js" charset="UTF-8"></script> -->
+    <!-- endbower -->
+
+   <!-- <script src="/daterangepicker/js/angular-daterangepicker.js"></script>-->
+
+
 <header class="main-header">
  
 	<!-- <nav class="navbar navbar-default"> -->
