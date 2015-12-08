@@ -75,17 +75,18 @@
       <option ng-repeat="supplier in suppliers" value="@{{supplier.id}}">@{{supplier.name}}</option>
     </select>
 
+ <label for="amount_due" class="col-sm-3 control-label" ng-hide="cselect=='1'" >مدين</label>
+    <select name="supplier_id" id="cselect" ng-model="cselect" class="form-control form-control col-sm-8 col-md-offset-1" ng-hide="cselect=='1'">
+      <option ng-repeat="supplier in suppliers" value="@{{supplier.id}}">@{{supplier.net_debtor}}</option>
+    </select>
 
     <label for="amount_due" class="col-sm-3 control-label" ng-hide="cselect=='1'" >دائن</label>
 <select name="supplier_id" id="cselect" ng-model="cselect" class="form-control form-control col-sm-8 col-md-offset-1" ng-hide="cselect=='1'">
-      <option ng-repeat="supplier in suppliers"  ng-style="set_color(creditor)" value="@{{supplier.id}}">@{{supplier.sum_creditor}}</option>
+      <option ng-repeat="supplier in suppliers"  ng-style="set_color(creditor)" value="@{{supplier.id}}">@{{supplier.net_creditor}}</option>
     </select>
 
 
-    <label for="amount_due" class="col-sm-3 control-label" ng-hide="cselect=='1'" >مدين</label>
-    <select name="supplier_id" id="cselect" ng-model="cselect" class="form-control form-control col-sm-8 col-md-offset-1" ng-hide="cselect=='1'">
-      <option ng-repeat="supplier in suppliers" value="@{{supplier.id}}">@{{supplier.sum_debtor}}</option>
-    </select>
+   
 
 
 
@@ -205,7 +206,7 @@
                    <div class="input-group">
                    <div class="input-group-addon" ng-hide="cselect=='1'">L.E</div>
 
-                  <input type="text" class="form-control" name="debtor"  size="5"  ng-model="add_payment" ng-hide="cselect=='1'" />
+                  <input type="text" class="form-control" name="debtor"  size="5"  value="0" ng-hide="cselect=='1'" />
                 </div>
                    </div>
 

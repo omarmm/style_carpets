@@ -88,6 +88,16 @@ class ReceivingController extends Controller {
 			$customers = Customer::find($receivings->customer_id);
 	            $customers->sum_debtor= $customers->sum_debtor + $receivings->debtor;
 	            $customers->sum_creditor= $customers->sum_creditor + $receivings->creditor;
+
+	            $customers->net_debtor= $customers->sum_debtor - $customers->sum_creditor;
+	            $customers->net_creditor= $customers->sum_creditor - $customers->sum_debtor;
+                
+                if($customers->net_creditor<0)
+	            	$customers->net_creditor=0;
+	            else
+                   $customers->net_debtor=0;
+
+
 	            $customers->save();
 
 

@@ -62,6 +62,10 @@ Route::post('example2', function () {
 
 	Route::get('reports/daily', 'TransactionController@index');
 	Route::post('reports/daily', 'TransactionController@filter');
+
+Route::get('reports/customer', 'TransactionController@customer');
+	Route::post('reports/customer', 'TransactionController@filterCustomer');
+
 	Route::resource('reports/receivings', 'ReceivingReportController');
 	Route::resource('reports/sales', 'SaleReportController');
 	Route::resource('reports/reserved', 'ReservedReportController');

@@ -105,13 +105,13 @@
 
     <label for="amount_due" class="col-sm-3 control-label" ng-hide="cselect=='1'" >دائن</label>
 <select name="customer_id" id="cselect" ng-model="cselect" class="form-control form-control col-sm-8 col-md-offset-1" ng-hide="cselect=='1'">
-      <option ng-repeat="customer in customers"  ng-style="set_color(creditor)" value="@{{customer.id}}">@{{customer.sum_creditor}}</option>
+      <option ng-repeat="customer in customers"  ng-style="set_color(creditor)" value="@{{customer.id}}">@{{customer.net_creditor}}</option>
     </select>
 
 
     <label for="amount_due" class="col-sm-3 control-label" ng-hide="cselect=='1'" >مدين</label>
     <select name="customer_id" id="cselect" ng-model="cselect" class="form-control form-control col-sm-8 col-md-offset-1" ng-hide="cselect=='1'">
-      <option ng-repeat="customer in customers" value="@{{customer.id}}">@{{customer.sum_debtor}}</option>
+      <option ng-repeat="customer in customers" value="@{{customer.id}}">@{{customer.net_debtor}}</option>
     </select>
 
 <!--   <select ng-model="cselect" value="@{{customer.id}}" ng-options="customer as customer.opening_creditor for customer in customers"> </select>
@@ -167,7 +167,7 @@ $debtor= DB::table('customers')
                                        
                             
                         </div>
-                           
+                           <div class="table-responsive">
                         <table class="table table-hover table-bordered table-striped">
                             <tr class="info"><th>{{trans('sale.item_id')}}</th><th>{{trans('sale.item_name')}}</th><th>{{trans('sale.price')}}</th><th>{{trans('sale.quantity')}}</th><th>{{trans('item.metres_w')}}</th><th>{{trans('item.metres_h')}}</th><th>{{trans('sale.metres_square')}}</th>
                             <th>{{trans('sale.totalmetres_square')}}</th><th>{{'الخصم نقدي'}}</th><th>{{'إجمالي السعر قبل الخصم'}}</th><th>{{trans('sale.total')}}</th><th>&nbsp;</th></tr>
@@ -195,7 +195,8 @@ $debtor= DB::table('customers')
                             <td><button class="btn btn-danger btn-xs" type="button" ng-click="removeSaleTemp(newsaletemp.id)"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button></td>
                             </tr>
                         </table>
-
+</div> 
+<!-- responsive table class end -->
                         <div class="row well well-small">
                         <div class="box box-success">
                                 <div class="col-md-6">
@@ -275,7 +276,7 @@ $debtor= DB::table('customers')
                    <div class="input-group">
                    <div class="input-group-addon" ng-hide="cselect=='1'">L.E</div>
 
-                  <input type="text" class="form-control" name="creditor"  size="5"  ng-model="add_payment" ng-hide="cselect=='1'" />
+                  <input type="text" class="form-control" name="creditor"  size="5"  value="0" ng-hide="cselect=='1'" />
                 </div>
                    </div>
 

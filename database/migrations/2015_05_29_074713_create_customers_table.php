@@ -31,6 +31,8 @@ class CreateCustomersTable extends Migration {
 			$table->decimal('opening_creditor',15, 2);
 			$table->decimal('sum_debtor',15, 2);
 			$table->decimal('sum_creditor',15, 2);
+			$table->decimal('net_debtor',15, 2);
+			$table->decimal('net_creditor',15, 2);
 			$table->decimal('c/d',15, 2);
 			$table->timestamps();
 		});

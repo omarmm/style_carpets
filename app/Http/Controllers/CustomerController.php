@@ -97,6 +97,15 @@ class CustomerController extends Controller {
 			$customers = Customer::find($customers->id);
 	            $customers->sum_debtor= $customers->sum_debtor + $customers->opening_debtor;
 	            $customers->sum_creditor= $customers->sum_creditor + $customers->opening_creditor;
+
+	            $customers->net_debtor= $customers->sum_debtor - $customers->opening_creditor;
+	            $customers->net_creditor= $customers->sum_creditor - $customers->opening_debtor;
+	            
+                if($customers->net_creditor<0)
+	            	$customers->net_creditor=0;
+	            else
+                   $customers->net_debtor=0;
+
 	            $customers->save();
 
 	            Session::flash('message', 'تم إضافة عميل جديد بنجاح');
