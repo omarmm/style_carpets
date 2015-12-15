@@ -26,6 +26,7 @@ class CreateReceivingItemsTable extends Migration {
             $table->decimal('metres_h',9, 2);
             $table->decimal('metres_square',9, 2);
             $table->decimal('totalmetres_square',9, 2);
+            $table->decimal('totalmetres_h',9, 2);
             $table->decimal('discount',9, 2)->default(0);
 			$table->decimal('total_cost',15, 2);
 			$table->decimal('total_prediscount',15, 2);

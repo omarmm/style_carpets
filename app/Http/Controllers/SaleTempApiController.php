@@ -52,6 +52,7 @@ class SaleTempApiController extends Controller {
          $SaleTemps->metres_w= Input::get('metres_w');
          $SaleTemps->metres_h= Input::get('metres_h');
          $SaleTemps->metres_square= Input::get('metres_square');
+        $SaleTemps->totalmetres_h= Input::get('totalmetres_h');
         $SaleTemps->totalmetres_square= Input::get('totalmetres_square');
         $SaleTemps->total_prediscount = Input::get('total_prediscount');
         // $SaleTemps->discount= Input::get('discount');
@@ -98,6 +99,7 @@ class SaleTempApiController extends Controller {
         $SaleTemps->metres_h= Input::get('metres_h');
         $SaleTemps->metres_square= Input::get('metres_square');
         $SaleTemps->totalmetres_square= Input::get('totalmetres_square');
+        $SaleTemps->totalmetres_h= Input::get('totalmetres_h');
         $SaleTemps->discount= Input::get('discount');
         $SaleTemps->total_prediscount = Input::get('total_prediscount');
         $SaleTemps->total_cost = Input::get('total_cost');

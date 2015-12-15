@@ -56,6 +56,8 @@ class SaleController extends Controller {
         $sales->customer_temp = Input::get('customer_temp');
         $sales->user_id = Auth::user()->id;
         $sales->sales_man = Input::get('sales_man');
+        $sales->branch = Input::get('branch');
+        $sales->store = Input::get('store');
         $sales->payment_type = Input::get('payment_type');
         $sales->comments = Input::get('comments');
         $sales->reserved = (Input::has('reserved')) ? true : false;
@@ -112,6 +114,7 @@ class SaleController extends Controller {
 			$saleItemsData->metres_h = $value->metres_h;
 			$saleItemsData->metres_square = $value->metres_square;
 			$saleItemsData->totalmetres_square = $value->totalmetres_square;
+			$saleItemsData->totalmetres_h = $value->totalmetres_h;
 			$saleItemsData->discount = $value->discount;
 			$saleItemsData->total_prediscount = $value->total_prediscount;
 			$saleItemsData->total_cost = $value->total_cost;
@@ -130,11 +133,19 @@ class SaleController extends Controller {
 				$inventories = new Inventory;
 				$inventories->item_id = $value->item_id;
 				$inventories->user_id = Auth::user()->id;
+                $inventories->totalmetres_square = $saleItemsData->totalmetres_square;
+                $inventories->totalmetres_h = $saleItemsData->metres_h * $saleItemsData->quantity;
 				$inventories->in_out_qty = -($value->quantity);
-				$inventories->remarks = 'SALE'.$sales->id;
+				$inventories->remarks = 'مبيعات';
+				$inventories->invoice_id = $sales->id;
+				$inventories->branch = $sales->branch;
+                $inventories->store = $sales->store;
+
 				$inventories->save();
 				//process item quantity
 	            $items->quantity = $items->quantity - $value->quantity;
+	            $items->totalmetres_square = $items->totalmetres_square - $value->totalmetres_square;
+	            $items->totalmetres_h = $items->totalmetres_h - $value->totalmetres_h;
 	            $items->save();
         	}
         	else
@@ -159,11 +170,13 @@ class SaleController extends Controller {
 		SaleTemp::truncate();
         $itemssale = SaleItem::where('sale_id', $saleItemsData->sale_id)->get();
             Session::flash('message', 'تمت عملية البيع بنجاح');
+            $customers = Customer::find($sales->customer_id);
             //return Redirect::to('receivings');
             return view('sale.complete')
             	->with('sales', $sales)
             	->with('saleItemsData', $saleItemsData)
-            	->with('saleItems', $itemssale);
+            	->with('saleItems', $itemssale)
+            	->with('customer', $customers);
 
 	}
 

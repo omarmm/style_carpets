@@ -84,17 +84,17 @@
 					{!! Form::text('item_category', Input::old('item_category'), array('class' => 'form-control')) !!}
 					</div> -->
 
-					<div class="form-group">
+					<!-- <div class="form-group">
 					<div class="col-md-12">
 					{!! Form::label('description', trans('item.description')) !!}</div>
 					{!! Form::textarea('description', Input::old('description'), array('class' => 'form-control')) !!}
-					</div>
+					</div> -->
 					
-
+<!-- 
 					<div class="form-group">
 					{!! Form::label('avatar', trans('item.choose_avatar')) !!}
 					{!! Form::file('avatar', Input::old('avatar'), array('class' => 'form-control')) !!}
-					</div>
+					</div> -->
 
 					<div class="form-group">
 					{!! Form::label('cost_price', trans('item.cost_price').' *') !!}
@@ -107,15 +107,20 @@
 					</div>
 
 					<div class="form-group">
-					{!! Form::label('quantity', trans('item.quantity')) !!}
-					{!! Form::text('quantity', Input::old('quantity'), array('class' => 'form-control')) !!}
+					{!! Form::label('quantity', trans('item.quantity'),['ng-hide' => 'type==3']) !!}
+					{!! Form::text('quantity', Input::old('quantity'), array('class' => 'form-control' ,'ng-hide' => 'type==3')) !!}
+					</div>
+
+					<div class="form-group">
+					{!! Form::label('totalmetres_h', trans('إجمال المتر الطولي').' *' , ['ng-show' => 'type==3']) !!}
+					{!! Form::text('totalmetres_h', Input::old('totalmetres_h'), array('class' => 'form-control' ,'ng-show' => 'type==3')) !!}
 					</div>
 
 
-                   <div class="form-group">
+                  <!--  <div class="form-group">
 					{!! Form::label('opening_balance', 'الرصيد الإفتتاحي' )!!}
 					{!! Form::text('opening_balance', Input::old('opening_balance'), array('class' => 'form-control')) !!}
-					</div>
+					</div> -->
 
 
 					{!! Form::submit(trans('item.submit'), array('class' => 'btn btn-primary')) !!}

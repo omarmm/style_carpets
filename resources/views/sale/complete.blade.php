@@ -82,7 +82,7 @@ table td {
                     <td>{{$value->selling_price}}</td>
                     <td>{{$value->quantity}}</td>
 
-                    @if ($value->metres_w > 0 || $value->metres_h >0)
+                    @if ($value->metres_w !=1  && $value->metres_h !=1)
                     <td>{{$value->metres_w}}</td> 
                     <td>{{$value->metres_h}}</td> 
                     <td>{{$value->metres_square}}</td>
@@ -113,7 +113,7 @@ table td {
 
             </tr>
            <tr>
-            <td>{{$saleItemsData->total_prediscount}}</td>
+            <td>{{DB::table('sale_items')->where('sale_id', '=', $sales->id)->sum('total_prediscount')}}</td>
             <td>{{DB::table('sale_items')->where('sale_id', '=', $sales->id)->sum('discount')}}</td>
             <td>{{$sales->total}}</td>
             <td>{{$sales->deposit}}</td>
@@ -150,8 +150,8 @@ $total_debit= DB::table('sales')
             <tr>
 
  <td bgcolor="#E1E4E6" style="width:40%">صافي حساب العميل عند طباعة الفاتورة</td>
-            <td bgcolor="#E1E4E6" style="width:10%">{{'دائن'}}:</td><td>{{$total_credit}}</td>
- <td bgcolor="#E1E4E6" style="width:10%">{{'مدين'}}:</td><td>{{$total_debit}}</td>
+            <td bgcolor="#E1E4E6" style="width:10%">{{'دائن'}}:</td><td>{{$customer->net_creditor}}</td>
+ <td bgcolor="#E1E4E6" style="width:10%">{{'مدين'}}:</td><td>{{$customer->net_debtor}}</td>
             </tr>
             
 </table>

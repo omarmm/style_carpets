@@ -24,7 +24,11 @@ class SaleRequest extends Request
     public function rules()
     {
         return [
-            'customer_id' => 'required'
+            'customer_id' => 'required',
+            'deposit'     => 'required',
+
+            'branch'      => 'required',
+            'store'       => 'required',
         ];
     }
 }

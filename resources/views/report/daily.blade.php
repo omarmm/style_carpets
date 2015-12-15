@@ -90,7 +90,7 @@
             <td>{{ $value->created_at }}</td>
             <td>{{ $value->remarks }}</td>
             <td>{{ $value->invoice_id }}</td>
-            <td>&nbsp;</td>
+            <td>{{$value->branch}}</td>
             <td>{{ $value->total }}</td>
             @if($value->remarks=='مشتريات')
             <td>{{'0.0'}}</td>

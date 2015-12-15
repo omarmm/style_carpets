@@ -23,6 +23,7 @@ class CreateReceivingsTable extends Migration {
 			$table->string('payment_type', 15)->nullable();
 			$table->string('comments', 255)->nullable();
 			$table->string('branch', 255);
+			$table->string('store', 255);
 			$table->boolean('reserved')->default(0);
 			$table->boolean('visacard')->default(0);
 			$table->decimal('deposit',9, 2);

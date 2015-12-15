@@ -12,62 +12,106 @@
 
 					{!! Form::model($item, array('route' => array('items.update', $item->id), 'method' => 'PUT', 'files' => true)) !!}
 
-					<!-- <div class="form-group">
-					{!! Form::label('upc_ean_isbn', trans('item.upc_ean_isbn')) !!}
-					{!! Form::text('upc_ean_isbn', null, array('class' => 'form-control')) !!}
-					</div> --><div class="form-group">
-					{!! Form::label('item_code', trans('item.item_code')) !!}
-					{!! Form::text('item_code', null, array('class' => 'form-control')) !!}
-					</div>
+					
 
 					<div class="form-group">
-					{!! Form::label('item_name', trans('item.item_name')) !!}
+					{!! Form::label('item_name', trans('item.item_name').' *') !!}
 					{!! Form::text('item_name', null, array('class' => 'form-control')) !!}
 					</div>
 
-					<div class="form-group">
-					{!! Form::label('size', trans('item.size')) !!}
-					{!! Form::text('size', null, array('class' => 'form-control')) !!}
-					</div>
 
-					<div class="form-group">
-					{!! Form::label('description', trans('item.description')) !!}
-					{!! Form::text('description', null, array('class' => 'form-control')) !!}
-					</div>
 
+                  
                   <div class="form-group">
+                         <label for="payment_type" class="control-label">{{trans('item.item_type')}}</label>
+                          
+            {!! Form::select('item_type', array('1' => 'بالقطعة', '2' => 'سجادة (طول*عرض)', '3' => 'رول'), null, ['ng-model' => 'type'], array('class' => 'form-control')) !!}
+                            
+                          </div>
+                           
+       <div class="box box-success" >
 
-              {!! Form::label('item_type', trans('item.item_type')) !!}
-                <br><br>
-                {!! Form::radio('item_type', 'بالقطعة') !!}
-                 {!! Form::label('item_type', 'بالقطعة') !!}<br>
-                {!! Form::radio('item_type', 'سجادة (طول*عرض') !!}
-                 {!! Form::label('item_type', 'سجادة (طول*عرض)') !!}<br>
-                {!! Form::radio('item_type', 'رول (الحجم)') !!}
-                {!! Form::label('item_type', 'رول (الحجم)') !!}
+
+
+       <!-- width * height  type -->
+        <div class="col-md-12 well well-small">
+
+ <div class="col-md-5 col-md-offset-1 success">
+					<div class="form-group" >
+					{!! Form::label('metres_w', trans('item.metres_w'),['ng-hide' => 'type==1']) !!}
+					{!! Form::text('metres_w',null, ['ng-hide' => 'type==1', 'size'=>'3','style'=>'text-align:center']) !!}
+					</div>
+</div>
+<div class="col-md-6">
+					<div class="form-group">
+					{!! Form::label('metres_h', trans('item.metres_h'),['ng-show' => 'type==2']) !!}
+					{!! Form::text('metres_h', null,['ng-show' => 'type==2', 'size'=>'3','style'=>'text-align:center']) !!}
+					</div>
+					</div>
+
+
+
+
+ <!-- roll  type -->
+ <!-- <div class="col-md-5 col-md-offset-1 success">
+					<div class="form-group" >
+					{!! Form::label('metres_w', trans('item.metres_w'),['ng-show' => 'type==3']) !!}
+					{!! Form::text('metres_w', Input::old('metres_w'), ['ng-show' => 'type==3', 'size'=>'3','style'=>'text-align:center']) !!}
+					</div>
 
 </div>
+ -->
+
+</div>
+</div>
+
+<br>
 
 
+					<!-- <div class="form-group">
+					{!! Form::label('item_category', 'تصنيف الصنف') !!}
+					{!! Form::text('item_category', Input::old('item_category'), array('class' => 'form-control')) !!}
+					</div> -->
+
+					<!-- <div class="form-group">
+					<div class="col-md-12">
+					{!! Form::label('description', trans('item.description')) !!}</div>
+					{!! Form::textarea('description', Input::old('description'), array('class' => 'form-control')) !!}
+					</div> -->
+					
+<!-- 
 					<div class="form-group">
 					{!! Form::label('avatar', trans('item.choose_avatar')) !!}
-					{!! Form::file('avatar', null, array('class' => 'form-control')) !!}
-					</div>
+					{!! Form::file('avatar', Input::old('avatar'), array('class' => 'form-control')) !!}
+					</div> -->
 
 					<div class="form-group">
-					{!! Form::label('cost_price', trans('item.cost_price')) !!}
+					{!! Form::label('cost_price', trans('item.cost_price').' *') !!}
 					{!! Form::text('cost_price', null, array('class' => 'form-control')) !!}
 					</div>
 
 					<div class="form-group">
-					{!! Form::label('selling_price', trans('item.selling_price')) !!}
+					{!! Form::label('selling_price', trans('item.selling_price').' *') !!}
 					{!! Form::text('selling_price', null, array('class' => 'form-control')) !!}
 					</div>
 
 					<div class="form-group">
-					{!! Form::label('quantity', trans('item.quantity')) !!}
-					{!! Form::text('quantity', null, array('class' => 'form-control')) !!}
+					{!! Form::label('quantity', trans('item.quantity'),['ng-hide' => 'type==3']) !!}
+					{!! Form::text('quantity', null, array('class' => 'form-control' ,'ng-hide' => 'type==3')) !!}
 					</div>
+
+					<div class="form-group">
+					{!! Form::label('totalmetres_h', trans('إجمال المتر الطولي').' *' , ['ng-show' => 'type==3']) !!}
+					{!! Form::text('totalmetres_h', null, array('class' => 'form-control' ,'ng-show' => 'type==3')) !!}
+					</div>
+
+
+
+                   <!-- <div class="form-group">
+					{!! Form::label('opening_balance', 'الرصيد الإفتتاحي' )!!}
+					{!! Form::text('opening_balance', null, array('class' => 'form-control')) !!}
+					</div> -->
+
 
 					{!! Form::submit(trans('item.submit'), array('class' => 'btn btn-primary')) !!}
 

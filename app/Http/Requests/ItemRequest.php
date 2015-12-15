@@ -22,7 +22,7 @@ class ItemRequest extends Request {
 	public function rules()
 	{
 		return [
-			'item_name' => 'required',
+			'item_name' => 'required|unique:items',
 			'cost_price' => 'required',
 			'selling_price' => 'required',
 			'avatar' => 'mimes:jpeg,bmp,png'

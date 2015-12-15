@@ -167,8 +167,8 @@ class CustomerController extends Controller {
 	            // $customers->zip = Input::get('zip');
 	            $customers->company_name = Input::get('company_name');
 	            $customers->account = Input::get('account');
-	            $customers->debtor = Input::get('opening_debtor');
-	            $customers->creditor = Input::get('opening_creditor');
+	            $customers->opening_debtor = Input::get('opening_debtor');
+	            $customers->opening_creditor = Input::get('opening_creditor');
 	            $customers->save();
 	            // process avatar
 	   //          $image = $request->file('avatar');

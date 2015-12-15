@@ -24,7 +24,11 @@ class ReceivingRequest extends Request
     public function rules()
     {
         return [
-            'supplier_id' => 'required'
+            'supplier_id' => 'required',
+            'deposit'     => 'required',
+
+            'branch'      => 'required',
+            'store'       => 'required',
         ];
     }
 }

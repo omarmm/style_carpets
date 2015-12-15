@@ -48,16 +48,45 @@ class ItemController extends Controller {
             // $items->item_code = Input::get('item_code');
             $items->item_name = Input::get('item_name');
             $items->item_type = Input::get('item_type');
+            if($items->item_type==1)
+            {
+
+            $items->metres_w =1;
+            $items->metres_h=1;
+            $items->quantity = Input::get('quantity');
+            $items->totalmetres_square= 0;
+$items->totalmetres_h= 0;
+
+        }
+        elseif($items->item_type==3)
+
+        {
+            $items->metres_w = Input::get('metres_w');
+            // $items->metres_h=1;
+            $items->totalmetres_h=Input::get('totalmetres_h');
+            $items->quantity = 1;
+            $items->totalmetres_square=  $items->totalmetres_h * $items->metres_w  ;
+        }
+
+        else{
             $items->metres_w = Input::get('metres_w');
             $items->metres_h = Input::get('metres_h');
+             $items->quantity = Input::get('quantity');
+            $items->totalmetres_square= $items->metres_w * $items->metres_h * $items->quantity ;
+            $items->totalmetres_h=$items->metres_h * $items->quantity ;
+            }
             // $items->item_category = Input::get('item_category');
             //$items->size = Input::get('size');
-            $items->description = Input::get('description');
+            // $items->description = Input::get('description');
             $items->cost_price = Input::get('cost_price');
             $items->selling_price = Input::get('selling_price');
-            $items->opening_balance = Input::get('opening_balance');
-            $items->quantity = Input::get('quantity');
+            // $items->opening_balance = Input::get('opening_balance');
+           
+            
+
+
             $items->save();
+
             // process inventory
             if(!empty(Input::get('quantity')))
 			{
@@ -65,7 +94,9 @@ class ItemController extends Controller {
 				$inventories->item_id = $items->id;
 				$inventories->user_id = Auth::user()->id;
 				$inventories->in_out_qty = Input::get('quantity');
-				$inventories->remarks = 'إعن طريق الإدخال يدويا';
+				$inventories->totalmetres_square = $items->totalmetres_square;
+	            $inventories->totalmetres_h = $items->totalmetres_h;
+				$inventories->remarks = 'رصيد افتتاحي';
 				$inventories->save();
 			}
             // process avatar
@@ -121,51 +152,89 @@ class ItemController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update(ItemRequest $request, $id)
+	public function update($id)
 	{
+
+
+		$rules = array(
+			'item_name' => 'required|unique:items,item_name,' . $id .'',
+			
+			
+			);
+			$validator = Validator::make(Input::all(), $rules);
+			if ($validator->fails()) 
+			{
+				 return Redirect::to('items/' . $id . '/edit')
+				->withErrors($validator);
+			} else {
             $items = Item::find($id);
             // process inventory
 			$inventories = new Inventory;
 			$inventories->item_id = $id;
 			$inventories->user_id = Auth::user()->id;
 			$inventories->in_out_qty = Input::get('quantity')- $items->quantity;
+
 			$inventories->remarks = 'عن طريق الإدخال يدويا';
 			$inventories->save();
 			// save update
             // $items->upc_ean_isbn = Input::get('upc_ean_isbn');
-            $items->item_name = Input::get('item_name');
-             $items->item_type = Input::get('item_type');
-             $items->metres_w = Input::get('metres_w');
-            $items->metres_h = Input::get('metres_h');
-             // $items->item_category = Input::get('item_category');
+             $items->item_name = Input::get('item_name');
+            $items->item_type = Input::get('item_type');
+            if($items->item_type==1)
+            {
 
+            $items->metres_w =1;
+            $items->metres_h=1;
+            $items->quantity = Input::get('quantity');
+            $items->totalmetres_square= '';
+
+
+        }
+        elseif($items->item_type==3)
+
+        {
+            $items->metres_w = Input::get('metres_w');
+            // $items->metres_h=1;
+            $items->totalmetres_h=Input::get('totalmetres_h');
+            $items->quantity = 1;
+            $items->totalmetres_square=  $items->totalmetres_h * $items->metres_w  ;
+        }
+
+        else{
+            $items->metres_w = Input::get('metres_w');
+            $items->metres_h = Input::get('metres_h');
+             $items->quantity = Input::get('quantity');
+            $items->totalmetres_square= $items->metres_w * $items->metres_h * $items->quantity ;
+            }
+            // $items->item_category = Input::get('item_category');
             //$items->size = Input::get('size');
-            $items->description = Input::get('description');
+            // $items->description = Input::get('description');
             $items->cost_price = Input::get('cost_price');
             $items->selling_price = Input::get('selling_price');
-            $items->opening_balance = Input::get('opening_balance');
-            $items->quantity = Input::get('quantity');
+            // $items->opening_balance = Input::get('opening_balance');
             $items->save();
             // process avatar
-            $image = $request->file('avatar');
-			if(!empty($image)) {
-				$avatarName = 'item' . $id . '.' . 
-				$request->file('avatar')->getClientOriginalExtension();
+   //          $image = $request->file('avatar');
+			// if(!empty($image)) {
+			// 	$avatarName = 'item' . $id . '.' . 
+			// 	$request->file('avatar')->getClientOriginalExtension();
 
-				$request->file('avatar')->move(
-				base_path() . '/public/images/items/', $avatarName
-				);
-				$img = Image::make(base_path() . '/public/images/items/' . $avatarName);
-				$img->resize(100, null, function ($constraint) {
-					$constraint->aspectRatio();
-				});
-				$img->save();
-				$itemAvatar = Item::find($id);
-				$itemAvatar->avatar = $avatarName;
-	            $itemAvatar->save();
-        	}
+			// 	$request->file('avatar')->move(
+			// 	base_path() . '/public/images/items/', $avatarName
+			// 	);
+			// 	$img = Image::make(base_path() . '/public/images/items/' . $avatarName);
+			// 	$img->resize(100, null, function ($constraint) {
+			// 		$constraint->aspectRatio();
+			// 	});
+			// 	$img->save();
+			// 	$itemAvatar = Item::find($id);
+			// 	$itemAvatar->avatar = $avatarName;
+	  //           $itemAvatar->save();
+   //      	}
             Session::flash('message', 'تم تعديل بيانات الصنف بنجاح');
             return Redirect::to('items');
+
+        }
 	}
 
 	/**

@@ -60,6 +60,8 @@ class ReceivingController extends Controller {
             $receivings->payment_type = Input::get('payment_type');
             $receivings->comments = Input::get('comments');
              $receivings->sales_man = Input::get('sales_man');
+             $receivings->branch = Input::get('branch');
+        $receivings->store = Input::get('store');
         $receivings->reserved = (Input::has('reserved')) ? true : false;
         $receivings->visacard = (Input::has('visa')) ? true : false;
         $receivings->deposit = Input::get('deposit');
@@ -116,33 +118,50 @@ class ReceivingController extends Controller {
 			$receivingItemsData->metres_h = $value->metres_h;
 			$receivingItemsData->metres_square = $value->metres_square;
 			$receivingItemsData->totalmetres_square = $value->totalmetres_square;
+			$receivingItemsData->totalmetres_h = $value->totalmetres_h;
 			$receivingItemsData->discount = $value->discount;
 			$receivingItemsData->total_prediscount = $value->total_prediscount;
 			$receivingItemsData->total_cost = $value->total_cost;
 			$receivingItemsData->selling_price = $value->selling_price;
 			$receivingItemsData->total_selling = $value->total_selling;
 				$receivingItemsData->save();
+
+
+
+
+
+
 				//process inventory
 				$items = Item::find($value->item_id);
-				$inventories = new Inventory;
+					$inventories = new Inventory;
 				$inventories->item_id = $value->item_id;
 				$inventories->user_id = Auth::user()->id;
+                $inventories->totalmetres_square = $receivingItemsData->totalmetres_square;
+                $inventories->totalmetres_h = $receivingItemsData->metres_h * $receivingItemsData->quantity;
 				$inventories->in_out_qty = $value->quantity;
-				$inventories->remarks = 'RECV'.$receivings->id;
+				$inventories->remarks = 'مشتريات';
+				$inventories->invoice_id = $receivings->id;
+				$inventories->branch = $receivings->branch;
+                $inventories->store = $receivings->store;
+
 				$inventories->save();
 				//process item quantity
 	            $items->quantity = $items->quantity + $value->quantity;
+	            $items->totalmetres_square = $items->totalmetres_square + $value->totalmetres_square;
+	            $items->totalmetres_h = $items->totalmetres_h + $value->totalmetres_h;
 	            $items->save();
 			}
 			//delete all data on ReceivingTemp model
 			ReceivingTemp::truncate();
 			$itemsreceiving = ReceivingItem::where('receiving_id', $receivingItemsData->receiving_id)->get();
             Session::flash('message', 'تمت عملية الشراء بنجاح');
+            $customers = Customer::find($receivings->customer_id);
             //return Redirect::to('receivings');
             return view('receiving.complete')
             	->with('receivings', $receivings)
             	->with('receivingItemsData', $receivingItemsData)
-            	->with('receivingItems', $itemsreceiving);
+            	->with('receivingItems', $itemsreceiving)
+            	->with('customer', $customers);
 
 
 	}

@@ -99,14 +99,14 @@
 {!! Form::label('opening', 'البيانات الإفتتاحية') !!}</div>
  <div class="col-md-5 col-md-offset-1 success">
 					<div class="form-group">
-					{!! Form::label('creditor', trans('customer.creditor')) !!}
-					{!! Form::text('creditor', Input::old('creditor'), array('class' => 'form-control')) !!}
+					{!! Form::label('opening_creditor', trans('customer.creditor')) !!}
+					{!! Form::text('opening_creditor', null, array('class' => 'form-control')) !!}
 					</div>
 </div>
 <div class="col-md-6">
 					<div class="form-group">
-					{!! Form::label('debtor', trans('customer.debtor')) !!}
-					{!! Form::text('debtor', Input::old('debtor'), array('class' => 'form-control')) !!}
+					{!! Form::label('opening_debtor', trans('customer.debtor')) !!}
+					{!! Form::text('opening_debtor', null, array('class' => 'form-control')) !!}
 					</div>
 					</div>
 

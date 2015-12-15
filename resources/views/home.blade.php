@@ -17,17 +17,25 @@
   <div class="panel-body">
     <div class="row">
     	<div class="col-md-4">
-    		<div class="box box-success"><p class="bg-primary">{{trans('dashboard.total_employees')}} : </p> <br/> <p align="center">{{$employees}}</p></div>
+    		<div class="box box-success" style="text-align:center">{{trans('الفواتير')}} :  <br/> {{$employees}}</div>
     	</div>
     	<div class="col-md-4">
-    		<div class="box box-primary">{{trans('dashboard.total_customers')}} : <br/>{{$customers}}</div>
+    		<div class="box box-success" style="text-align:center">{{trans('العملاء')}} :  <br/> {{$employees}}</div>
     	</div>
     	<div class="col-md-4">
-    		<div class="box box-success">{{trans('dashboard.total_suppliers')}} :<br/> {{$suppliers}}</div>
+    		<div class="box box-success" style="text-align:center">{{trans('التقارير')}} :<br/> 
+
+
+        <a href="index.php/reports/daily">{{trans('تقرير اليومية')}}</a>
+
+
+
+
+        </div>
     	</div>
     </div>
   
-    <div class="row">
+    <!-- <div class="row">
       <div class="col-md-3">
         <div class="well">{{trans('dashboard.total_items')}} : <br/>{{$items}}</div>
       </div>
@@ -41,7 +49,7 @@
         <div class="well">{{trans('dashboard.total_sales')}} : {{$sales}}</div>
       </div>
     </div>
-
+ -->
 </div>
 </div>
 				</div>

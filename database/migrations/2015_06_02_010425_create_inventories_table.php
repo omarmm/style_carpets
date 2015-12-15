@@ -20,6 +20,11 @@ class CreateInventoriesTable extends Migration {
 			$table->integer('user_id')->unsigned();
 			$table->foreign('user_id')->references('id')->on('users')->onDelete('restrict');
 			$table->integer('in_out_qty');
+			$table->string('branch', 255);
+			$table->string('store', 255);
+			$table->decimal('totalmetres_square',9, 2);
+			$table->decimal('totalmetres_h',9, 2);
+			$table->integer('invoice_id');
 			$table->string('remarks', 255);
 			$table->timestamps();
 		});

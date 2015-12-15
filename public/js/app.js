@@ -22,7 +22,7 @@
         });
         $scope.addReceivingTemp = function(item,newreceivingtemp) {
             $http.post('api/receivingtemp', { item_id: item.id, type: item.type, cost_price: item.cost_price, selling_price: item.selling_price , metres_w:item.metres_w , metres_h:item.metres_h,
-             metres_square:item.metres_w * item.metres_h,totalmetres_square:   item.metres_w * item.metres_h , 
+             metres_square:item.metres_w * item.metres_h,totalmetres_square:   item.metres_w * item.metres_h , totalmetres_h: item.metres_h,
 
              total_selling: (item.selling_price * item.metres_w * item.metres_h) ,
              total_prediscount:(item.selling_price * item.metres_w * item.metres_h) }).
@@ -35,7 +35,8 @@
         }
         $scope.updateReceivingTemp = function(newreceivingtemp) {
             $http.put('api/receivingtemp/' + newreceivingtemp.id, { quantity: newreceivingtemp.quantity,  metres_w: newreceivingtemp.item.metres_w, metres_h: newreceivingtemp.item.metres_h,
-                metres_square:newreceivingtemp.item.metres_w * newreceivingtemp.item.metres_h,totalmetres_square:  newreceivingtemp.quantity * newreceivingtemp.item.metres_w * newreceivingtemp.item.metres_h,selling_price:newreceivingtemp.item.selling_price,
+                metres_square:newreceivingtemp.item.metres_w * newreceivingtemp.item.metres_h,totalmetres_square:  newreceivingtemp.quantity * newreceivingtemp.item.metres_w * newreceivingtemp.item.metres_h,
+                selling_price:newreceivingtemp.item.selling_price,totalmetres_h:  newreceivingtemp.quantity * newreceivingtemp.item.metres_h,
               discount:newreceivingtemp.discount,  total_cost: (newreceivingtemp.item.cost_price * newreceivingtemp.quantity * newreceivingtemp.item.metres_w * newreceivingtemp.item.metres_h) - newreceivingtemp.discount,
                 total_prediscount: (newreceivingtemp.item.selling_price * newreceivingtemp.quantity * newreceivingtemp.item.metres_w * newreceivingtemp.item.metres_h) ,
                 total_selling: (newreceivingtemp.item.selling_price * newreceivingtemp.quantity * newreceivingtemp.item.metres_w * newreceivingtemp.item.metres_h) - newreceivingtemp.discount }).

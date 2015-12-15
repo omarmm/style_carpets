@@ -61,7 +61,12 @@
                                         </div>
                                     </div>
 
-
+                    <div class="form-group">
+                                        <label  for="branch" class="col-sm-4 control-label" style="text-align:right">{{trans('الفرع')}}</label>
+                                        <div class="col-sm-8">
+                                        <input  type="text" class="form-control" name="branch" id="branch"  />
+                                        </div>
+                                    </div>
 
                                 </div>
                                 <div class="col-md-7">
@@ -100,6 +105,14 @@
                                         {!! Form::select('payment_type', array('Cash' => 'Cash', 'Check' => 'Check', 'Debit Card' => 'Debit Card', 'Credit Card' => 'Credit Card'), Input::old('payment_type'), array('class' => 'form-control')) !!}
                                         </div>
                                     </div>
+
+                      <div class="form-group">
+                                        <label  for="store" class="col-sm-4 control-label" >{{trans('المخزن')}}</label>
+                                        <div class="col-sm-8">
+                                        <input  type="text" class="form-control" name="store" id="store"  />
+                                        </div>
+                                    </div>
+
                                 </div>
                         </div>
                            
@@ -116,14 +129,17 @@
                             <!-- Hidden field just to retrieve item type  or newreceivingtemp.item.item_type=='3'  -->
                            <td ng-show="hohoho"> <input type="text" style="text-align:center" autocomplete="off" name="item_type" ng-change="updateReceivingTemp(newreceivingtemp)" ng-model="newreceivingtemp.item.item_type" size="3"></td>
                            
-                             <td>@{{newreceivingtemp.item.metres_w}}</td>
+                             <td ng-if="newreceivingtemp.item.item_type!='1'">@{{newreceivingtemp.item.metres_w}}</td>
+                             <td ng-if="newreceivingtemp.item.item_type=='1'" style="text-align:center">{{'-'}}</td>
                        <!-- 
                        if roll (type=3) make it (show) input text, else show fixed text -->
                             <td ng-show="newreceivingtemp.item.item_type=='3'"><input ng-show="newreceivingtemp.item.item_type=='3'"  type="text" style="text-align:center" autocomplete="off" name="metres_h" ng-change="updateReceivingTemp(newreceivingtemp)" ng-model="newreceivingtemp.item.metres_h" size="3"></td>
-                         
-                            <td ng-show="newreceivingtemp.item.item_type!='3'">@{{newreceivingtemp.item.metres_h}}</td>
-                            <td>@{{ newreceivingtemp.item.metres_w * newreceivingtemp.item.metres_h}}</td>
-                         <td>@{{ newreceivingtemp.item.metres_w * newreceivingtemp.item.metres_h*newreceivingtemp.quantity}}</td>
+                           <td ng-show="newreceivingtemp.item.item_type!='3'" ng-if="newreceivingtemp.item.item_type!='1'">@{{newreceivingtemp.item.metres_h}}</td>
+                           <td ng-if="newreceivingtemp.item.item_type=='1'" style="text-align:center">{{'-'}}</td>
+                           <td ng-if="newreceivingtemp.item.item_type!='1'">@{{ newreceivingtemp.item.metres_w * newreceivingtemp.item.metres_h}}</td>
+                            <td ng-if="newreceivingtemp.item.item_type=='1'" style="text-align:center">{{'-'}}</td>
+                           <td ng-if="newreceivingtemp.item.item_type!='1'">@{{ newreceivingtemp.item.metres_w * newreceivingtemp.item.metres_h*newreceivingtemp.quantity}}</td>
+                           <td ng-if="newreceivingtemp.item.item_type=='1'" style="text-align:center">{{'-'}}</td>
                              <td><input type="text" style="text-align:center" autocomplete="off" name="discount" ng-change="updateReceivingTemp(newreceivingtemp)" ng-model="newreceivingtemp.discount" size="3"></td>
                             <td>@{{newreceivingtemp.item.selling_price * newreceivingtemp.quantity *  newreceivingtemp.item.metres_w * newreceivingtemp.item.metres_h | currency:"L.E"}}</td>
                             <td>@{{(newreceivingtemp.item.selling_price * newreceivingtemp.quantity *  newreceivingtemp.item.metres_w * newreceivingtemp.item.metres_h) - newreceivingtemp.discount | currency:"L.E"}}</td>

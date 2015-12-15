@@ -69,7 +69,12 @@
                                         </div>
                                     </div>
 
-
+                         <div class="form-group">
+                                        <label  for="branch" class="col-sm-4 control-label" style="text-align:right">{{trans('الفرع')}}</label>
+                                        <div class="col-sm-8">
+                                        <input  type="text" class="form-control" name="branch" id="branch"  />
+                                        </div>
+                                    </div>
 
                                 </div>
                                 <div class="col-md-7">
@@ -152,6 +157,13 @@ $debtor= DB::table('customers')
                                         </div> 
                                         </div>
 
+                                        <div class="form-group">
+                                        <label  for="store" class="col-sm-4 control-label" >{{trans('المخزن')}}</label>
+                                        <div class="col-sm-8">
+                                        <input  type="text" class="form-control" name="store" id="store"  />
+                                        </div>
+                                    </div>
+
                                 </div>
 
                     
@@ -180,14 +192,18 @@ $debtor= DB::table('customers')
                             <!-- Hidden field just to retrieve item type  or newsaletemp.item.item_type=='3'  -->
                            <td ng-show="hohoho"> <input type="text" style="text-align:center" autocomplete="off" name="item_type" ng-change="updateSaleTemp(newsaletemp)" ng-model="newsaletemp.item.item_type" size="3"></td>
                              
-                            <td>@{{newsaletemp.item.metres_w}}</td>
+                            <td ng-if="newsaletemp.item.item_type!='1'">@{{newsaletemp.item.metres_w}}</td>
+                            <td ng-if="newsaletemp.item.item_type=='1'" style="text-align:center">{{'-'}}</td>
                        <!-- 
                        if roll (type=3) make it (show) input text, else show fixed text -->
                             <td ng-show="newsaletemp.item.item_type=='3'"><input ng-show="newsaletemp.item.item_type=='3'"  type="text" style="text-align:center" autocomplete="off" name="metres_h" ng-change="updateSaleTemp(newsaletemp)" ng-model="newsaletemp.item.metres_h" size="3"></td>
                          
-                            <td ng-show="newsaletemp.item.item_type!='3'">@{{newsaletemp.item.metres_h}}</td>
-                            <td>@{{ newsaletemp.item.metres_w * newsaletemp.item.metres_h}}</td>
-                         <td>@{{ newsaletemp.item.metres_w * newsaletemp.item.metres_h*newsaletemp.quantity}}</td>
+                            <td ng-show="newsaletemp.item.item_type!='3'" ng-if="newsaletemp.item.item_type!='1'">@{{newsaletemp.item.metres_h}}</td>
+                            <td ng-if="newsaletemp.item.item_type=='1'" style="text-align:center">{{'-'}}</td>
+                            <td ng-if="newsaletemp.item.item_type!='1'">@{{ newsaletemp.item.metres_w * newsaletemp.item.metres_h}}</td>
+                            <td ng-if="newsaletemp.item.item_type=='1'" style="text-align:center">{{'-'}}</td>
+                            <td ng-if="newsaletemp.item.item_type!='1'" >@{{ newsaletemp.item.metres_w * newsaletemp.item.metres_h*newsaletemp.quantity}}</td>
+                            <td ng-if="newsaletemp.item.item_type=='1'" style="text-align:center">{{'-'}}</td>
                              <td><input type="text" style="text-align:center" autocomplete="off" name="discount" ng-change="updateSaleTemp(newsaletemp)" ng-model="newsaletemp.discount" size="3"></td>
                             <td>@{{newsaletemp.item.selling_price * newsaletemp.quantity *  newsaletemp.item.metres_w * newsaletemp.item.metres_h | currency:"L.E"}}</td>
                             <td>@{{(newsaletemp.item.selling_price * newsaletemp.quantity *  newsaletemp.item.metres_w * newsaletemp.item.metres_h) - newsaletemp.discount | currency:"L.E"}}</td>
@@ -205,7 +221,7 @@ $debtor= DB::table('customers')
                                         <div class="col-sm-8">
                                             <div class="input-group">
                                                 <div class="input-group-addon">L.E</div>
-                                                <input type="text" class="form-control" id="add_payment" ng-model="add_payment"/>
+                                                <input type="text" class="form-control" id="total" ng-model="add_payment"/>
                                             </div>
                                         </div>
                                     </div>

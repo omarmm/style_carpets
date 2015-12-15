@@ -25,6 +25,16 @@ class CustomerRequest extends Request {
 			
 			'name' => 'required|unique:customers',
 			'company_name' => 'required|unique:customers',
+			'customer_type' => 'required',
+			'phone_number' => 'required',
+			'account' => 'required',
+			'opening_creditor' => 'required',
+			'opening_debtor' => 'required',
+			
+
+
+			
+			
 		];
 	}
 
